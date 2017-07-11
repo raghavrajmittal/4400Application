@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblTitleCityName" layoutX="161.0" text="Basic City Page">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="100.0" text="Attractions in">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="234.0" layoutY="62.0" text="Average Rating:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAvgRating" layoutX="342.0" layoutY="62.0" text="5">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="353.0" layoutY="62.0" text="/5">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCityName" layoutX="186.0" layoutY="100.0" text="City Name Here">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblAttractions" layoutX="25.0" layoutY="136.0" prefHeight="185.0" prefWidth="565.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Name" />
+          <TableColumn prefWidth="129.0" text="Location" />
+            <TableColumn prefWidth="89.0" text="Categories" />
+            <TableColumn prefWidth="72.0" text="Avg Rating" />
+            <TableColumn prefWidth="91.33331298828125" text="# of Ratings" />
+            <TableColumn prefWidth="108.33331298828125" text="More Info" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cmbSort" layoutX="519.0" layoutY="110.0" prefHeight="25.0" prefWidth="70.0" promptText="Sort" />
+      <Button fx:id="btnReview" layoutX="257.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review This City" />
+      <Button fx:id="btnViewReviews" layoutX="256.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleViewPressed" text="VIew All Reviews" />
+      <Button fx:id="btnBack" layoutX="25.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+   </children>
+</Pane>

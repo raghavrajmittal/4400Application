@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="139.0" text="Pending Cities List">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblPendingCities" layoutX="14.0" layoutY="58.0" prefHeight="241.0" prefWidth="573.0">
+        <columns>
+          <TableColumn prefWidth="91.66665649414062" text="City Name" />
+          <TableColumn prefWidth="80.33334350585938" text="Country" />
+            <TableColumn prefWidth="112.0" text="Submitted by" />
+            <TableColumn minWidth="0.0" prefWidth="53.0" text="Rating" />
+            <TableColumn prefWidth="92.0" text="Comment" />
+            <TableColumn prefWidth="71.3333740234375" text="Approve" />
+            <TableColumn prefWidth="73.33331298828125" text="Delete" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cmbSort" layoutX="287.0" layoutY="308.0" prefHeight="25.0" prefWidth="68.0" promptText="Sort" />
+      <Button fx:id="btnBack" layoutX="301.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+   </children>
+</Pane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="134.0" text="Welcome Manager">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="149.0" layoutY="48.0" prefHeight="62.0" prefWidth="328.0" text="Email Goes Here!">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCity" layoutX="79.0" layoutY="110.0" prefHeight="25.0" prefWidth="367.0" promptText="Type or choose city" />
+      <TextField fx:id="txtCategory" layoutX="79.0" layoutY="135.0" prefHeight="25.0" prefWidth="367.0" promptText="Type or choose categories" />
+      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in an attraction or leave blank find all" />
+      <ComboBox fx:id="cmbCity" layoutX="446.0" layoutY="110.0" prefWidth="150.0" promptText="Cities" />
+      <ComboBox fx:id="cmbCategory" layoutX="446.0" layoutY="135.0" prefWidth="150.0" promptText="Categories" />
+      <Button fx:id="btnSearch" layoutX="446.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleSearchAttractionsPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
+      <Button fx:id="btnViewCities" layoutX="29.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
+      <Button fx:id="btnViewAttractions" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />
+      <Button fx:id="btnMyReviews" layoutX="34.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleMyReviewsPressed" text="My Reviews" />
+      <Button fx:id="btnLogout" layoutX="273.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
+      <Button fx:id="btnDelete" layoutX="242.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete My Account" />
+      <TextField fx:id="txtUserSearch" layoutX="80.0" layoutY="185.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in a username" />
+      <Button fx:id="btnUserSearch" layoutX="447.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleSearchUsersPressed" prefHeight="25.0" prefWidth="150.0" text="Search Users" />
+      <Button fx:id="btnViewPendingCities" layoutX="240.0" layoutY="231.0" mnemonicParsing="false" onAction="#handelPendingCitiesPressed" text="View Pending Cities" />
+      <Button fx:id="btnViewPendingAttractions" layoutX="226.0" layoutY="264.0" mnemonicParsing="false" onAction="#handlePendingAttractionsPressed" text="View Pending Attractions" />
+      <Button fx:id="btnViewAllUsers" layoutX="477.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleViewUsersPressed" text="View All Users" />
+      <Button fx:id="btnAddNewUser" layoutX="477.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleAddUserPressed" text="Add New User" />
+      <Button fx:id="btnAddNewCategory" layoutX="465.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleAddCategoryPressed" text="Add New Category" />
+      <Button fx:id="btnViewAllCategories" layoutX="464.0" layoutY="337.0" mnemonicParsing="false" onAction="#handleViewCategoriesPressed" text="View All Categories" />
+   </children>
+</Pane>
