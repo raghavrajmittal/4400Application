@@ -14,9 +14,9 @@
             <Font size="49.0" />
          </font>
       </Label>
-      <PasswordField fx:id="rePswdField" layoutX="147.0" layoutY="241.0" prefHeight="25.0" prefWidth="411.0" />
-      <PasswordField fx:id="pswdField" layoutX="147.0" layoutY="202.0" prefHeight="25.0" prefWidth="411.0" />
       <TextField fx:id="emailField" layoutX="147.0" layoutY="161.0" prefHeight="25.0" prefWidth="411.0" />
+      <PasswordField fx:id="pswdField" layoutX="147.0" layoutY="202.0" prefHeight="25.0" prefWidth="411.0" />
+      <PasswordField fx:id="rePswdField" layoutX="147.0" layoutY="241.0" prefHeight="25.0" prefWidth="411.0" />
       <Label layoutX="104.0" layoutY="164.0" text="Email:">
          <font>
             <Font size="13.0" />

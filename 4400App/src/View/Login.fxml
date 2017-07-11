@@ -9,12 +9,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
-      <Button fx:id="btnLogin" layoutX="277.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleLoginPressed" text="Login" />
-      <PasswordField fx:id="pswdField" layoutX="145.0" layoutY="188.0" prefHeight="25.0" prefWidth="344.0" />
       <TextField fx:id="emailField" layoutX="145.0" layoutY="145.0" prefHeight="25.0" prefWidth="344.0" />
+      <PasswordField fx:id="pswdField" layoutX="145.0" layoutY="188.0" prefHeight="25.0" prefWidth="344.0" />
+      <Button fx:id="btnLogin" layoutX="277.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleLoginPressed" text="Login" />
+      <Button fx:id="btnRegister" layoutX="234.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleRegisterPressed" text="New User? Click Here!" textFill="#1c3494" underline="true" />
       <Label layoutX="83.0" layoutY="149.0" text="UserName:" />
       <Label layoutX="87.0" layoutY="192.0" text="Password:" />
-      <Button fx:id="btnRegister" layoutX="234.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleRegisterPressed" text="New User? Click Here!" textFill="#1c3494" underline="true" />
       <Label layoutX="172.0" layoutY="31.0" text="Rate A City!">
          <font>
             <Font size="50.0" />
