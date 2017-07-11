@@ -15,12 +15,12 @@ public class Main extends Application {
 	private static Stage stage;
 	
 	/**Screen bounds */
-	//private static final Rectangle2D bounds =
-	//		Screen.getPrimary().getVisualBounds();
+	private static final Rectangle2D bounds =
+			Screen.getPrimary().getVisualBounds();
 	
 	/**On start make the screen the login screen*/
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws Exception {
 		try {
 			stage = primaryStage;
 			
@@ -31,21 +31,22 @@ public class Main extends Application {
 			Parent root = loader.load();
 			
 			primaryStage.setScene(new Scene(root,
-					400,
+					600,
 					400));
 			
-			primaryStage.setMaximized(true);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public static Stage getStage() {
+		return stage;
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
-	public static Stage getStage() {
-		return stage;
-	}
+	
 }

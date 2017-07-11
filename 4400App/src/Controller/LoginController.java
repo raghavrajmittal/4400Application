@@ -24,6 +24,11 @@ public class LoginController extends BasicController{
 		//Authenticates the user and will login
 		
 		//If User
-		showScreen("../View/Welcome.fxml", "Welcome");
+		showScreen("../view/Welcome.fxml", "Welcome");
+	}
+	
+	@FXML
+	public final void handleRegisterPressed() {
+		showScreen("../view/Register.fxml", "Register");
 	}
 }
