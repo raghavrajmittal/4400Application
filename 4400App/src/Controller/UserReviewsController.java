@@ -23,11 +23,14 @@ public class UserReviewsController extends BasicController{
 	public void initialize() {
 		List<String> list = new ArrayList<String>();
 		//Populate with items
-		list.add("A-Z", "Z-A", "Rating:Best First", "Rating:Best Last");
+		list.add("A-Z");
+		list.add("Z-A");
+		list.add("Rating:Best First");
+		list.add("Rating:Best Last");
 		ObservableList<String> cmbItems = FXCollections.observableList(list);
 		cmbSort.setItems(cmbItems);
 		
-		//Do the inital population by A-Z sort
+		//Do the initial population by A-Z sort
 	}
 	
 	@FXML

@@ -145,7 +145,8 @@ public class WelcomeController extends BasicController{
 	 */
 	@FXML
 	public final void handleViewAttractionsPressed() {
-		//showScreen("../View/AttractionsList.fxml", "Attractions");
+		showScreen("../View/AttractionsList.fxml", "Attractions");
+		
 	}
 	
 	/**
