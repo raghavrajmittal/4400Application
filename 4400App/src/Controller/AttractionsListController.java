@@ -34,7 +34,7 @@ public class AttractionsListController extends BasicController{
 	}
 	
 	public void handleAddPressed() {
-		
+		showScreen("../View/NewAttractionForm.fxml","New Attraction");
 	}
 	
 	public void handleBackPressed() {
