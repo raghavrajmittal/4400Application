@@ -51,6 +51,10 @@ public class UserReviewsController extends BasicController{
 			} else if (content.equals("Rating:Best Last")) {
 				
 			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Please choose a sort choice");
+			alert.showAndWait();
 		}
 
 	}

@@ -7,6 +7,7 @@ import Database.DBModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 
@@ -66,6 +67,10 @@ public class AttractionsListController extends BasicController{
 			} else if (content.equals("Category Z-A")) {
 				
 			}
+		}else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Please choose a sort choice");
+			alert.showAndWait();
 		}
 	}
 }

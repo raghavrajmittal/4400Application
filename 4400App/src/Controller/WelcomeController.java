@@ -42,6 +42,7 @@ public class WelcomeController extends BasicController{
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please put a city, attraction, or category");
 			alert.showAndWait();
+			return;
 		}
 		
 		//We need to send the sql query to the results page
@@ -59,12 +60,12 @@ public class WelcomeController extends BasicController{
 					//Now we search for a city that has that attraction
 					//With those categories
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 				} else {
 					//If category is empty - Only get table elements
 					//That have City city and Attraction attr
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 					
 				}
 			}else {
@@ -76,14 +77,14 @@ public class WelcomeController extends BasicController{
 					//Now we search for an attraction
 					//With those categories regardless of city
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 					
 				} else {
 					//If category is empty - Only get table elements
 					//That has City city
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 					
 				}

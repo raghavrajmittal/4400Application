@@ -2,6 +2,7 @@ package Controller;
 
 import java.util.Optional;
 
+import Database.DBModel;
 import Model.City;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -21,6 +22,7 @@ public class ManagerWelcomeController extends BasicController {
 	@FXML
 	private TextField txtUserSearch;
 	
+	DBModel mainModel = DBModel.getInstance();
 	@FXML
 	public void initialize() {
 		//Populate comboboxes
@@ -39,6 +41,7 @@ public class ManagerWelcomeController extends BasicController {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please put a city, attraction, or category");
 			alert.showAndWait();
+			return;
 		}
 		
 		//We need to send the sql query to the results page
@@ -56,12 +59,12 @@ public class ManagerWelcomeController extends BasicController {
 					//Now we search for a city that has that attraction
 					//With those categories
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 				} else {
 					//If category is empty - Only get table elements
 					//That have City city and Attraction attr
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 					
 				}
 			}else {
@@ -73,14 +76,14 @@ public class ManagerWelcomeController extends BasicController {
 					//Now we search for an attraction
 					//With those categories regardless of city
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 					
 				} else {
 					//If category is empty - Only get table elements
 					//That has City city
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 					
 				}
@@ -97,13 +100,13 @@ public class ManagerWelcomeController extends BasicController {
 					categories = cmbCategory.getValue();
 					//Will have attraction and category sql thing
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 				} else {
 					//If category is empty - Only get table elements
 					//That has Attraction attr
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 					
 				}
@@ -112,10 +115,15 @@ public class ManagerWelcomeController extends BasicController {
 				if (cmbCategory.getValue() != null) {
 					//Then check if category is not empty
 					categories = cmbCategory.getValue();
+					showScreen("../View/AttractionsList.fxml", "Search Results");
+
 				} else {
 					//If category is empty - Only get table elements
 					//That have City city and Attraction attr
 					//TBH this should not be empty
+					
+					showScreen("../View/AttractionsList.fxml", "Search Results");
+
 					
 				}
 			}
@@ -175,8 +183,7 @@ public class ManagerWelcomeController extends BasicController {
 		} else {
 			//Make a query with the user name
 			user = txtUserSearch.getText();
-			
-			
+
 			showScreen("../View/UsersList.fxml", "User List");
 		}
 		
@@ -185,30 +192,33 @@ public class ManagerWelcomeController extends BasicController {
 	
 	@FXML
 	public void handlePendingCitiesPressed() {
-		
+		showScreen("../View/PendingCitiesList.fxml", "Pending Cities");
 	}
 	
 	@FXML
 	public void handlePendingAttractionsPressed() {
-		
+		showScreen("../View/PendingAttractionList.fxml", "Pending Attractions");
 	}
 	
 	@FXML
 	public void handleViewUsersPressed() {
-		
+		//Make Query Empty
+		mainModel.setCurrentQuery("");
+		showScreen("../View/UsersList.fxml", "User List");
 	}
 	
 	@FXML
 	public void handleAddUserPressed() {
-		
+		showScreen("../View/NewUserForm.fxml", "Add New User");
 	}
 	@FXML
 	public void handleAddCategoryPressed() {
-		
+		showScreen("../View/NewCategoryPage.fxml", "New Category");
 	}
 	
 	@FXML
 	public void handleViewCategoriesPressed() {
-		
+		showScreen("../View/CategoriesPage.fxml", "Categories Page");
+
 	}
 }

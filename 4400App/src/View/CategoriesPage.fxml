@@ -8,23 +8,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategoriesPageController">
    <children>
-      <Label layoutX="206.0" text="Categories">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tblCategories" layoutX="24.0" layoutY="79.0" prefHeight="200.0" prefWidth="550.0">
+      <TableView fx:id="tblCategories" layoutX="27.0" layoutY="77.0" prefHeight="200.0" prefWidth="547.0">
         <columns>
-          <TableColumn prefWidth="216.33334350585938" text="Category Name" />
-          <TableColumn prefWidth="149.66665649414062" text="Number of Attractions" />
-            <TableColumn prefWidth="90.66668701171875" text="Edit" />
-            <TableColumn prefWidth="93.33331298828125" text="Delete" />
+          <TableColumn fx:id="colName" prefWidth="214.6666259765625" text="Name" />
+          <TableColumn fx:id="colNum" prefWidth="147.3333740234375" text="Number of Attractions" />
+            <TableColumn fx:id="colEdit" prefWidth="96.0" text="Edit" />
+            <TableColumn fx:id="colDel" prefWidth="92.66668701171875" text="Delete" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="251.0" layoutY="279.0" prefHeight="25.0" prefWidth="74.0" promptText="Sort" />
-      <Button fx:id="btnAddNewCategory" layoutX="230.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleAddPressed" text="Add New Category" />
-      <Button fx:id="btnBack" layoutX="268.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Label layoutX="151.0" text="Category List">
+         <font>
+            <Font size="52.0" />
+         </font>
+      </Label>
+      <Button layoutX="308.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="96.0" text="Sort" />
+      <Button fx:id="btnBack" layoutX="288.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <ComboBox fx:id="cmbSort" layoutX="211.0" layoutY="283.0" prefHeight="25.0" prefWidth="89.0" promptText="Sort By:" />
+      <Button fx:id="btnAdd" layoutX="250.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleAddPressed" text="Add New Category" />
    </children>
 </Pane>

@@ -27,8 +27,9 @@
             <TableColumn minWidth="0.0" prefWidth="374.0" text="Comment" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="256.0" layoutY="282.0" prefHeight="25.0" prefWidth="88.0" promptText="Sort" />
+      <ComboBox fx:id="cmbSort" layoutX="207.0" layoutY="281.0" prefHeight="25.0" prefWidth="88.0" promptText="Sort By:" />
       <Button fx:id="btnReview" layoutX="235.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review this Attraction" />
       <Button fx:id="btnBack" layoutX="280.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnSort" layoutX="301.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="88.0" text="Sort" />
    </children>
 </Pane>

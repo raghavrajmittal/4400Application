@@ -24,7 +24,7 @@
             <TableColumn prefWidth="83.66668701171875" text="Delete" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="260.0" layoutY="266.0" prefHeight="25.0" prefWidth="70.0" promptText="Sort" />
+      <ComboBox fx:id="cmbSort" layoutX="260.0" layoutY="266.0" prefHeight="25.0" prefWidth="70.0" promptText="Sort By" />
       <Button fx:id="btnSort" layoutX="335.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleSortPressed" text="Sort"/>
       <Button fx:id="btnAddNewUser" layoutX="272.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleAddPressed" text="Add New User" />
       <Button fx:id="btnBack" layoutX="298.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
