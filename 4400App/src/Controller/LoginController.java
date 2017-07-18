@@ -44,22 +44,28 @@ public class LoginController extends BasicController{
 			email = emailField.getText();
 		}
 		
-		
-		//If User
 		if (flag) {
-			showScreen("../view/Welcome.fxml", "Welcome");
-			//This is where the database stuff will happens
-			//Authenticates the user and will login
-			
-			//If username is not valid or password is incorrect
-//			Alert alert = new Alert(Alert.AlertType.ERROR);
-//			alert.setTitle("Error");
-//			alert.setContentText("Username or password is incorrect");
-//			alert.showAndWait();
+			if (emailField.getText().equals("m")) {
+				//If manager
+				//showScreen("../view/ManagerWelcome.fxml", "Welcome");
+				
+				//If username is not valid or password is incorrect
+				//			Alert alert = new Alert(Alert.AlertType.ERROR);
+				//			alert.setTitle("Error");
+				//			alert.setContentText("Username or password is incorrect");
+				//			alert.showAndWait();
+			} else {
+				showScreen("../view/Welcome.fxml", "Welcome");
+				//This is where the database stuff will happens
+				//Authenticates the user and will login
+				
+				//If username is not valid or password is incorrect
+	//			Alert alert = new Alert(Alert.AlertType.ERROR);
+	//			alert.setTitle("Error");
+	//			alert.setContentText("Username or password is incorrect");
+	//			alert.showAndWait();
+			}
 		}
-		
-		//If manager
-		//showScreen("../view/ManagerWelcome.fxml", "Welcome");
 	}
 	
 	@FXML

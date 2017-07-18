@@ -30,6 +30,8 @@ public class AttractionsListController extends BasicController{
 		ObservableList<String> cmbItems = FXCollections.observableList(list);
 		cmbSort.setItems(cmbItems);
 		
+		cmbSort.setValue("Name A-Z");
+		
 		//Do the initial population by A-Z sort
 	}
 	
@@ -42,7 +44,7 @@ public class AttractionsListController extends BasicController{
 	}
 	
 	public void handleSortPressed() {
-		String content = cmbSort.getPromptText();
+		String content = cmbSort.getValue();
 		//Use content in SQL query to sort the table.
 		if (content.equals("Name A-Z")) {
 			
