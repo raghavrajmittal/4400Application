@@ -17,15 +17,16 @@
       </Label>
       <TableView fx:id="tblCities" layoutX="7.0" layoutY="85.0" prefHeight="219.0" prefWidth="587.0">
         <columns>
-          <TableColumn prefWidth="156.33331298828125" text="City" />
-          <TableColumn prefWidth="85.66668701171875" text="Avg Rating" />
-            <TableColumn prefWidth="117.0" text="# of Ratings" />
-            <TableColumn prefWidth="121.66668701171875" text="# of Attractions" />
-            <TableColumn minWidth="3.6666259765625" prefWidth="106.0" text="City Page" />
+          <TableColumn fx:id="colName" prefWidth="156.33331298828125" text="City Name" />
+          <TableColumn fx:id="colRate" prefWidth="85.66668701171875" text="Avg Rating" />
+          <TableColumn fx:id="colNumRate" prefWidth="117.0" text="# of Ratings" />
+          <TableColumn fx:id="colNumAttr" prefWidth="121.66668701171875" text="# of Attractions" />
+          <TableColumn fx:id="colCityPage" minWidth="3.6666259765625" prefWidth="106.0" text="City Page" />
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="259.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleAddPressed" text="AddNewCity" />
-      <ComboBox fx:id="cmbSort" layoutX="259.0" layoutY="316.0" prefHeight="25.0" prefWidth="82.0" promptText="Sort" />
+      <ComboBox fx:id="cmbSort" layoutX="199.0" layoutY="316.0" prefHeight="25.0" prefWidth="101.0" promptText="Sort By:" />
       <Button fx:id="btnBack" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnSort" layoutX="315.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="63.0" text="Sort" />
    </children>
 </Pane>

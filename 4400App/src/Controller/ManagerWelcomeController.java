@@ -136,7 +136,7 @@ public class ManagerWelcomeController extends BasicController {
 	
 	@FXML
 	public void handleViewCitiesPressed() {
-		
+		showScreen("../View/CitiesList.fxml", "Cities List");
 	}
 	
 	@FXML
