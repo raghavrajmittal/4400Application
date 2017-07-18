@@ -19,12 +19,10 @@
             <Font size="42.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCity" layoutX="79.0" layoutY="110.0" prefHeight="25.0" prefWidth="367.0" promptText="Type or choose city" />
-      <ComboBox fx:id="cmbCity" layoutX="446.0" layoutY="110.0" prefWidth="150.0" promptText="Cities" />
-      <TextField fx:id="txtCategory" layoutX="79.0" layoutY="135.0" prefHeight="25.0" prefWidth="367.0" promptText="Type or choose categories" />
-      <ComboBox fx:id="cmbCategory" layoutX="446.0" layoutY="135.0" prefWidth="150.0" promptText="Categories" />
-      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in an attraction or leave blank find all" />
-      <Button fx:id="btnSearch" layoutX="446.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleSearchPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
+      <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="110.0" prefWidth="417.0" promptText="Choose a city" />
+      <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="135.0" prefWidth="417.0" promptText="Choose a category" />
+      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="417.0" promptText="Type in an attraction or leave blank find all" />
+      <Button fx:id="btnSearch" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSearchPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
       <Button fx:id="btnViewCities" layoutX="255.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
       <Button fx:id="btnViewAttractions" layoutX="240.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />
       <Button fx:id="btnMyReviews" layoutX="261.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleMyReviewsPressed" text="My Reviews" />

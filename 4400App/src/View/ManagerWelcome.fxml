@@ -19,11 +19,9 @@
             <Font size="42.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCity" layoutX="79.0" layoutY="110.0" prefHeight="25.0" prefWidth="367.0" promptText="Type or choose city" />
-      <TextField fx:id="txtCategory" layoutX="79.0" layoutY="135.0" prefHeight="25.0" prefWidth="367.0" promptText="Type or choose categories" />
       <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in an attraction or leave blank find all" />
-      <ComboBox fx:id="cmbCity" layoutX="446.0" layoutY="110.0" prefWidth="150.0" promptText="Cities" />
-      <ComboBox fx:id="cmbCategory" layoutX="446.0" layoutY="135.0" prefWidth="150.0" promptText="Categories" />
+      <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="110.0" prefWidth="367.0" promptText="Cities" />
+      <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="135.0" prefWidth="367.0" promptText="Categories" />
       <Button fx:id="btnSearch" layoutX="446.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleSearchAttractionsPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
       <Button fx:id="btnViewCities" layoutX="29.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
       <Button fx:id="btnViewAttractions" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />
@@ -32,7 +30,7 @@
       <Button fx:id="btnDelete" layoutX="242.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete My Account" />
       <TextField fx:id="txtUserSearch" layoutX="80.0" layoutY="185.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in a username" />
       <Button fx:id="btnUserSearch" layoutX="447.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleSearchUsersPressed" prefHeight="25.0" prefWidth="150.0" text="Search Users" />
-      <Button fx:id="btnViewPendingCities" layoutX="240.0" layoutY="231.0" mnemonicParsing="false" onAction="#handelPendingCitiesPressed" text="View Pending Cities" />
+      <Button fx:id="btnViewPendingCities" layoutX="240.0" layoutY="231.0" mnemonicParsing="false" onAction="#handlePendingCitiesPressed" text="View Pending Cities" />
       <Button fx:id="btnViewPendingAttractions" layoutX="226.0" layoutY="264.0" mnemonicParsing="false" onAction="#handlePendingAttractionsPressed" text="View Pending Attractions" />
       <Button fx:id="btnViewAllUsers" layoutX="477.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleViewUsersPressed" text="View All Users" />
       <Button fx:id="btnAddNewUser" layoutX="477.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleAddUserPressed" text="Add New User" />

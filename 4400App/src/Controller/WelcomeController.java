@@ -15,16 +15,16 @@ public class WelcomeController extends BasicController{
 	
 	/**All the user input variables */
 	@FXML
-	private TextField txtCity;
-	@FXML
 	private TextField txtAttraction;
-	@FXML
-	private TextField txtCategory;
 	@FXML
 	private ComboBox<City> cmbCity;
 	@FXML
-	private ComboBox<Category> cmbCategory;
+	private ComboBox<String> cmbCategory;
 	
+	@FXML
+	public void initialize() {
+		//Populate the comboboxes
+	}
 	/**
 	 * This will filter results based on the text fields
 	 * that the user enters
@@ -33,30 +33,29 @@ public class WelcomeController extends BasicController{
 	public final void handleSearchPressed() {
 		String city = "";
 		String attr = "";
-		String[] categories;
+		String categories = "";
 		
 		//Parse through txtCategory for each one and add to categories
-		if (txtCity.getText().trim().equals("")
+		if (cmbCity.getValue() == null
 				&& txtAttraction.getText().trim().equals("")
-				&& txtCategory.getText().trim().equals("")) {
+				&& cmbCategory.getValue() == null) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please put a city, attraction, or category");
+			alert.showAndWait();
 		}
 		
 		//We need to send the sql query to the results page
 		//If its category thats filled it needs to go to search results by category
-		if (!txtCity.getText().trim().equals("")) {
+		if (cmbCity.getValue() != null) {
 			//First check if city is not empty
-			city = txtCity.getText().trim();
+			city = cmbCity.getValue().getName();
 			
 			if (!txtAttraction.getText().trim().equals("")) {
 				//Then check if attraction is not empty
 				attr = txtAttraction.getText().trim();
 				
-				if (!txtCategory.getText().trim().equals("")) {
-					//Then check if category is not empty
-					categories = txtCategory.getText().trim().split(",");
-					
+				if (cmbCategory.getValue() != null) {
+					//Then check if category is not empty					
 					//Now we search for a city that has that attraction
 					//With those categories
 					
@@ -71,10 +70,9 @@ public class WelcomeController extends BasicController{
 			}else {
 				
 				//If attraction is empty still check if category is not empty
-				if (!txtCategory.getText().trim().equals("")) {
+				if (cmbCategory.getValue() != null) {
 					//Then check if category is not empty
-					categories = txtCategory.getText().trim().split(",");
-					
+					categories = cmbCategory.getValue();
 					//Now we search for an attraction
 					//With those categories regardless of city
 					
@@ -97,10 +95,9 @@ public class WelcomeController extends BasicController{
 				//Then check if attraction is not empty
 				attr = txtAttraction.getText().trim();
 				
-				if (!txtCategory.getText().trim().equals("")) {
+				if (cmbCategory.getValue() != null) {
 					//Then check if category is not empty
-					categories = txtCategory.getText().trim().split(",");
-					
+					categories = cmbCategory.getValue();
 					//Will have attraction and category sql thing
 					
 					//showScreen("../View/AttractionsList.fxml", "Search Results");
@@ -115,9 +112,9 @@ public class WelcomeController extends BasicController{
 				}
 			}else {
 				//If attraction is empty still check if category is not empty
-				if (!txtCategory.getText().trim().equals("")) {
+				if (cmbCategory.getValue() != null) {
 					//Then check if category is not empty
-					categories = txtCategory.getText().trim().split(",");
+					categories = cmbCategory.getValue();
 				} else {
 					//If category is empty - Only get table elements
 					//That have City city and Attraction attr

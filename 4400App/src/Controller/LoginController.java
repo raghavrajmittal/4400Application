@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.fxml.FXML;
 import Database.DBModel;
+import Model.User;
 
 public class LoginController extends BasicController{
 	
@@ -15,6 +16,9 @@ public class LoginController extends BasicController{
 	/**Where the user enters their pswrd */
 	@FXML
 	private PasswordField pswdField;
+	
+	//Instance of the database
+	DBModel mainModel = DBModel.getInstance();
 	
 	/**Checks the database and handles login */
 	@FXML
@@ -47,7 +51,9 @@ public class LoginController extends BasicController{
 		if (flag) {
 			if (emailField.getText().equals("m")) {
 				//If manager
-				//showScreen("../view/ManagerWelcome.fxml", "Welcome");
+				mainModel.setCurrentUser(new User(emailField.getText()
+						,pswdField.getText(),true));
+				showScreen("../view/ManagerWelcome.fxml", "Welcome");
 				
 				//If username is not valid or password is incorrect
 				//			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -55,6 +61,8 @@ public class LoginController extends BasicController{
 				//			alert.setContentText("Username or password is incorrect");
 				//			alert.showAndWait();
 			} else {
+				mainModel.setCurrentUser(new User(emailField.getText()
+						,pswdField.getText()));
 				showScreen("../view/Welcome.fxml", "Welcome");
 				//This is where the database stuff will happens
 				//Authenticates the user and will login

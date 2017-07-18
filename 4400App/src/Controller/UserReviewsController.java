@@ -4,6 +4,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.DBModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +19,9 @@ public class UserReviewsController extends BasicController{
 	
 	@FXML
 	TableView tblReviews;
+	
+	//Instance of Database
+	DBModel mainModel = DBModel.getInstance();
 		
 	@FXML
 	public void initialize() {
@@ -51,6 +55,10 @@ public class UserReviewsController extends BasicController{
 	
 	@FXML
 	public void handleBackPressed() {
-		showScreen("../View/Welcome.fxml", "Welcome");
+		if (mainModel.getUser().getIsManager()) {
+			showScreen("../View/ManagerWelcome.fxml", "Welcome");
+		} else {
+			showScreen("../View/Welcome.fxml", "Welcome");
+		}
 	}
 }

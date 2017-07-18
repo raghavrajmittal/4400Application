@@ -2,7 +2,13 @@ package Model;
 
 public class City {
 	
-	public City() {
-		
+	private String name;
+	
+	public City(String n) {
+		name = n;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }
