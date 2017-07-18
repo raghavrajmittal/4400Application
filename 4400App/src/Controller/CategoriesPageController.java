@@ -25,9 +25,9 @@ public class CategoriesPageController extends BasicController {
 	@FXML
 	private TableColumn<Category, Integer> colNum;
 	@FXML
-	private TableColumn colEdit;
+	private TableColumn<Category, String> colEdit;
 	@FXML
-	private TableColumn colDel;
+	private TableColumn<Category, String> colDel;
 	
 	DBModel mainModel = DBModel.getInstance();
 	

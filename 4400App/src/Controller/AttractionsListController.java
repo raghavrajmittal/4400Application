@@ -2,20 +2,35 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale.Category;
 
 import Database.DBModel;
+import Model.Attraction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class AttractionsListController extends BasicController{
 	
 	@FXML
-	private TableView tblAttractions;
-
+	private TableView<Attraction> tblAttractions;
+	@FXML
+	private TableColumn<Attraction,String> colName;
+	@FXML
+	private TableColumn<Attraction,Category> colCat;
+	@FXML
+	private TableColumn<Attraction,String> colLoc;
+	@FXML
+	private TableColumn<Attraction,Double> colRate;
+	@FXML
+	private TableColumn<Attraction,Integer> colNumOfRate;
+	@FXML
+	private TableColumn<Attraction,String> colInfo;
+	
 	@FXML
 	private ComboBox<String> cmbSort;
 	

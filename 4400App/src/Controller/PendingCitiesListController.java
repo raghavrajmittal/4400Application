@@ -30,9 +30,9 @@ public class PendingCitiesListController extends BasicController {
 	@FXML
 	private TableColumn<City,String> colComment;
 	@FXML
-	private TableColumn colApprove;
+	private TableColumn<City,String> colApprove;
 	@FXML
-	private TableColumn colDelete;
+	private TableColumn<City,String> colDelete;
 	
 	DBModel mainModel = DBModel.getInstance();
 	

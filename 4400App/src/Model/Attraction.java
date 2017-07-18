@@ -1,16 +1,10 @@
 package Model;
 
-public class Attraction {
+public class Attraction extends Review{
 	
-	private String name;
-	private double avgRating;
-	
-	public Attraction(String n) {
-		name = n;
-	}
+
 	
 	public Attraction(String n, double r) {
-		this(n);
-		avgRating = r;
+		super(n, r);
 	}
 }

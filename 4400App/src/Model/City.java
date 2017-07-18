@@ -1,14 +1,10 @@
 package Model;
 
-public class City {
+public class City extends Review{
 	
-	private String name;
 	
-	public City(String n) {
-		name = n;
+	public City(String n, double r) {
+		super(n, r);
 	}
 	
-	public String getName() {
-		return name;
-	}
 }

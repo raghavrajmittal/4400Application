@@ -41,7 +41,7 @@ public class PendingAttractionsListController extends BasicController{
 	@FXML
 	private TableColumn<Attraction,String> colComment;
 	@FXML
-	private TableColumn colStatus;
+	private TableColumn<Attraction,String> colStatus;
 	
 	DBModel mainModel = DBModel.getInstance();
 	@FXML
