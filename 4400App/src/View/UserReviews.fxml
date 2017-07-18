@@ -28,7 +28,8 @@
             <TableColumn minWidth="0.0" prefWidth="89.66668701171875" text="Edit" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="268.0" layoutY="313.0" prefHeight="25.0" prefWidth="65.0" promptText="Sort" />
+      <ComboBox fx:id="cmbSort" layoutX="268.0" layoutY="313.0" prefHeight="25.0" prefWidth="65.0" promptText="A-Z" />
       <Button fx:id="btnBack" layoutX="281.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnSort" layoutX="350.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleSortPressed" text="Sort"/>
    </children>
 </Pane>
