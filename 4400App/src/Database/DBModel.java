@@ -12,6 +12,9 @@ public class DBModel {
 	
 	private User currentUser;
 	
+	//Subject to Change
+	private String currentQuery;
+	
 	public final boolean addUser(User u) {
 		//If User already exists return false
 		
@@ -30,5 +33,13 @@ public class DBModel {
 		//Returns false if user is not authenticated on login
 		
 		return true;
+	}
+	
+	public final String getCurrentQuery() {
+		return currentQuery;
+	}
+	
+	public void setCurrentQuery(String c) {
+		currentQuery = c;
 	}
 }

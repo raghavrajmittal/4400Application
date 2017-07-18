@@ -4,6 +4,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.DBModel;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,6 +48,8 @@ public class NewAttractionFormController extends BasicController {
 	@FXML
 	private Slider sldRating;
 	
+	DBModel mainModel = DBModel.getInstance();
+	
 	@FXML
 	public void initialize() {
 		
@@ -71,7 +74,11 @@ public class NewAttractionFormController extends BasicController {
 	
 	@FXML
 	public void handleBackPressed() {
-		showScreen("../View/Welcome.fxml", "Welcome");
+		if (mainModel.getUser().getIsManager()) {
+			showScreen("../View/ManagerWelcome.fxml", "Welcome");
+		} else {
+			showScreen("../View/Welcome.fxml", "Welcome");
+		}
 	}
 	
 	@FXML
@@ -95,7 +102,11 @@ public class NewAttractionFormController extends BasicController {
 			alert.setTitle("Success");
 			alert.setContentText("Your Attraction has been submitted and is awaiting approval");
 			alert.showAndWait();
-			showScreen("../View/Welcome.fxml", "Welcome");
+			if (mainModel.getUser().getIsManager()) {
+				showScreen("../View/ManagerWelcome.fxml", "Welcome");
+			} else {
+				showScreen("../View/Welcome.fxml", "Welcome");
+			}
 		}
 	}
 }

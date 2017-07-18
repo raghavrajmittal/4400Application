@@ -18,6 +18,8 @@ public class ManagerWelcomeController extends BasicController {
 	private ComboBox<City> cmbCity;
 	@FXML
 	private ComboBox<String> cmbCategory;
+	@FXML
+	private TextField txtUserSearch;
 	
 	@FXML
 	public void initialize() {
@@ -165,6 +167,19 @@ public class ManagerWelcomeController extends BasicController {
 	
 	@FXML
 	public void handleSearchUsersPressed() {
+		String user = "";
+		if (txtUserSearch.getText().equals("")) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Please enter a username");
+			alert.showAndWait();
+		} else {
+			//Make a query with the user name
+			user = txtUserSearch.getText();
+			
+			
+			showScreen("../View/UsersList.fxml", "User List");
+		}
+		
 		
 	}
 	

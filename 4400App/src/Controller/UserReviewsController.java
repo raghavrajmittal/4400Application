@@ -39,16 +39,18 @@ public class UserReviewsController extends BasicController{
 	
 	@FXML
 	public void handleSortPressed() {
-		String content = cmbSort.getPromptText();
+		String content = cmbSort.getValue();
 		//Use content in SQL query to sort the table.
-		if (content.equals("A-Z")) {
-			
-		} else if (content.equals("Z-A")){
-			
-		} else if (content.equals("Rating:Best First")) {
-			
-		} else if (content.equals("Rating:Best Last")) {
-			
+		if (content != null) {
+			if (content.equals("A-Z")) {
+				
+			} else if (content.equals("Z-A")){
+				
+			} else if (content.equals("Rating:Best First")) {
+				
+			} else if (content.equals("Rating:Best Last")) {
+				
+			}
 		}
 
 	}

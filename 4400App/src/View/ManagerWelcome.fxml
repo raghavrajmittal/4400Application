@@ -19,19 +19,19 @@
             <Font size="42.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in an attraction or leave blank find all" />
       <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="110.0" prefWidth="367.0" promptText="Cities" />
       <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="135.0" prefWidth="367.0" promptText="Categories" />
+      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in an attraction or leave blank find all" />
       <Button fx:id="btnSearch" layoutX="446.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleSearchAttractionsPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
+      <TextField fx:id="txtUserSearch" layoutX="80.0" layoutY="185.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in a username" />      
+      <Button fx:id="btnUserSearch" layoutX="447.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleSearchUsersPressed" prefHeight="25.0" prefWidth="150.0" text="Search Users" />
       <Button fx:id="btnViewCities" layoutX="29.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
       <Button fx:id="btnViewAttractions" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />
       <Button fx:id="btnMyReviews" layoutX="34.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleMyReviewsPressed" text="My Reviews" />
-      <Button fx:id="btnLogout" layoutX="273.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
-      <Button fx:id="btnDelete" layoutX="242.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete My Account" />
-      <TextField fx:id="txtUserSearch" layoutX="80.0" layoutY="185.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in a username" />
-      <Button fx:id="btnUserSearch" layoutX="447.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleSearchUsersPressed" prefHeight="25.0" prefWidth="150.0" text="Search Users" />
       <Button fx:id="btnViewPendingCities" layoutX="240.0" layoutY="231.0" mnemonicParsing="false" onAction="#handlePendingCitiesPressed" text="View Pending Cities" />
       <Button fx:id="btnViewPendingAttractions" layoutX="226.0" layoutY="264.0" mnemonicParsing="false" onAction="#handlePendingAttractionsPressed" text="View Pending Attractions" />
+	  <Button fx:id="btnLogout" layoutX="273.0" layoutY="312.0" mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
+      <Button fx:id="btnDelete" layoutX="242.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete My Account" />      
       <Button fx:id="btnViewAllUsers" layoutX="477.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleViewUsersPressed" text="View All Users" />
       <Button fx:id="btnAddNewUser" layoutX="477.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleAddUserPressed" text="Add New User" />
       <Button fx:id="btnAddNewCategory" layoutX="465.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleAddCategoryPressed" text="Add New Category" />
