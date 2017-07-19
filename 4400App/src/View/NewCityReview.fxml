@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="44.0" text="New">
+      <Label layoutX="44.0" text="Your">
          <font>
             <Font size="40.0" />
          </font>
@@ -19,7 +19,7 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Label fx:id="lblCityName" layoutX="140.0" text="City Name Here">
+      <Label fx:id="lblCityName" alignment="CENTER" layoutX="140.0" text="City Name Here">
          <font>
             <Font size="40.0" />
          </font>
@@ -42,6 +42,7 @@
       </Label>
       <TextArea fx:id="txtComment" layoutX="200.0" layoutY="156.0" prefHeight="140.0" prefWidth="367.0" />
       <Button fx:id="btnSubmit" layoutX="253.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit Review" />
-      <Button fx:id="btnBack" layoutX="279.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnBack" layoutX="279.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnDelete" layoutX="256.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete Review" />
    </children>
 </Pane>

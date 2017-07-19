@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="lblCityName" layoutX="14.0" layoutY="-1.0" text="City Name Here">
+      <Label fx:id="lblCityName" alignment="CENTER" layoutX="14.0" layoutY="-1.0" text="City Name Here">
          <font>
             <Font size="50.0" />
          </font>
@@ -27,8 +27,9 @@
             <TableColumn prefWidth="345.33331298828125" text="Comments" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="268.0" layoutY="313.0" prefHeight="25.0" prefWidth="65.0" promptText="Sort" />
+      <ComboBox fx:id="cmbSort" layoutX="215.0" layoutY="313.0" prefHeight="25.0" prefWidth="85.0" promptText="Sort" />
       <Button fx:id="btnReview" layoutX="251.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review This City" />
       <Button fx:id="btnBack" layoutX="14.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnSort" layoutX="311.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="85.0" text="Sort" />
    </children>
 </Pane>

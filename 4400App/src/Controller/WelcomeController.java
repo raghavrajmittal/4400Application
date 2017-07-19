@@ -1,12 +1,18 @@
 package Controller;
 
-import java.util.Locale.Category;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import Database.DBModel;
 import Model.City;
+import Model.Category;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
@@ -19,21 +25,43 @@ public class WelcomeController extends BasicController{
 	@FXML
 	private ComboBox<City> cmbCity;
 	@FXML
-	private ComboBox<String> cmbCategory;
+	private ComboBox<Category> cmbCategory;
+	@FXML
+	private Label lblName;
 	
+	DBModel mainModel = DBModel.getInstance();
 	@FXML
 	public void initialize() {
+		
+		//Set the name of the page
+		lblName.setText(mainModel.getUser().getEmail());
+		
 		//Populate the comboboxes
+		
+		List<Category> catList = new ArrayList<>();
+		//Populate catList with our categories
+		catList.add(new Category("Name"));
+		
+		List<City> cityList = new ArrayList<>();
+		//Populate cityList with our cities
+		cityList.add(new City("i", 3.0, "l"));
+		
+		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
+		ObservableList<City> cmbCities = FXCollections.observableList(cityList);
+		
+		cmbCategory.setItems(cmbCats);
+		cmbCity.setItems(cmbCities);
+		
 	}
 	/**
 	 * This will filter results based on the text fields
 	 * that the user enters
 	 */
 	@FXML
-	public final void handleSearchPressed() {
-		String city = "";
+	public void handleSearchPressed() {
+		City city;
 		String attr = "";
-		String categories = "";
+		Category categories;
 		
 		//Parse through txtCategory for each one and add to categories
 		if (cmbCity.getValue() == null
@@ -49,7 +77,7 @@ public class WelcomeController extends BasicController{
 		//If its category thats filled it needs to go to search results by category
 		if (cmbCity.getValue() != null) {
 			//First check if city is not empty
-			city = cmbCity.getValue().getName();
+			city = cmbCity.getValue();
 			
 			if (!txtAttraction.getText().trim().equals("")) {
 				//Then check if attraction is not empty
@@ -101,13 +129,13 @@ public class WelcomeController extends BasicController{
 					categories = cmbCategory.getValue();
 					//Will have attraction and category sql thing
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 				} else {
 					//If category is empty - Only get table elements
 					//That has Attraction attr
 					
-					//showScreen("../View/AttractionsList.fxml", "Search Results");
+					showScreen("../View/AttractionsList.fxml", "Search Results");
 
 					
 				}
@@ -116,10 +144,15 @@ public class WelcomeController extends BasicController{
 				if (cmbCategory.getValue() != null) {
 					//Then check if category is not empty
 					categories = cmbCategory.getValue();
+					showScreen("../View/AttractionsList.fxml", "Search Results");
+
 				} else {
 					//If category is empty - Only get table elements
 					//That have City city and Attraction attr
 					//TBH this should not be empty
+					
+					showScreen("../View/AttractionsList.fxml", "Search Results");
+
 					
 				}
 			}
@@ -127,15 +160,13 @@ public class WelcomeController extends BasicController{
 		}
 		
 		//showScreen("../View/AttractionsList.fxml", "Search Results");
-
 	}
-	
 	/**
 	 * Show the list of all cities
 	 */
 	@FXML
 	public final void handleViewCitiesPressed() {
-		//showScreen("../View/CityList.fxml", "Cities");
+		showScreen("../View/CityList.fxml", "Cities List");
 	}
 	
 	/**

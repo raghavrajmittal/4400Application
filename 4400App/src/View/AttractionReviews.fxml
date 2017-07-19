@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="lblAttractionName" layoutX="14.0" text="Attraction Name Here">
+      <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="14.0" text="Attraction Name Here">
          <font>
             <Font size="40.0" />
          </font>
