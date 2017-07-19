@@ -1,5 +1,7 @@
 package Database;
 
+import Model.Attraction;
+import Model.City;
 import Model.User;
 
 public class DBModel {
@@ -11,6 +13,8 @@ public class DBModel {
 	}
 	
 	private User currentUser;
+	private City currentCity;
+	private Attraction currentAttraction;
 	
 	//Subject to Change
 	private String currentQuery;
@@ -41,5 +45,21 @@ public class DBModel {
 	
 	public void setCurrentQuery(String c) {
 		currentQuery = c;
+	}
+	
+	public final City getCity() {
+		return currentCity;
+	}
+	
+	public void setCurrentCity(City c) {
+		currentCity = c;
+	}
+	
+	public final Attraction getAttraction() {
+		return currentAttraction;
+	}
+	
+	public void setCurrentAttraction(Attraction a) {
+		currentAttraction = a;
 	}
 }

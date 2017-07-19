@@ -14,7 +14,7 @@
             <Font size="42.0" />
          </font>
       </Label>
-      <Label layoutX="149.0" layoutY="48.0" prefHeight="62.0" prefWidth="328.0" text="Email Goes Here!">
+      <Label fx:id="lblName" alignment="CENTER" layoutX="149.0" layoutY="48.0" prefHeight="62.0" prefWidth="328.0" text="Email Goes Here!">
          <font>
             <Font size="42.0" />
          </font>

@@ -1,13 +1,19 @@
 package Controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import Database.DBModel;
+import Model.Category;
 import Model.City;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
 
@@ -18,21 +24,39 @@ public class ManagerWelcomeController extends BasicController {
 	@FXML
 	private ComboBox<City> cmbCity;
 	@FXML
-	private ComboBox<String> cmbCategory;
+	private ComboBox<Category> cmbCategory;
 	@FXML
 	private TextField txtUserSearch;
+	@FXML
+	private Label lblName;
 	
 	DBModel mainModel = DBModel.getInstance();
 	@FXML
 	public void initialize() {
+		//Set name of screen
+		lblName.setText(mainModel.getUser().getEmail());
 		//Populate comboboxes
+		
+		List<Category> catList = new ArrayList<>();
+		//Populate catList with our categories
+		catList.add(new Category("Name"));
+		
+		List<City> cityList = new ArrayList<>();
+		//Populate cityList with our cities
+		cityList.add(new City("i", 3.0, "l"));
+		
+		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
+		ObservableList<City> cmbCities = FXCollections.observableList(cityList);
+		
+		cmbCategory.setItems(cmbCats);
+		cmbCity.setItems(cmbCities);
 	}
 
 	@FXML
 	public void handleSearchAttractionsPressed() {
-		String city = "";
+		City city;
 		String attr = "";
-		String categories = "";
+		Category categories;
 		
 		//Parse through txtCategory for each one and add to categories
 		if (cmbCity.getValue() == null
@@ -48,7 +72,7 @@ public class ManagerWelcomeController extends BasicController {
 		//If its category thats filled it needs to go to search results by category
 		if (cmbCity.getValue() != null) {
 			//First check if city is not empty
-			city = cmbCity.getValue().getName();
+			city = cmbCity.getValue();
 			
 			if (!txtAttraction.getText().trim().equals("")) {
 				//Then check if attraction is not empty
@@ -136,7 +160,7 @@ public class ManagerWelcomeController extends BasicController {
 	
 	@FXML
 	public void handleViewCitiesPressed() {
-		showScreen("../View/CitiesList.fxml", "Cities List");
+		showScreen("../View/CityList.fxml", "Cities List");
 	}
 	
 	@FXML

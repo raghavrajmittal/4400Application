@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
+import Model.City;
+import Model.Attraction;
+import Model.Category;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,10 +40,10 @@ public class NewAttractionFormController extends BasicController {
 	private TextArea txtComment;
 	
 	@FXML
-	private ComboBox<String> cmbCity;
+	private ComboBox<City> cmbCity;
 	
 	@FXML
-	private ComboBox<String> cmbCategory;
+	private ComboBox<Category> cmbCategory;
 	
 	@FXML
 	private Label lblRating;
@@ -55,18 +58,18 @@ public class NewAttractionFormController extends BasicController {
 		
 		sldRating.valueProperty().addListener((obs,oldVal,newVal)->
 				sldRating.setValue((newVal.intValue())));
-		lblRating.textProperty().bind(Bindings.format("%.2f", sldRating.valueProperty()));
+		lblRating.textProperty().bind(Bindings.format("%.0f", sldRating.valueProperty()));
 		
-		List<String> catList = new ArrayList<>();
+		List<Category> catList = new ArrayList<>();
 		//Populate catList with our categories
-		catList.add("Hi");
+		catList.add(new Category("Name"));
 		
-		List<String> cityList = new ArrayList<>();
+		List<City> cityList = new ArrayList<>();
 		//Populate cityList with our cities
-		cityList.add("Hola");
+		cityList.add(new City("i", 3.0, "l"));
 		
-		ObservableList<String> cmbCats = FXCollections.observableList(catList);
-		ObservableList<String> cmbCities = FXCollections.observableList(cityList);
+		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
+		ObservableList<City> cmbCities = FXCollections.observableList(cityList);
 		
 		cmbCategory.setItems(cmbCats);
 		cmbCity.setItems(cmbCities);
@@ -97,6 +100,16 @@ public class NewAttractionFormController extends BasicController {
 			alert.showAndWait();
 		} else {
 			//This is where the add to the DB is made
+			String name = txtName.getText();
+			String addr = txtAddress.getText();
+			String desc = txtDescription.getText();
+			String com = txtComment.getText();
+			City city = cmbCity.getValue();
+			Category[] cat = {cmbCategory.getValue()};
+			double rating = sldRating.getValue();
+			String hours = txtHours.getText();
+			String contact = txtContact.getText();
+			Attraction attraction = new Attraction(name, rating, city,addr,desc,cat,com,hours,contact);
 			
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Success");

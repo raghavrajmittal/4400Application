@@ -4,9 +4,11 @@ public class Review {
 
 	private String name;
 	private double rating;
-	public Review(String n, double r) {
+	private String comment;
+	public Review(String n, double r, String c) {
 		name = n;
 		rating = r;
+		comment = c;
 	}
 	
 	public String getName() {
@@ -15,5 +17,9 @@ public class Review {
 	
 	public double getAvgRating() {
 		return rating;
+	}
+	
+	public String getComment() {
+		return comment;
 	}
 }

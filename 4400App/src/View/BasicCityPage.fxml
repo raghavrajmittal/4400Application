@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="lblTitleCityName" layoutX="161.0" text="Basic City Page">
+      <Label fx:id="lblTitleCityName" alignment="CENTER" layoutX="161.0" text="Basic City Page">
          <font>
             <Font size="42.0" />
          </font>

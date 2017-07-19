@@ -8,6 +8,7 @@ import Model.City;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -44,11 +45,38 @@ public class CityListController extends BasicController{
 		cmbSort.setItems(cmbList);
 	}
 	
+	@FXML
 	public void handleBackPressed() {
 		if (mainModel.getUser().getIsManager()) {
 			showScreen("../View/ManagerWelcome.fxml", "Welcome");
 		} else {
 			showScreen("../View/Welcome.fxml", "Welcome");
+		}
+	}
+	
+	@FXML
+	public void handleAddPressed() {
+		showScreen("../View/NewCityForm.fxml", "New City Form");
+	}
+	
+	@FXML
+	public void handleSortPressed() {
+		if (cmbSort.getValue() != null) {
+			if (cmbSort.getValue().equals("Name A-Z")) {
+				
+			} else if (cmbSort.getValue().equals("NameZ-A")) {
+				
+			} else if (cmbSort.getValue().equals("Avg Rating")) {
+				
+			} else if (cmbSort.getValue().equals("#of Ratings")) {
+				
+			} else if (cmbSort.getValue().equals("#of Attractions")) {
+				
+			}
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Please select a sort type");
+			alert.showAndWait();
 		}
 	}
 }

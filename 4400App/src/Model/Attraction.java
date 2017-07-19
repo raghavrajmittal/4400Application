@@ -5,23 +5,21 @@ public class Attraction extends Review{
 	private City city;
 	private String address;
 	private String description;
-	private String comment;
 	private Category[] category;
 	private String hoursOfOp;
 	private String contact;
 	
-	public Attraction(String n, double r) {
-		super(n, r);
+	public Attraction(String n, double r, String co) {
+		super(n, r, co);
 	}
 	
 	public Attraction(String n, double r, City c, String a,
 			String d, Category[] cat, String co) {
-		this(n, r);
+		this(n, r, co);
 		city = c;
 		address = a;
 		description = d;
 		category = cat;
-		comment = co;
 	}
 	
 	public Attraction(String n, double r, City c, String a,
@@ -43,10 +41,6 @@ public class Attraction extends Review{
 		return description;
 	}
 	
-	public String getComment() {
-		return comment;
-	}
-	
 	public Category[] getCategory() {
 		return category;
 	}
@@ -57,5 +51,9 @@ public class Attraction extends Review{
 	
 	public String getContactInfo() {
 		return contact;
+	}
+	
+	public String toString() {
+		return this.getName();
 	}
 }
