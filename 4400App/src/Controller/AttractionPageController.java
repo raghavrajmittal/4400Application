@@ -48,7 +48,7 @@ public class AttractionPageController extends BasicController{
 	
 	@FXML
 	public void handleViewReviewsPressed() {
-		
+		showScreen("../View/AttractionReviews.fxml", "Attraction Reviews");
 	}
 	
 	@FXML
