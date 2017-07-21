@@ -1,6 +1,7 @@
 package Controller;
 
 
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -44,6 +45,8 @@ public class RegisterController extends BasicController{
 			alert.setContentText("Please enter a valid email");
 			alert.showAndWait();
 
+			flag = false;
+		} else if (!checkPassword(pswdField.getText())) {
 			flag = false;
 		} else if (null == pswdField.getText() || pswdField.getText().equals("")) {
 			//Display dialog
@@ -92,6 +95,27 @@ public class RegisterController extends BasicController{
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(username);
 		return matcher.matches();
+	}
+
+	private boolean checkPassword(String pass) {
+		boolean flag = true;
+		String nonAlpha =pass.replaceAll("[*a-zA-Z]", "");
+
+		if (pass.length() < 8) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Password length must be at least 8 characters long");
+			alert.showAndWait();
+			flag = false;
+		} else if (nonAlpha.length() == 0) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Password must contain digit or symbol");
+			alert.showAndWait();
+			flag = false;
+		}
+
+		return flag;
 	}
 	
 	/**
