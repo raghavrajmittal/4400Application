@@ -15,8 +15,8 @@ public class Main extends Application {
 	private static Stage stage;
 	
 	/**Screen bounds */
-	private static final Rectangle2D bounds =
-			Screen.getPrimary().getVisualBounds();
+//	private static final Rectangle2D bounds =
+//			Screen.getPrimary().getVisualBounds();
 	
 	/**On start make the screen the login screen*/
 	@Override

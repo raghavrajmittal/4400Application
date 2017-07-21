@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterController extends BasicController{
 	/**Here are the variables that the 
@@ -35,6 +37,13 @@ public class RegisterController extends BasicController{
 			alert.setContentText("Please enter a username");
 			alert.showAndWait();
 			
+			flag = false;
+		} else if (!checkUsername(emailField.getText())) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Please enter a valid email");
+			alert.showAndWait();
+
 			flag = false;
 		} else if (null == pswdField.getText() || pswdField.getText().equals("")) {
 			//Display dialog
@@ -75,6 +84,14 @@ public class RegisterController extends BasicController{
 		}
 		
 		
+	}
+
+	private boolean checkUsername(String username) {
+		String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(username);
+		return matcher.matches();
 	}
 	
 	/**
