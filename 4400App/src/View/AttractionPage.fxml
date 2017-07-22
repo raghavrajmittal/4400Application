@@ -51,5 +51,6 @@
       <Button fx:id="btnReview" layoutX="235.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review this Attraction" />
       <Button fx:id="btnViewReviews" layoutX="248.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleViewReviewsPressed" text="View All Reviews" />
       <Button fx:id="btnBack" layoutX="280.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnDelete" layoutX="537.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete" />
    </children>
 </Pane>

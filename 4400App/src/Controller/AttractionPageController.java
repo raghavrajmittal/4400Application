@@ -1,8 +1,13 @@
 package Controller;
 
+import java.util.Optional;
+
 import Database.DBModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ButtonBar.ButtonData;
 
 public class AttractionPageController extends BasicController{
 
@@ -58,5 +63,28 @@ public class AttractionPageController extends BasicController{
 //		} else {
 //			showScreen("../View/Welcome.fxml", "Welcome");
 //		}
+	}
+	
+	@FXML
+	public void handleDeletePressed() {
+		//Delete from database
+		Alert alert = new Alert(Alert.AlertType.WARNING);
+		alert.setTitle("WARNING!");
+		alert.setContentText("Are you sure you want to delete this Attraction?");
+		
+		ButtonType cancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+		ButtonType delete = new ButtonType("Delete");
+
+		alert.getButtonTypes().setAll(cancel, delete);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == delete) {
+			if (mainModel.getUser().getIsManager()) {
+				showScreen("../View/ManagerWelcome.fxml", "Welcome");
+			} else {
+				showScreen("../View/Welcome.fxml", "Welcome");
+			}
+		} else{
+			alert.close();
+		}
 	}
 }

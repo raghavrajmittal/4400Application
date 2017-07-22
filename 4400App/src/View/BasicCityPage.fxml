@@ -38,5 +38,6 @@
       <Label layoutX="193.0" layoutY="42.0" text="Average Rating:" />
       <Label layoutX="293.0" layoutY="42.0" text="/ 5" />
       <Label fx:id="lblAvgRate" layoutX="282.0" layoutY="42.0" text="5" />
+      <Button fx:id="btnDelete" layoutX="495.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete" />
    </children>
 </Pane>
