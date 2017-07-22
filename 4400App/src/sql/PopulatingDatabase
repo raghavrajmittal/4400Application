@@ -118,7 +118,7 @@ INSERT INTO ATTRACTION
 VALUES (4,21, "Eiffel Tower", "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France", "Wrought iron lattice tower on Champ de Mars");
 
 INSERT INTO ATTRACTION
-VALUES (5,21, "Notre Dame", "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France
+VALUES (5,21, "Notre Dame", "6 Paris Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France
 ", "Medieval Catholic cathedral");
 
 INSERT INTO ATTRACTION
@@ -185,27 +185,25 @@ VALUES ("Museum"),("Religious"),("Parks/Public Space"),("Amusement Park"),("Shop
 
 
 
-INSERT INTO ReviewableEntities
+INSERT INTO REVIEWABLE_ENTITY
 VALUES ("thy@gmail.com", 23, now(), TRUE), ("xing@gmail.com", 25, now(), TRUE);  -- PENDING CITIES
 
-INSERT INTO ReviewableEntities
+INSERT INTO REVIEWABLE_ENTITY
 VALUES ("michael@gmail.com", 13, now(), TRUE), ("abbie@gmail.com", 7, now(), TRUE); -- pending attractions
 
-INSERT INTO ReviewableEntities
+INSERT INTO REVIEWABLE_ENTITY
 VALUES ("kendall@gmail.com", 20, now(), FALSE), ("bent@gmail.com", 21, now(), FALSE), ("mattl@gmail.com", 22, now(), FALSE), ("sarahg@gmail.com", 24, now(), FALSE), ("joseph@gmail.com", 26, now(), FALSE); -- cities
 
-INSERT INTO ReviewableEntities
+INSERT INTO REVIEWABLE_ENTITY
 VALUES ("walker@gmail.com", 1, now(), FALSE), ("anthony@gmail.com", 2, now(), FALSE), ("chloe@gmail.com", 3, now(), FALSE), ("eugenia@gmail.com", 4, now(), FALSE), ("elizabeth@gmail.com", 5, now(), FALSE), ("kyra@gmail.com", 6, now(), FALSE), ("ruchi@gmail.com", 9, now(), FALSE), ("savy@gmail.com", 8, now(), FALSE), ("Stephan@gmail.com", 10, now(), FALSE), ("Charleston@gmail.com", 11, now(), FALSE), ("maya@gmail.com", 12, now(), FALSE), ("pravan@gmail.com", 14, now(), FALSE), ("alyssa@gmail.com", 15, now(), FALSE); -- attractions 
 
-INSERT INTO REVIEWS
+INSERT INTO REVIEW
 VALUES ("kendall@gmail.com", 20, now(),"Amazing beaches. Very crowded", 4), ("bent@gmail.com", 21, now(),"lots of good food! Very expensive", 4), ("mattl@gmail.com", 22, now(),"Lots to see. Love the accent!", 4), ("sarahg@gmail.com", 24, now(),"Not a fan of the nightlife. Not much to do", 1), ("joseph@gmail.com", 26, now(),"Very good culture; very hipster", 4); -- cities
 
-INSERT INTO REVIEWS
+INSERT INTO REVIEW
 VALUES ("walker@gmail.com", 1, now(), "Beautiful Church. Not worth the price", 3), ("anthony@gmail.com", 2, now(), "Great spot to take photos—lots of tourists", 4), ("chloe@gmail.com", 3, now(), "I SAW NEYMAR! LOVE IT",4), ("eugenia@gmail.com", 4, now(), "Stunning but very crowded", 4), ("elizabeth@gmail.com", 5, now(),  "Beautiful. Felt very spiritual", 4), ("kyra@gmail.com", 6, now(), "Beautful paintings. Saw the Mona Lisa!", 4), ("ruchi@gmail.com", 9, now(), "Great views", 3), ("savy@gmail.com", 8, now(), "Not worth the price", 1), ("Stephan@gmail.com", 10, now(), "too many paintings", 1), ("Charleston@gmail.com", 11, now(), "Had lots of fun", 4), ("maya@gmail.com", 12, now(), "Love learning about Netherlands!", 4), ("pravan@gmail.com", 14, now(), "Great place to walk around but very pricey", 3), ("alyssa@gmail.com", 15, now(), "beautiful but very windy", 4); -- attractions 
 
 
 
 INSERT INTO FALLS_UNDER
 VALUES (1, "Religious"), (2, "Parks/Public Space"), (3, "Sports"), (4, "Monument"), (5, "Religious"), (6, "Museum"), (7, "Monument"), (8, "Monument"), (9, "Monument"), (10, "Museum"), (11, "Amusement Park"), (12, "Museum"), (13, "Monument"), (14, "Parks/Public Space"), (15, "Food");
-
-
