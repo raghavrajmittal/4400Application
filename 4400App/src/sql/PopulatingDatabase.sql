@@ -184,8 +184,7 @@ VALUES (15,24, "Fishermans Warf", "Fishermans Warf, San Francisco, CA, USA
 INSERT INTO CONTACT_INFO
 VALUES (1, "Phone Number", "3815647890"), (2, "Email", "gaudi@gmail.com"),
 (3, "Email", "Neymar@gmail.com"), (4, "Phone Number", "56789345670"), 
-(5, "Email", "hunchback@gmail.com"), (6, "Email", "monalisa@gmail.com"), 
-(7, NULL, NULL), (8, "Phone Number", "8975431212"), (9, "Phone Number", "7684325567"), 
+(5, "Email", "hunchback@gmail.com"), (6, "Email", "monalisa@gmail.com"), (8, "Phone Number", "8975431212"), (9, "Phone Number", "7684325567"), 
 (10, "Email", "starrynight@gmail.com"), (11, "Phone Number", "8976543321"), (12, "Phone Number", "9897765656"), 
 (13, "Phone Number", "7890009090"), (14, "Email", "shopping@gmail.com");
 
@@ -199,10 +198,6 @@ VALUES (1,"Mon-Sun","090000","150000"), (2,"Mon-Sun", 100000,"210000"), (3,"Mon-
 
 INSERT INTO CATEGORY
 VALUES ("Museum"),("Religious"),("Parks/Public Space"),("Amusement Park"),("Shopping"),("Food"),("Nightlife"),("Adventure"),("Monument"),("Sports");
-
-
-
-
 
 
 INSERT INTO FALLS_UNDER
