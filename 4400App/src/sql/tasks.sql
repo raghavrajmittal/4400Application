@@ -28,28 +28,28 @@ SELECT *
 FROM CATEGORY ;-- drop down for category
 
 DELETE FROM USER
-WHERE Email = ""; -- delete accountCITY
+WHERE Email = "email_field"; -- delete account
 
 
 -- 4.0 All Cities List (Raghav)
-SELECT res1.Name + Country + State AS City, res1.avgRat, res1.totalRat, res2.numAttr
+SELECT res1.Name, Country, State, res1.avgRat, res1.totalRat, res2.numAttr
 FROM (
 
 
-	(SELECT C.Name, C.Country, C.State, AVG(Rating) as avgRat, COUNT(Rating) as totalRat
+	(SELECT C.CityID, C.Name, C.Country, C.State, AVG(Rating) as avgRat, COUNT(Rating) as totalRat
 	FROM CITY AS C, REVIEW AS R, REVIEWABLE_ENTITY as E
 	WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = FALSE
 	GROUP BY C.CityID ) as res1
     
     inner join 
 	
-	(SELECT T.Name, COUNT(*) as numAttr
-	FROM CITY AS T, ATTRACTION AS A, REVIEWABLE_ENTITY as E
-	WHERE T.CityID = A.LocatedIn and A.AttrID = E.EntityID and E.IsPending = FALSE
-	GROUP BY T.NAME) as res2
+	(SELECT A.LocatedIn, COUNT(*) as numAttr
+	FROM ATTRACTION AS A, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY A.LocatedIn) as res2
     
-    on res1.name = res2.name
-    ) ;
+    on res1.CityID = res2.LocatedIn
+    order by res1.Name asc) ;
     -- also order it by something?
 
 
@@ -58,7 +58,8 @@ INSERT INTO REVIEWABLE_ENTITY
 VALUES ("username_field", EntityID, now(), !IsManager);
 INSERT INTO CITY
 VALUES (EntityID, "name_field", 'country_field', 'state_field');
--- !TODO Check if city already exists
+INSERT INTO REVIEW
+VALUES ("username_field", EntityID, now(), "comment_field", "rating_field");
 
 
 -- 5.0 Sample City Page (R)
@@ -67,11 +68,11 @@ FROM(
 
 	(SELECT A.AttrID, LocatedIn, Name, Address
 	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E
-	WHERE LocatedIn = "CityID_field" and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1
+	WHERE LocatedIn = "cityid_field" and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1
 inner join 
 	(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat
 	FROM ATTRACTION AS A, REVIEW AS R
-	WHERE A.AttrID = R.EntityID AND A.LocatedIn = "CityID_field"
+	WHERE A.AttrID = R.EntityID AND A.LocatedIn = "cityid_field"
 	GROUP BY A.AttrID) as res2
 on res1.AttrID = res2.AttrID 
 
@@ -90,8 +91,9 @@ FROM REVIEW
 WHERE Email = "email_field" AND EntityID = "entityID_field";
 
 UPDATE REVIEW
-SET Rating="rating_field" AND Comment="comment_field"
+SET Rating = "rating_field", Comment="comment_field", DateSubmitted = now()
 WHERE Email = "email_field" AND EntityID = "entityID_field";
+
 
 INSERT INTO REVIEW
 VALUES ("email_field", "entityID_field", now(), "comment_field", "rating_field");
@@ -105,7 +107,7 @@ WHERE Email = "email_field" AND EntityID = "entityID_field";
 SELECT Email, Rating, Comment
 FROM REVIEW AS R
 WHERE "cityID_field" = R.EntityID
-
+ORDER BY Rating desc;
 
 
 -- 5.3 Sample City Page narrowed down by category
@@ -140,7 +142,7 @@ order by numRat desc;
 
 
 -- 6.0 User's Review Page
-(SELECT C.Name, R.Comment, R.Rating
+(SELECT C.Name, R.Rating, R.Comment
 FROM REVIEW AS R, CITY AS C
 WHERE "Email_field" = R.Email AND C.CityID = R.EntityID)
 UNION
@@ -153,29 +155,30 @@ WHERE "Email_field" = R.Email AND A.AttrID = R.EntityID);
 
 
 -- 7.0 Attraction's List
-SELECT res1.AttrID, res1.Name, Category, res1.LocatedIn, avgRat, numRat
+SELECT res1.AttrID, res1.Name, Category, res3.Name, res1.LocatedIn, avgRat, numRat
 from
-
-(SELECT A.AttrID, A.Name, A.LocatedIn, Avg(Rating) as avgRat, COUNT(Rating) as numRat
-FROM ATTRACTION AS A, REVIEW AS R,  REVIEWABLE_ENTITY as E
-WHERE A.AttrID = R.EntityID and A.AttrID = E.EntityID and E.IsPending = FALSE
-GROUP BY R.EntityID) as res1
- 
+	(SELECT A.AttrID, A.Name, A.LocatedIn, Avg(Rating) as avgRat, COUNT(Rating) as numRat
+	FROM ATTRACTION AS A, REVIEW AS R,  REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = R.EntityID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY R.EntityID) as res1
 inner join 
-
-(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
-FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
-WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
-GROUP BY A.AttrID) as res2
-
+	(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
+	FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY A.AttrID) as res2
 on res1.AttrID = res2.AttrID
-order by res1.LocatedIn asc;
+
+inner join
+	(SELECT Name, CityID
+    FROM CITY) as res3
+on res1.LocatedIn = res3.CityID
+order by res3.Name asc;
 
 
 -- 7.1 New Attraction Form
 SELECT DISTINCT Name
-FROM CITY, REVIEWABLE_ENTITY-- drop down for city
-WHERE CITY.CityID = REVIEWABLE_ENTITY.EntityID AND REVIEWABLE_ENTITY.IsPending = FALSE;
+FROM CITY as C, REVIEWABLE_ENTITY as E-- drop down for city
+WHERE C.CityID = E.EntityID AND E.IsPending = FALSE;
 
 INSERT INTO REVIEWABLE_ENTITY
 VALUES ("email_field", "entityID_field", now(), !IsManager);
@@ -191,7 +194,7 @@ INSERT INTO HOURS_OF_OPERATION
 VALUES ("entityID_field", "day_of_the_week_field", "open_time_field", "close_time_field");
 
 -- 8.0 Sample Attraction Page
-SELECT LocatedIn, Name, Address, Description
+SELECT Name, Address, Description
 FROM ATTRACTION
 WHERE AttrID = "attrID_field";
 
@@ -219,7 +222,7 @@ FROM REVIEW
 WHERE Email = "email_field" AND EntityID = "entityID_field";
 
 UPDATE REVIEW
-SET Rating="rating_field" AND Comment="comment_field"
+SET Rating="rating_field", Comment="comment_field", DateSubmitted = now()
 WHERE Email = "email_field" AND EntityID = "entityID_field";
 
 INSERT INTO REVIEW
@@ -237,7 +240,7 @@ ORDER BY Rating DESC;
 -- options to sort too
 
 
---8.3 Manager's Welcome Page
+--9.0 Manager's Welcome Page
  
 SELECT DISTINCT Name
 FROM CITY as C, REVIEWABLE_ENTITY as E-- drop down for city
@@ -247,7 +250,8 @@ SELECT *
 FROM CATEGORY ;-- drop down for category
 
 DELETE FROM USER
-WHERE Email = ""; -- delete accountCITY
+WHERE Email = "email_field"; -- delete accountCITY
+
 
 --Category Page
 SELECT res2.Category, res2.numAttr
@@ -267,10 +271,20 @@ on res1.CName = res2.Category)
 order by Category ASC;
 -- checks for whether deletign the category will delete an attraction
 
+INSERT INTO CATEGORY
+VALUES ("category_field");
+
+DELETE FROM CATEGORY
+WHERE CName = 'category_field';
+
+UPDATE CATEGORY
+SET CName = "new_category_field"
+WHERE CName = "old_category_field";
 
 -- 10.0/ 10.1 user's list
 SELECT Email, DateJoined, IsSuspended, IsManager
-FROM USER;  -- Grouping is needed
+FROM USER;
+ORDER BY DateJoined ASC;  -- sorting is needed
 
 UPDATE USER
 SET IsManager = TRUE
@@ -308,6 +322,7 @@ WHERE EntityID = "entityID_field";
 
 
 -- 12.0 Pending Attraction's Page
+
 SELECT res1.AttrID, Name, LocatedIn, Address, Category, Description, HoursOfOperation, ContactInfo, SubmittedBy, Rating, Comment
 from
 
@@ -317,21 +332,20 @@ from
 inner join 
 	(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
 	FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
-	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = TRUE
 	GROUP BY A.AttrID) as res2
 on res1.AttrID = res2.AttrID
 
-inner join
-	(SELECT AttrID, GROUP_CONCAT(DayOfTheWeek + ": " + OpenTime + "-" + CloseTime + " ") as HoursOfoperation
+left join
+	(SELECT AttrID, GROUP_CONCAT(DayOfTheWeek, ": ", OpenTime, "-", CloseTime ," ") as HoursOfoperation
 	FROM HOURS_OF_OPERATION
-	WHERE AttrID = "attrID_field"
 	GROUP by AttrID) as res3
 on res1.AttrID = res3.AttrID
 
-inner join
-	(SELECT AttrID, GROUP_CONCAT(ContactMethod + ":" +MethodValue + " ") as ContactInfo
+left join
+	(SELECT AttrID, GROUP_CONCAT(ContactMethod, ":" ,MethodValue , " ") as ContactInfo
 	FROM CONTACT_INFO
-	WHERE AttrID = "attrID_field") as res4
+    GROUP BY AttrID) as res4
 on res1.AttrID = res4.AttrID
 
 order by res1.LocatedIn asc;
