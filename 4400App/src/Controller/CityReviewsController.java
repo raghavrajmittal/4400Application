@@ -2,9 +2,8 @@ package Controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale.Category;
 
-import Model.Attraction;
+import Model.Review;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,50 +13,33 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class BasicCityPageController extends BasicController {
-	
+public class CityReviewsController extends BasicController {
+
 	@FXML
 	private Label lblCityName;
 	@FXML
-	private Label lblAvgRate;
+	private TableView<Review> tblReviews;
+	@FXML
+	private TableColumn<Review,String> colName;
+	@FXML
+	private TableColumn<Review,Double> colRate;
+	@FXML
+	private TableColumn<Review,String> colComment;
 	@FXML
 	private ComboBox<String> cmbSort;
-	@FXML
-	private TableView<Attraction> tblAttractions;
-	@FXML
-	private TableColumn<Attraction,String> colName;
-	@FXML
-	private TableColumn<Attraction,String> colLoc;
-	@FXML
-	private TableColumn<Attraction,Category> colCat;
-	@FXML
-	private TableColumn<Attraction,Double> colAvgRate;
-	@FXML
-	private TableColumn<Attraction,Integer> colNumRate;
-	@FXML
-	private TableColumn<Attraction,String> colMoreInfo;
-	
 	
 	@FXML
 	public void initialize() {
 		//Populate table
 		
-		//Populate combobox
+		//Populate combo box
 		List<String> list = new ArrayList<>();
 		list.add("Name A-Z");
 		list.add("Name Z-A");
-		list.add("Category A-Z");
 		list.add("Avg Rating");
 		
 		ObservableList<String> cmbList = FXCollections.observableList(list);
 		cmbSort.setItems(cmbList);
-		
-	}
-	
-	@FXML
-	public void handleBackPressed() {
-		//Use the previous query to go back to the table
-		//That this city was found in
 	}
 	
 	@FXML
@@ -66,17 +48,16 @@ public class BasicCityPageController extends BasicController {
 	}
 	
 	@FXML
-	public void handleViewPressed() {
-		showScreen("../View/CityReviews.fxml", "City Reviews");
+	public void handleBackPressed() {
+		showScreen("../View/BasicCityPage.fxml", "Basic City Page");
 	}
 	
+	@FXML
 	public void handleSortPressed() {
 		if (cmbSort.getValue() != null) {
 			if (cmbSort.getValue().equals("Name A-Z")) {
 				
 			} else if (cmbSort.getValue().equals("Name Z-A")) {
-				
-			} else if (cmbSort.getValue().equals("Category A-Z")) {
 				
 			} else if (cmbSort.getValue().equals("Avg Rating")) {
 				

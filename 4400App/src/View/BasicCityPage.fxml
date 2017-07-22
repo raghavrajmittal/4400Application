@@ -8,51 +8,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BasicCityPageController">
    <children>
-      <Label fx:id="lblTitleCityName" alignment="CENTER" layoutX="161.0" text="Basic City Page">
+      <Label fx:id="lblCityName" alignment="CENTER" layoutX="162.0" layoutY="-8.0" text="City Name Here">
          <font>
-            <Font size="42.0" />
+            <Font size="40.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="100.0" text="Attractions in">
+      <Label layoutX="14.0" layoutY="72.0" prefHeight="35.0" prefWidth="120.0" text="Attractions">
          <font>
-            <Font size="26.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="234.0" layoutY="62.0" text="Average Rating:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblAvgRating" layoutX="342.0" layoutY="62.0" text="5">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="353.0" layoutY="62.0" text="/5">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblCityName" layoutX="186.0" layoutY="100.0" text="City Name Here">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tblAttractions" layoutX="25.0" layoutY="136.0" prefHeight="185.0" prefWidth="565.0">
+      <TableView fx:id="tblAttractions" layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="575.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Name" />
-          <TableColumn prefWidth="129.0" text="Location" />
-            <TableColumn prefWidth="89.0" text="Categories" />
-            <TableColumn prefWidth="72.0" text="Avg Rating" />
-            <TableColumn prefWidth="91.33331298828125" text="# of Ratings" />
-            <TableColumn prefWidth="108.33331298828125" text="More Info" />
+          <TableColumn fx:id="colName" prefWidth="132.33334350585938" text="Name" />
+          <TableColumn fx:id="colLoc" prefWidth="122.66665649414062" text="Location" />
+          <TableColumn fx:id="colCat" prefWidth="88.33334350585938" text="Category" />
+          <TableColumn fx:id="colAvgRate" prefWidth="75.0" text="Avg Rating" />
+          <TableColumn fx:id="colNumRate" prefWidth="74.0" text="#of Ratings" />
+          <TableColumn fx:id="colMoreInfo" prefWidth="82.33331298828125" text="More info" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="519.0" layoutY="110.0" prefHeight="25.0" prefWidth="70.0" promptText="Sort" />
-      <Button fx:id="btnReview" layoutX="257.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review This City" />
-      <Button fx:id="btnViewReviews" layoutX="256.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleViewPressed" text="VIew All Reviews" />
-      <Button fx:id="btnBack" layoutX="25.0" layoutY="356.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <ComboBox fx:id="cmbSort" layoutX="193.0" layoutY="300.0" prefHeight="25.0" prefWidth="100.0" promptText="Sort By:" />
+      <Button fx:id="btnSort" layoutX="293.0" layoutY="300.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="91.0" text="Sort" />
+      <Button fx:id="btnReview" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review This City" />
+      <Button fx:id="btnView" layoutX="241.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleViewPressed" text="View All Reviews" />
+      <Button fx:id="btnBack" layoutX="273.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Label layoutX="193.0" layoutY="42.0" text="Average Rating:" />
+      <Label layoutX="293.0" layoutY="42.0" text="/ 5" />
+      <Label fx:id="lblAvgRate" layoutX="282.0" layoutY="42.0" text="5" />
    </children>
 </Pane>
