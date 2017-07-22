@@ -66,7 +66,7 @@ public class NewAttractionFormController extends BasicController {
 		
 		List<City> cityList = new ArrayList<>();
 		//Populate cityList with our cities
-		cityList.add(new City("i", 3.0, "l"));
+		cityList.add(new City("i", 3.0, "l", 5));
 		
 		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
 		ObservableList<City> cmbCities = FXCollections.observableList(cityList);
@@ -109,7 +109,7 @@ public class NewAttractionFormController extends BasicController {
 			double rating = sldRating.getValue();
 			String hours = txtHours.getText();
 			String contact = txtContact.getText();
-			Attraction attraction = new Attraction(name, rating, city,addr,desc,cat,com,hours,contact);
+			Attraction attraction = new Attraction(name, rating, city,addr,desc,cat,com, DBModel.makeEntityID(), hours,contact);
 			
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Success");

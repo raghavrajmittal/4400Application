@@ -9,13 +9,13 @@ public class Attraction extends Review{
 	private String hoursOfOp;
 	private String contact;
 	
-	public Attraction(String n, double r, String co) {
-		super(n, r, co);
+	public Attraction(String n, double r, String co, int id) {
+		super(n, r, co, id);
 	}
 	
 	public Attraction(String n, double r, City c, String a,
-			String d, Category[] cat, String co) {
-		this(n, r, co);
+			String d, Category[] cat, String co, int id) {
+		this(n, r, co, id);
 		city = c;
 		address = a;
 		description = d;
@@ -23,8 +23,8 @@ public class Attraction extends Review{
 	}
 	
 	public Attraction(String n, double r, City c, String a,
-			String d, Category[] cat, String co, String h, String cont) {
-		this(n,r,c,a,d,cat,co);
+			String d, Category[] cat, String co, int id, String h, String cont) {
+		this(n,r,c,a,d,cat,co, id);
 		hoursOfOp = h;
 		contact = cont;
 	}

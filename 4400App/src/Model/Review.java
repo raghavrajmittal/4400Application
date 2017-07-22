@@ -5,10 +5,13 @@ public class Review {
 	private String name;
 	private double rating;
 	private String comment;
-	public Review(String n, double r, String c) {
+	private int entityID;
+	
+	public Review(String n, double r, String c, int id) {
 		name = n;
 		rating = r;
 		comment = c;
+		entityID = id;
 	}
 	
 	public String getName() {
@@ -21,5 +24,9 @@ public class Review {
 	
 	public String getComment() {
 		return comment;
+	}
+	
+	public int getEntityID() {
+		return entityID;
 	}
 }

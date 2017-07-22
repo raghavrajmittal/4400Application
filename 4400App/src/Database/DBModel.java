@@ -8,6 +8,8 @@ public class DBModel {
 
 	public static final DBModel mainModel = new DBModel();
 	
+	public static int entityID;
+	
 	public static DBModel getInstance() {
 		return mainModel;
 	}
@@ -61,5 +63,9 @@ public class DBModel {
 	
 	public void setCurrentAttraction(Attraction a) {
 		currentAttraction = a;
+	}
+	
+	public static int makeEntityID() {
+		return ++entityID;
 	}
 }

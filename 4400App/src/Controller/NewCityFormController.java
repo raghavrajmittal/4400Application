@@ -61,7 +61,7 @@ public class NewCityFormController extends BasicController {
 			String state = txtStateField.getText();
 			double rating = sldRating.getValue();
 			
-			City city = new City (name,rating,com,count,state);
+			City city = new City (name,rating,com,DBModel.makeEntityID(),count,state);
 			
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Success");
