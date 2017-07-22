@@ -26,7 +26,7 @@ public class Main extends Application {
 			
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.
-					getResource("../view/AttractionPage.fxml"));
+					getResource("../view/Login.fxml"));
 			
 			Parent root = loader.load();
 			
