@@ -1,4 +1,4 @@
--- Populating the DB
+-- populating the DB
 
 INSERT INTO User
 VALUES ("maya@gmail.com", 1, now(), FALSE, TRUE);
@@ -79,6 +79,7 @@ INSERT INTO user
 VALUES ("charleston@gmail.com", 25, now(), FALSE, FALSE);
 
 
+
 INSERT INTO REVIEWABLE_ENTITY
 VALUES ("thy@gmail.com", 23, now(), TRUE), ("xing@gmail.com", 25, now(), TRUE);  -- PENDING CITIES
 
@@ -97,7 +98,8 @@ VALUES ("kendall@gmail.com", 20, now(),"Amazing beaches. Very crowded", 4), ("be
 INSERT INTO REVIEW
 VALUES ("walker@gmail.com", 1, now(), "Beautiful Church. Not worth the price", 3), ("anthony@gmail.com", 2, now(), "Great spot to take photos—lots of tourists", 4), ("chloe@gmail.com", 3, now(), "I SAW NEYMAR! LOVE IT",4), ("eugenia@gmail.com", 4, now(), "Stunning but very crowded", 4), ("elizabeth@gmail.com", 5, now(),  "Beautiful. Felt very spiritual", 4), ("kyra@gmail.com", 6, now(), "Beautful paintings. Saw the Mona Lisa!", 4), ("ruchi@gmail.com", 9, now(), "Great views", 3), ("savy@gmail.com", 8, now(), "Not worth the price", 1), ("Stephan@gmail.com", 10, now(), "too many paintings", 1), ("Charleston@gmail.com", 11, now(), "Had lots of fun", 4), ("maya@gmail.com", 12, now(), "Love learning about Netherlands!", 4), ("pravan@gmail.com", 14, now(), "Great place to walk around but very pricey", 3), ("alyssa@gmail.com", 15, now(), "beautiful but very windy", 4); -- attractions 
 
-
+INSERT INTO REVIEW
+VALUES ("raghav@gmail.com", 23, now(), "too rainy for me", 2), ("maya@gmail.com", 25, now(), "communist" , 3);
 
 INSERT INTO CITY
 VALUES (20, "Barcelona", "Spain", NULL);
@@ -147,38 +149,33 @@ INSERT INTO ATTRACTION
 VALUES (7,22, "Big Ben", "Westminster, London SW1A 0AA, UK", "Great Bell of the clock of Palace of Westminister");
 
 INSERT INTO ATTRACTION
-VALUES (8,22, "London Eye", " Lambeth, London SE1 7PB, UK", "Giant Ferris wheel on the South Bank of the River Thames");
+VALUES (8,22, "London Eye", " Lambeth, London SE1 7PB, UK", "Giant Ferris wheel on the South Bank of the River Thames");
 
 INSERT INTO ATTRACTION
 VALUES (9,22, "Tower of London", "St Katharine's & Wapping, London EC3N 4AB, UK
 ", "Officially Her Majesty’s Royal Palace and Fortress of the Tower of London");
 
 INSERT INTO ATTRACTION
-VALUES (10,23, "Van Gough Museum", "Museumplein 6, 1071 DJ Amsterdam, Netherlands", "Art museum dedicated to the works of Vincent Van Gough");
+VALUES (10,24, "Van Gough Museum", "Museumplein 6, 1071 DJ Amsterdam, Netherlands", "Art museum dedicated to the works of Vincent Van Gough");
 
 INSERT INTO ATTRACTION
-VALUES (11,23, "Efteling", " Europalaan 1, 5171 KW Kaatsheuvel, Netherlands
+VALUES (11,24, "Efteling", " Europalaan 1, 5171 KW Kaatsheuvel, Netherlands
 ", "Fantasy-themed amusement park based on elements of ancient myths");
 
 INSERT INTO ATTRACTION
-VALUES (12,23, "Rijksmuseum", " Museumstraat 1, 1071 XX Amsterdam, Netherlands", "Dutch cultural and history museum");
+VALUES (12,24, "Rijksmuseum", " Museumstraat 1, 1071 XX Amsterdam, Netherlands", "Dutch cultural and history museum");
 
 INSERT INTO ATTRACTION
-VALUES (13,24, "Golden Gate Bridge", " Golden Gate Bridge, San Francisco, CA, USA
+VALUES (13,26, "Golden Gate Bridge", " Golden Gate Bridge, San Francisco, CA, USA
 ", "Suspension bridge spanning the Golden Gate strait");
 
 INSERT INTO ATTRACTION
-VALUES (14,24, "Union Square", "Union Square, San Francisco, CA, USA
+VALUES (14,26, "Union Square", "Union Square, San Francisco, CA, USA
 ", "2.6 public plaza in the center of San Francisco");
 
 INSERT INTO ATTRACTION
-VALUES (15,24, "Fishermans Warf", "Fishermans Warf, San Francisco, CA, USA
+VALUES (15,26, "Fishermans Warf", "Fishermans Warf, San Francisco, CA, USA
 ", "Neighborhood and popular tourist attraction that borders the coast");
-
-
-
-
-
 
 
 INSERT INTO CONTACT_INFO
@@ -190,15 +187,20 @@ VALUES (1, "Phone Number", "3815647890"), (2, "Email", "gaudi@gmail.com"),
 
 INSERT INTO HOURS_OF_OPERATION
 VALUES (1,"Mon-Sun","090000","150000"), (2,"Mon-Sun", 100000,"210000"), (3,"Mon-Sun","080000","173000"), 
-(4,"Monday","090000","200000"), (5,"Mon-Sun","090000","190000"), (6,"Mon-Sun","100000","180000"), 
+(4,"Mon-Sun","090000","200000"), (5,"Mon-Sun","090000","190000"), (6,"Mon-Sun","100000","180000"), 
 (7,"Mon-Sun", "090000","180000"), (8,"Mon-Sun","110000","180000"), (9,"Mon-Sun","100000","150000"), 
-(10,"Mon-Sun","090000","180000"), (11,"Saturday","103000","210000"), (12,"Mon-Sun","090000","200000"), 
-(13,"Mon-Sun","000000","000000"), (14,"Mon-Sun","000000","000000"), (15,"Weekends","000000","000000");
+(10,"Mon-Sun","090000","180000"), (11,"Mon-Sun","103000","210000"), (12,"Mon-Sun","090000","200000"), 
+(13,"Mon-Sun","000000","000000"), (14,"Mon-Sun","000000","000000"), (15,"Mon-Sun","000000","000000");
 
 
 INSERT INTO CATEGORY
 VALUES ("Museum"),("Religious"),("Parks/Public Space"),("Amusement Park"),("Shopping"),("Food"),("Nightlife"),("Adventure"),("Monument"),("Sports");
 
 
+
+
+
+
 INSERT INTO FALLS_UNDER
 VALUES (1, "Religious"), (2, "Parks/Public Space"), (3, "Sports"), (4, "Monument"), (5, "Religious"), (6, "Museum"), (7, "Monument"), (8, "Monument"), (9, "Monument"), (10, "Museum"), (11, "Amusement Park"), (12, "Museum"), (13, "Monument"), (14, "Parks/Public Space"), (15, "Food");
+
