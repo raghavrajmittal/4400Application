@@ -44,7 +44,7 @@ public class ManagerWelcomeController extends BasicController {
 		//Populate catList with our categories
 		try {
 			Connection con = DBModel.getInstance().getConnection();
-			String query = "SELECT * FROM CATEGORY";
+			String query = "SELECT * FROM CATEGORY order by Cname ASC";
 			PreparedStatement stmnt = con.prepareStatement(query);
 			ResultSet resultSet = stmnt.executeQuery();
 			while (resultSet.next()) {
@@ -55,11 +55,11 @@ public class ManagerWelcomeController extends BasicController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		List<City> cityList = new ArrayList<>();
 		try {
 			Connection con = DBModel.getInstance().getConnection();
-			String query = "SELECT * FROM CITY as C, REVIEWABLE_ENTITY as E WHERE C.CityID = E.EntityID AND E.IsPending = FALSE;";
+			String query = "SELECT * FROM CITY as C, REVIEWABLE_ENTITY as E WHERE C.CityID = E.EntityID AND E.IsPending = FALSE order by name ASC;";
 			PreparedStatement stmnt = con.prepareStatement(query);
 			ResultSet resultSet = stmnt.executeQuery();
 			while (resultSet.next()) {

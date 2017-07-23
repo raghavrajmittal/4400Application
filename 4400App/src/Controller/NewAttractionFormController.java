@@ -1,6 +1,9 @@
 package Controller;
 
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,17 +62,47 @@ public class NewAttractionFormController extends BasicController {
 		sldRating.valueProperty().addListener((obs,oldVal,newVal)->
 				sldRating.setValue((newVal.intValue())));
 		lblRating.textProperty().bind(Bindings.format("%.0f", sldRating.valueProperty()));
-		
+
 		List<Category> catList = new ArrayList<>();
 		//Populate catList with our categories
-		catList.add(new Category("Name"));
-		
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT * FROM CATEGORY order by Cname ASC";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String name = resultSet.getString("CName");
+				Category c = new Category(name);
+				catList.add(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		List<City> cityList = new ArrayList<>();
 		//Populate cityList with our cities
 
+
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT * FROM CITY as C, REVIEWABLE_ENTITY as E WHERE C.CityID = E.EntityID AND E.IsPending = FALSE order by name ASC;";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String name = resultSet.getString("Name");
+				String country = resultSet.getString("Country");
+				String state = resultSet.getString("State");
+				int cityID = resultSet.getInt("CityID");
+				City c = new City(name, cityID, country, state);
+				cityList.add(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
 		ObservableList<City> cmbCities = FXCollections.observableList(cityList);
-		
+
 		cmbCategory.setItems(cmbCats);
 		cmbCity.setItems(cmbCities);
 	}
@@ -104,12 +137,62 @@ public class NewAttractionFormController extends BasicController {
 			String desc = txtDescription.getText();
 			String com = txtComment.getText();
 			City city = cmbCity.getValue();
-			Category[] cat = {cmbCategory.getValue()};
+			Category cat = cmbCategory.getValue();
 			double rating = sldRating.getValue();
-			String hours = txtHours.getText();
-			String contact = txtContact.getText();
+			String[] hours = txtHours.getText().split(",");
+			String[] contact = txtContact.getText().split(":");
 			//Attraction attraction = new Attraction(name, rating, city,addr,desc,cat,com, DBModel.makeEntityID(), hours,contact);
-			
+
+			try {
+				Connection con = DBModel.getInstance().getConnection();
+				String query = "INSERT INTO REVIEWABLE_ENTITY\n" +
+						"VALUES (?, null, now(), ?);";
+				PreparedStatement stmnt = con.prepareStatement(query);
+				stmnt.setString(1, mainModel.getUser().getEmail());
+				stmnt.setBoolean(2, !mainModel.getUser().getIsManager());
+				stmnt.execute();
+
+				query = "INSERT INTO ATTRACTION\n" +
+						"VALUES (LAST_INSERT_ID(), ?, ?, ?, ?);";
+				stmnt = con.prepareStatement(query);
+				stmnt.setInt(1, city.getCityID());
+				stmnt.setString(2, name);
+				stmnt.setString(3, addr);
+				stmnt.setString(4, desc);
+				stmnt.execute();
+
+				query = "INSERT INTO REVIEW\n" +
+						"VALUES (?, LAST_INSERT_ID(), now(), ?, ?);";
+				stmnt = con.prepareStatement(query);
+				stmnt.setString(1, mainModel.getUser().getEmail());
+				stmnt.setString(2, com);
+				stmnt.setInt(3, (int) rating);
+				stmnt.execute();
+
+				query = "INSERT INTO FALLS_UNDER\n" +
+						"VALUES (LAST_INSERT_ID(), ?);";
+				stmnt = con.prepareStatement(query);
+				stmnt.setString(1, cat.getName());
+				stmnt.execute();
+
+				query = "INSERT INTO CONTACT_INFO\n" +
+						"VALUES (LAST_INSERT_ID(), ?, ?);";
+				stmnt = con.prepareStatement(query);
+				stmnt.setString(1, contact[0]);
+				stmnt.setString(2, contact[1]);
+				stmnt.execute();
+
+				query = "INSERT INTO HOURS_OF_OPERATION\n" +
+						"VALUES (LAST_INSERT_ID(), ?, ?,?);";
+				stmnt = con.prepareStatement(query);
+				stmnt.setString(1, hours[0]);
+				stmnt.setString(2, hours[1]);
+				stmnt.setString(3, hours[2]);
+				stmnt.execute();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setTitle("Success");
 			alert.setContentText("Your Attraction has been submitted and is awaiting approval");

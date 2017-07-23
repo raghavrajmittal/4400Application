@@ -149,13 +149,11 @@ UNION
 (SELECT A.AttrID as EntityID, A.Name , R.Rating,  R.Comment
 FROM REVIEW AS R, ATTRACTION AS A
 WHERE "Email_field" = R.Email AND A.AttrID = R.EntityID);
--- do we display IsPending reviews?
-
 
 
 
 -- 7.0 Attraction's List
-SELECT res1.AttrID, res1.Name, Category, res3.Name, res1.LocatedIn, avgRat, numRat
+SELECT res1.AttrID as attrID, res1.Name as AttrName, Category, res3.Name as CityName, res1.LocatedIn as cityID, avgRat, numRat
 from
 	(SELECT A.AttrID, A.Name, A.LocatedIn, Avg(Rating) as avgRat, COUNT(Rating) as numRat
 	FROM ATTRACTION AS A, REVIEW AS R,  REVIEWABLE_ENTITY as E

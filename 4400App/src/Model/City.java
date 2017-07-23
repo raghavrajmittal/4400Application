@@ -12,9 +12,12 @@ public class City {
 	private int numRat = 0;
 	private double avgRat = 0;
 
-	public City(String n, int id, String c, String s) {
+	public City(String n, int id) {
 		cityID = id;
 		name = n;
+	}
+	public City(String n, int id, String c, String s) {
+		this(n, id);
 		country = c;
 		state = s;
 	}
