@@ -10,7 +10,7 @@ public class Attraction {
 	private String contact;
 	private int attrID;
 	private String name;
-	
+	private boolean isPending;
 	
 	public Attraction(String n, int id) {
 		name = n;
@@ -64,7 +64,16 @@ public class Attraction {
 	public String getName() {
 		return name;
 	}
+
 	public String toString() {
 		return this.getName();
+	}
+
+	public void setIsPending(boolean b) {
+		isPending = b;
+	}
+
+	public boolean getIsPending() {
+		return isPending;
 	}
 }

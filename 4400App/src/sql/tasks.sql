@@ -32,7 +32,7 @@ WHERE Email = "email_field"; -- delete account
 
 
 -- 4.0 All Cities List (Raghav)
-SELECT res1.Name, Country, State, res1.avgRat, res1.totalRat, res2.numAttr
+SELECT res1.CityID, res1.Name, Country, State, res1.avgRat, res1.totalRat, res2.numAttr
 FROM (
 
 
@@ -41,7 +41,7 @@ FROM (
 	WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = FALSE
 	GROUP BY C.CityID ) as res1
     
-    inner join 
+    left join 
 	
 	(SELECT A.LocatedIn, COUNT(*) as numAttr
 	FROM ATTRACTION AS A, REVIEWABLE_ENTITY as E
@@ -142,11 +142,11 @@ order by numRat desc;
 
 
 -- 6.0 User's Review Page
-(SELECT C.Name, R.Rating, R.Comment
+(SELECT C.cityID as EntityID, C.Name, R.Rating, R.Comment
 FROM REVIEW AS R, CITY AS C
 WHERE "Email_field" = R.Email AND C.CityID = R.EntityID)
 UNION
-(SELECT A.Name , R.Comment, R.Rating
+(SELECT A.AttrID as EntityID, A.Name , R.Rating,  R.Comment
 FROM REVIEW AS R, ATTRACTION AS A
 WHERE "Email_field" = R.Email AND A.AttrID = R.EntityID);
 -- do we display IsPending reviews?

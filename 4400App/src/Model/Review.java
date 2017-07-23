@@ -3,7 +3,7 @@ package Model;
 public class Review {
 
 	private String name;
-	private double rating;
+	private int rating;
 	private String comment;
 	private int entityID;
 
@@ -12,7 +12,7 @@ public class Review {
 		entityID = id;
 	}
 
-	public Review(String n, double r, String c, int id) {
+	public Review(String n, int r, String c, int id) {
 		this(n, id);
 		rating = r;
 		comment = c;
@@ -22,7 +22,7 @@ public class Review {
 		return name;
 	}
 	
-	public double getAvgRating() {
+	public int getRating() {
 		return rating;
 	}
 	
