@@ -1,6 +1,6 @@
 package Model;
 
-public class Attraction extends Review{
+public class Attraction {
 	
 	private City city;
 	private String address;
@@ -8,25 +8,33 @@ public class Attraction extends Review{
 	private Category[] category;
 	private String hoursOfOp;
 	private String contact;
+	private int attrID;
+	private String name;
 	
-	public Attraction(String n, double r, String co, int id) {
-		super(n, r, co, id);
+	
+	public Attraction(String n, int id) {
+		name = n;
+		attrID = id;
 	}
 	
-	public Attraction(String n, double r, City c, String a,
-			String d, Category[] cat, String co, int id) {
-		this(n, r, co, id);
+	public Attraction(String n, City c, String a,
+			String d, Category[] cat,  int id) {
+		this(n, id);
 		city = c;
 		address = a;
 		description = d;
 		category = cat;
 	}
 	
-	public Attraction(String n, double r, City c, String a,
-			String d, Category[] cat, String co, int id, String h, String cont) {
-		this(n,r,c,a,d,cat,co, id);
+	public Attraction(String n, City c, String a,
+			String d, Category[] cat, int id, String h, String cont) {
+		this(n,c,a,d,cat, id);
 		hoursOfOp = h;
 		contact = cont;
+	}
+	
+	public int getAttractionID() {
+		return attrID;
 	}
 	
 	public City getCity() {
@@ -53,6 +61,9 @@ public class Attraction extends Review{
 		return contact;
 	}
 	
+	public String getName() {
+		return name;
+	}
 	public String toString() {
 		return this.getName();
 	}
