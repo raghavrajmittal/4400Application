@@ -1,5 +1,6 @@
 package application;
 	
+import Database.DBModel;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.scene.layout.BorderPane;
+
+import java.sql.*;
 
 
 public class Main extends Application {
@@ -35,6 +38,18 @@ public class Main extends Application {
 					400));
 			
 			primaryStage.show();
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT * from user";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String email = resultSet.getString("email");
+				boolean isManager = resultSet.getBoolean("isManager");
+				Date dateJoined = resultSet.getDate("DateJoined");
+				System.out.println(String.format("%s isManager=%b, Joined on %s", email, isManager, dateJoined.toString()));
+
+			}
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

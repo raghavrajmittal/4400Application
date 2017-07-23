@@ -1,5 +1,13 @@
 -- Team Members: Alyssa Tan, Pravan Kalaga, Maya Holikatti, Raghav Mittal
 
+CREATE SCHEMA 4400DB;
+
+USE 4400DB;
+
+CREATE USER if not exists 'admin'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+
 CREATE TABLE if not exists USER
 (
     Email VARCHAR(50) NOT NULL,
@@ -13,7 +21,7 @@ CREATE TABLE if not exists USER
 CREATE TABLE if not exists REVIEWABLE_ENTITY
 (
 	SubmittedBy VARCHAR(50),
-    EntityID int NOT NULL,
+    EntityID int NOT NULL AUTO_INCREMENT,
     DateSubmitted timestamp,
     IsPending BOOLEAN NOT NULL,
     CONSTRAINT ENTITYID PRIMARY KEY(EntityID),
