@@ -1,5 +1,8 @@
 package Controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,15 +43,44 @@ public class WelcomeController extends BasicController{
 		
 		List<Category> catList = new ArrayList<>();
 		//Populate catList with our categories
-		catList.add(new Category("Name"));
-		
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT * FROM CATEGORY";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String name = resultSet.getString("CName");
+				Category c = new Category(name);
+				catList.add(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		List<City> cityList = new ArrayList<>();
 		//Populate cityList with our cities
-		cityList.add(new City("i", 3.0, "l", 5));
-		
+
+
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT * FROM CITY as C, REVIEWABLE_ENTITY as E WHERE C.CityID = E.EntityID AND E.IsPending = FALSE;";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String name = resultSet.getString("Name");
+				String country = resultSet.getString("Country");
+				String state = resultSet.getString("State");
+				int cityID = resultSet.getInt("CityID");
+				City c = new City(name, cityID, country, state);
+				cityList.add(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
 		ObservableList<City> cmbCities = FXCollections.observableList(cityList);
-		
+
 		cmbCategory.setItems(cmbCats);
 		cmbCity.setItems(cmbCities);
 		

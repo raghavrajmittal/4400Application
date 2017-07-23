@@ -66,8 +66,7 @@ public class NewAttractionFormController extends BasicController {
 		
 		List<City> cityList = new ArrayList<>();
 		//Populate cityList with our cities
-		cityList.add(new City("i", 3.0, "l", 5));
-		
+
 		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
 		ObservableList<City> cmbCities = FXCollections.observableList(cityList);
 		

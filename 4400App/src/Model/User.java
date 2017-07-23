@@ -5,6 +5,7 @@ public class User {
 	private String email;
 	private String password;
 	private boolean isManager = false;
+	private boolean isSuspended = false;
 	public User(String e, String p) {
 		email = e;
 		password = p;
@@ -26,5 +27,16 @@ public class User {
 	
 	public boolean getIsManager() {
 		return isManager;
+	}
+
+	public void toggleManager() {
+		isManager = !isManager;
+	}
+	public void toggleSuspended() {
+		isSuspended = !isSuspended;
+	}
+
+	public boolean getSuspended() {
+		return isSuspended;
 	}
 }

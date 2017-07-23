@@ -38,17 +38,18 @@ public class Main extends Application {
 					400));
 			
 			primaryStage.show();
-			Connection con = DBModel.getInstance().getConnection();
-			String query = "SELECT * from user";
-			PreparedStatement stmnt = con.prepareStatement(query);
-			ResultSet resultSet = stmnt.executeQuery();
-			while (resultSet.next()) {
-				String email = resultSet.getString("email");
-				boolean isManager = resultSet.getBoolean("isManager");
-				Date dateJoined = resultSet.getDate("DateJoined");
-				System.out.println(String.format("%s isManager=%b, Joined on %s", email, isManager, dateJoined.toString()));
-
-			}
+//			Connection con = DBModel.getInstance().getConnection();
+//			String query = "SELECT * from user";
+//			PreparedStatement stmnt = con.prepareStatement(query);
+//			ResultSet resultSet = stmnt.executeQuery();
+//			while (resultSet.next()) {
+//				String email = resultSet.getString("email");
+//				int password = resultSet.getInt("password");
+//				boolean isManager = resultSet.getBoolean("isManager");
+//				Date dateJoined = resultSet.getDate("DateJoined");
+//				System.out.println(String.format("%s, password=%s isManager=%b,Joined on %s", email, password, isManager, dateJoined.toString()));
+//
+//			}
 
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -240,7 +240,7 @@ ORDER BY Rating DESC;
 -- options to sort too
 
 
---9.0 Manager's Welcome Page
+-- 9.0 Manager Welcome Page
  
 SELECT DISTINCT Name
 FROM CITY as C, REVIEWABLE_ENTITY as E-- drop down for city
@@ -253,7 +253,7 @@ DELETE FROM USER
 WHERE Email = "email_field"; -- delete accountCITY
 
 
---Category Page
+-- Category Page
 SELECT res2.Category, res2.numAttr
 FROM (
 
@@ -283,7 +283,7 @@ WHERE CName = "old_category_field";
 
 -- 10.0/ 10.1 user's list
 SELECT Email, DateJoined, IsSuspended, IsManager
-FROM USER;
+FROM USER
 ORDER BY DateJoined ASC;  -- sorting is needed
 
 UPDATE USER

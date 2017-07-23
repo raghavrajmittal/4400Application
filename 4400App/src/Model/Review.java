@@ -6,12 +6,16 @@ public class Review {
 	private double rating;
 	private String comment;
 	private int entityID;
-	
-	public Review(String n, double r, String c, int id) {
+
+	public Review (String n, int id) {
 		name = n;
+		entityID = id;
+	}
+
+	public Review(String n, double r, String c, int id) {
+		this(n, id);
 		rating = r;
 		comment = c;
-		entityID = id;
 	}
 	
 	public String getName() {

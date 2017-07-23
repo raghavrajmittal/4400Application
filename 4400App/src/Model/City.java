@@ -1,19 +1,20 @@
 package Model;
 
-public class City extends Review{
+public class City {
 	
 	private String country;
 	private String state;
-	
-	public City(String n, double r, String co, int id) {
-		super(n, r, co, id);
-	}
-	
-	public City (String n, double r, String co, int id, String c, String s) {
-		this(n,r,co, id);
+	private String name;
+	private int cityID;
+
+	public City(String n, int id, String c, String s) {
+		cityID = id;
+		name = n;
 		country = c;
 		state = s;
 	}
+
+
 	
 	public String getCountry() {
 		return country;
@@ -22,8 +23,17 @@ public class City extends Review{
 	public String getState() {
 		return state;
 	}
-	
-	public String toString() {
-		return this.getName();
+
+	public String getName() {
+		return name;
 	}
+
+	public String toString() {
+		return this.getName() + ", " + this.getCountry();
+	}
+
+	public int getCityID() {
+		return cityID;
+	}
+
 }

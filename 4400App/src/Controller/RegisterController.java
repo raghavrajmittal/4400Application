@@ -1,11 +1,16 @@
 package Controller;
 
 
+import Database.DBModel;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -77,12 +82,38 @@ public class RegisterController extends BasicController{
 				alert.showAndWait();
 				
 			} else {
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT Email, IsSuspended, IsManager FROM USER WHERE Email =?;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setString(1, username);
+					ResultSet resultSet = stmnt.executeQuery();
+					String emailVal = null;
+					while (resultSet.next()) {
+						emailVal = resultSet.getString("Email");
+					}
+					if (emailVal != null) {
+						Alert alert = new Alert(Alert.AlertType.ERROR);
+						alert.setContentText("This username already exists");
+						alert.showAndWait();
+					} else {
+						query = "INSERT INTO USER VALUES (?, ?, now(), FALSE, FALSE);";
+						stmnt = con.prepareStatement(query);
+						stmnt.setString(1, username);
+						stmnt.setInt(2, passwordOne.hashCode());
+						stmnt.execute();
+						showScreen("../view/Login.fxml", "Login");
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 				//if username/email is already taken
 //				Alert alert = new Alert(Alert.AlertType.ERROR);
 //				alert.setTitle("Error");
 //				alert.setContentText("This username is already taken");
 //				alert.showAndWait();
-				showScreen("../view/Login.fxml", "Login");
 			}
 		}
 		

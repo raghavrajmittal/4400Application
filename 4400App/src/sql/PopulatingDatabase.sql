@@ -4,7 +4,7 @@ INSERT INTO User
 VALUES ("maya@gmail.com", 1, now(), FALSE, TRUE);
 
 INSERT INTO User
-VALUES ("raghav@gmail.com", 2, now(), FALSE, TRUE);
+VALUES ("raghav@gmail.com", 938491003, now(), FALSE, TRUE);
 
 INSERT INTO user
 VALUES ("pravan@gmail.com", 3, now(), FALSE, TRUE);
