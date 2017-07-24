@@ -19,10 +19,10 @@
       <Label layoutX="68.0" layoutY="51.0" text="Name *:" />
       <Label layoutX="79.0" layoutY="75.0" text="City *:" />
       <Label layoutX="58.0" layoutY="102.0" text="Address *:" />
-      <Label layoutX="41.0" layoutY="131.0" prefHeight="17.0" prefWidth="80.0" text="Description *:" />
+      <Label layoutX="31.0" layoutY="131.0" prefHeight="17.0" prefWidth="90.0" text="Description *:" />
       <Label layoutX="4.0" layoutY="160.0" text="Hours of Operation :" />
       <Label layoutX="42.0" layoutY="190.0" text="Contact info :" />
-      <Label layoutX="52.0" layoutY="219.0" text="Category *: " />
+      <Label layoutX="43.0" layoutY="219.0" prefHeight="17.0" prefWidth="83.0" text="Category *: " />
       <Label layoutX="68.0" layoutY="251.0" text="Rating *:" />
       <Label layoutX="52.0" layoutY="283.0" text="Comment *:" />
       <TextField fx:id="txtName" layoutX="121.0" layoutY="49.0" prefHeight="25.0" prefWidth="459.0" />

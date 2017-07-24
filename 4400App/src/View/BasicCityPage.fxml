@@ -22,12 +22,12 @@
       </Label>
       <TableView fx:id="tblAttractions" layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="575.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="132.33334350585938" text="Name" />
-          <TableColumn fx:id="colLoc" prefWidth="122.66665649414062" text="Location" />
-          <TableColumn fx:id="colCat" prefWidth="88.33334350585938" text="Category" />
-          <TableColumn fx:id="colAvgRate" prefWidth="75.0" text="Avg Rating" />
-          <TableColumn fx:id="colNumRate" prefWidth="74.0" text="#of Ratings" />
-          <TableColumn fx:id="colMoreInfo" prefWidth="82.33331298828125" text="More info" />
+          <TableColumn fx:id="colName"  text="Name" />
+          <TableColumn fx:id="colLoc"  text="Location" />
+          <TableColumn fx:id="colCat"  text="Category" />
+          <TableColumn fx:id="colAvgRate"  text="Avg Rating" />
+          <TableColumn fx:id="colNumRate"  text="#of Ratings" />
+          <TableColumn fx:id="colMoreInfo"  text="More info" />
         </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="193.0" layoutY="300.0" prefHeight="25.0" prefWidth="100.0" promptText="Sort By:" />

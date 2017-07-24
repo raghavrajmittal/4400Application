@@ -17,11 +17,11 @@
       </Label>
       <TableView fx:id="tblCities" layoutX="7.0" layoutY="85.0" prefHeight="219.0" prefWidth="587.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="156.33331298828125" text="City Name" />
-          <TableColumn fx:id="colRate" prefWidth="85.66668701171875" text="Avg Rating" />
-          <TableColumn fx:id="colNumRate" prefWidth="117.0" text="# of Ratings" />
-          <TableColumn fx:id="colNumAttr" prefWidth="121.66668701171875" text="# of Attractions" />
-          <TableColumn fx:id="colCityPage" minWidth="3.6666259765625" prefWidth="106.0" text="City Page" />
+          <TableColumn fx:id="colName"  text="City Name" />
+          <TableColumn fx:id="colRate"  text="Avg Rating" />
+          <TableColumn fx:id="colNumRate"  text="# of Ratings" />
+          <TableColumn fx:id="colNumAttr"  text="# of Attractions" />
+          <TableColumn fx:id="colCityPage"  text="City Page" />
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="259.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleAddPressed" text="AddNewCity" />

@@ -17,13 +17,13 @@
       </Label>
       <TableView fx:id="tblPendingCities" layoutX="14.0" layoutY="58.0" prefHeight="241.0" prefWidth="573.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="91.66665649414062" text="City Name" />
-          <TableColumn fx:id="colCountry" prefWidth="80.33334350585938" text="Country" />
-            <TableColumn fx:id="colSubmittedBy" prefWidth="112.0" text="Submitted by" />
-            <TableColumn fx:id="colRating" minWidth="0.0" prefWidth="53.0" text="Rating" />
-            <TableColumn fx:id="colComment" prefWidth="92.0" text="Comment" />
-            <TableColumn fx:id="colApprove" prefWidth="71.3333740234375" text="Approve" />
-            <TableColumn fx:id="colDelete" prefWidth="73.33331298828125" text="Delete" />
+          <TableColumn fx:id="colName"  text="City Name" />
+          <TableColumn fx:id="colCountry"  text="Country" />
+            <TableColumn fx:id="colSubmittedBy" " text="Submitted by" />
+            <TableColumn fx:id="colRating"  text="Rating" />
+            <TableColumn fx:id="colComment"  text="Comment" />
+            <TableColumn fx:id="colApprove"  text="Approve" />
+            <TableColumn fx:id="colDelete"  text="Delete" />
         </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="212.0" layoutY="308.0" prefHeight="25.0" prefWidth="89.0" promptText="Sort" />
