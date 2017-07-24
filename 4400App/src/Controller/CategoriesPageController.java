@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CategoriesPageController extends BasicController {
 	
@@ -28,11 +29,27 @@ public class CategoriesPageController extends BasicController {
 	private TableColumn<Category, String> colEdit;
 	@FXML
 	private TableColumn<Category, String> colDel;
-	
+
+	private List<Category> tableList;
+
 	DBModel mainModel = DBModel.getInstance();
 	
 	@FXML
 	public void initialize() {
+		//Populate the table
+		tableList = new ArrayList<>();
+		colName.setCellValueFactory(new PropertyValueFactory<Category, String>("name"));
+		colName.setCellValueFactory(new PropertyValueFactory<Category, String>("numberOfAttr"));
+
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		ObservableList<Category> tblList = FXCollections.observableList(tableList);
+		tblCategories.setItems(tblList);
+		//Populate the combo box
 		List<String> list = new ArrayList<>();
 		list.add("A-Z");
 		list.add("Z-A");
@@ -60,11 +77,16 @@ public class CategoriesPageController extends BasicController {
 	public void handleSortPressed() {
 		//Sort the table and display it
 		if (cmbSort.getValue() != null) {
+			tableList = new ArrayList<>();
 			if (cmbSort.getValue().equals("A-Z")) {
 				
 			} else if (cmbSort.getValue().equals("Z-A")) {
 				
-			} else if (cmbSort.getValue().equals("#of Attractions"));
+			} else if (cmbSort.getValue().equals("#of Attractions")) {
+
+			}
+			ObservableList<Category> tblList = FXCollections.observableList(tableList);
+			tblCategories.setItems(tblList);
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please choose a sort choice");

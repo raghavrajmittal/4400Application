@@ -220,6 +220,15 @@ public class ManagerWelcomeController extends BasicController {
 		alert.getButtonTypes().setAll(cancel, delete);
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
+			try {
+				Connection con = DBModel.getInstance().getConnection();
+				String query = "DELETE FROM USER WHERE Email = ?;";
+				PreparedStatement stmnt = con.prepareStatement(query);
+				stmnt.setString(1, mainModel.getUser().getEmail());
+				stmnt.execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			showScreen("../view/Login.fxml", "Login");
 		} else{
 			alert.close();
