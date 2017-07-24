@@ -45,7 +45,7 @@ public class DeleteCityLink extends Hyperlink{
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    Main.showScreen("../View/CityList.fxml");
+                    Main.showScreen("../View/PendingCitiesList.fxml");
                 } else {
                     alert.close();
                 }
