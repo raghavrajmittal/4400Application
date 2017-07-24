@@ -215,7 +215,7 @@ public class WelcomeController extends BasicController{
 	 */
 	@FXML
 	public final void handleMyReviewsPressed() {
-		showScreen("../View/UserReviews.fxml","Your Reviews");
+		showScreen("../View/UserReviews.fxml","Your Reviews" + mainModel.getUser().getEmail());
 	}
 	
 	/**

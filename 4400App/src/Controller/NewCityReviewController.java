@@ -51,13 +51,13 @@ public class NewCityReviewController extends BasicController {
 			alert.setTitle("Success");
 			alert.showAndWait();
 			
-			showScreen("../View/BasicCityPage.fxml", "Basic City Page");
+			showScreen("../View/BasicCityPage.fxml", mainModel.getCity().toString() + " Page");
 		}
 	}
 	
 	@FXML
 	public void handleBackPressed() {
-		showScreen("../View/BasicCityPage.fxml", "Baisc City Page");
+		showScreen("../View/BasicCityPage.fxml", mainModel.getCity().toString() + " Page");
 	}
 	
 	@FXML
@@ -73,7 +73,7 @@ public class NewCityReviewController extends BasicController {
 		alert.getButtonTypes().setAll(cancel, delete);
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
-			showScreen("../view/BasicCityPage.fxml", "Basic City Page");
+			showScreen("../view/BasicCityPage.fxml", mainModel.getCity().toString() + " Page");
 		} else{
 			alert.close();
 		}

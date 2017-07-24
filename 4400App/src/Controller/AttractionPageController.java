@@ -48,21 +48,21 @@ public class AttractionPageController extends BasicController{
 	
 	@FXML
 	public void handleReviewPressed() {
-		showScreen("../View/NewAttractionReview.fxml", "New Attraction Review");
+		showScreen("../View/NewAttractionReview.fxml", "New " + mainModel.getAttraction().getName() + " Review");
 	}
 	
 	@FXML
 	public void handleViewReviewsPressed() {
-		showScreen("../View/AttractionReviews.fxml", "Attraction Reviews");
+		showScreen("../View/AttractionReviews.fxml", mainModel.getAttraction().getName()+ " Reviews");
 	}
 	
 	@FXML
 	public void handleBackPressed() {
-//		if (mainModel.getUser().getIsManager()) {
-//			showScreen("../View/ManagerWelcome.fxml", "Welcome");
-//		} else {
-//			showScreen("../View/Welcome.fxml", "Welcome");
-//		}
+		if (mainModel.getUser().getIsManager()) {
+			showScreen("../View/ManagerWelcome.fxml", "Welcome " + mainModel.getUser().getEmail());
+		} else {
+			showScreen("../View/Welcome.fxml", "Welcome " + mainModel.getUser().getEmail());
+		}
 	}
 	
 	@FXML
@@ -79,9 +79,9 @@ public class AttractionPageController extends BasicController{
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
 			if (mainModel.getUser().getIsManager()) {
-				showScreen("../View/ManagerWelcome.fxml", "Welcome");
+				showScreen("../View/ManagerWelcome.fxml", "Welcome " + mainModel.getUser().getEmail() );
 			} else {
-				showScreen("../View/Welcome.fxml", "Welcome");
+				showScreen("../View/Welcome.fxml", "Welcome" + + mainModel.getUser().getEmail());
 			}
 		} else{
 			alert.close();

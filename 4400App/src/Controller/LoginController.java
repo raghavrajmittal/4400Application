@@ -81,9 +81,9 @@ public class LoginController extends BasicController{
 					} else {
 						mainModel.setCurrentUser(new User(emailVal, pswd, isManager));
 						if (isManager) {
-							showScreen("../View/ManagerWelcome.fxml", "Welcome");
+							showScreen("../View/ManagerWelcome.fxml", "Welcome" + mainModel.getUser().getEmail());
 						} else {
-							showScreen("../View/Welcome.fxml", " Welcome");
+							showScreen("../View/Welcome.fxml", " Welcome" + mainModel.getUser().getEmail());
 						}
 					}
 				} else {

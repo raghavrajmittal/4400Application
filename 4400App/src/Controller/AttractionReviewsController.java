@@ -48,12 +48,12 @@ public class AttractionReviewsController extends BasicController {
 	
 	@FXML
 	public void handleReviewPressed() {
-		showScreen("../View/NewAttractionReview.fxml", "New Attraction Review");
+		showScreen("../View/NewAttractionReview.fxml", "New " + mainModel.getAttraction().getName() + " Review");
 	}
 	
 	@FXML
 	public void handleBackPressed() {
-		showScreen("../View/AttractionPage.fxml", "Attraction Page");
+		showScreen("../View/AttractionPage.fxml", mainModel.getAttraction().getName() + "'s Page");
 	}
 	
 	@FXML

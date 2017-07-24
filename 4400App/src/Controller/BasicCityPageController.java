@@ -62,18 +62,22 @@ public class BasicCityPageController extends BasicController {
 	
 	@FXML
 	public void handleBackPressed() {
-		//Use the previous query to go back to the table
-		//That this city was found in
+		if (mainModel.getUser().isManager()) {
+			showScreen("../View/ManagerWelcome.fxml", "Welcome " + mainModel.getUser().getEmail())
+		} else {
+			showScreen("../View/Welcome.fxml", "Welcome " + mainModel.getUser().getEmail())
+
+		}
 	}
 	
 	@FXML
 	public void handleReviewPressed() {
-		showScreen("../View/NewCityReview.fxml", "New City Review");
+		showScreen("../View/NewCityReview.fxml", "New" + mainModel.getCity().toString() + "Review");
 	}
 	
 	@FXML
 	public void handleViewPressed() {
-		showScreen("../View/CityReviews.fxml", "City Reviews");
+		showScreen("../View/CityReviews.fxml", mainModel.getCity().toString() + "'s Reviews");
 	}
 	
 	public void handleSortPressed() {

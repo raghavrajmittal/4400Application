@@ -62,7 +62,7 @@ public class NewAttractionReviewController extends BasicController{
 			//Attraction cur = mainModel.getAttraction()
 			//Return to the previous page making a sql query
 			//To get the info on cur
-			showScreen("../View/AttractionPage.fxml", "Attraction Page");
+			showScreen("../View/AttractionPage.fxml", mainModel.getAttraction().getName() + "'s Page");
 
 			
 		}
@@ -70,7 +70,7 @@ public class NewAttractionReviewController extends BasicController{
 	
 	@FXML
 	public void handleBackPressed() {
-		showScreen("../View/AttractionPage.fxml", "Attraction Page");
+		showScreen("../View/AttractionPage.fxml",mainModel.getAttraction().getName() + "'s Page");
 	}
 	
 	@FXML
@@ -88,7 +88,7 @@ public class NewAttractionReviewController extends BasicController{
 		alert.getButtonTypes().setAll(cancel, delete);
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
-			showScreen("../view/AttractionPage.fxml", "Attraction Page");
+			showScreen("../view/AttractionPage.fxml", mainModel.getAttraction().getName() + "'s Page");
 		} else{
 			alert.close();
 		}

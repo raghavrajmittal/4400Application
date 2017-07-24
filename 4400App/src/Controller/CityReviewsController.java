@@ -30,11 +30,7 @@ public class CityReviewsController extends BasicController {
 	
 	@FXML
 	public void initialize() {
-
-		//label name is set
-		lblCityName.setText(mainModel.getCity());
 		//Populate table
-
 		
 		//Populate combo box
 		List<String> list = new ArrayList<>();
@@ -48,12 +44,12 @@ public class CityReviewsController extends BasicController {
 	
 	@FXML
 	public void handleReviewPressed() {
-		showScreen("../View/NewCityReview.fxml", "New City Review");
+		showScreen("../View/NewCityReview.fxml", "new" + mainModel.getCity().toString() + " Review");
 	}
 	
 	@FXML
 	public void handleBackPressed() {
-		showScreen("../View/BasicCityPage.fxml", "Basic City Page");
+		showScreen("../View/BasicCityPage.fxml", mainModel.getCity().toString() + " Page");
 	}
 	
 	@FXML
