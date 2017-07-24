@@ -3,6 +3,7 @@ package Database;
 import Model.Attraction;
 import Model.City;
 import Model.User;
+import Model.Review;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,6 +34,7 @@ public class DBModel {
 	private User currentUser;
 	private City currentCity;
 	private Attraction currentAttraction;
+	private Review currentReview;
 	
 	//Subject to Change
 	private String currentQuery;
@@ -85,6 +87,10 @@ public class DBModel {
 	public void setCurrentAttraction(Attraction a) {
 		currentAttraction = a;
 	}
+
+	public final Review getReview() { return currentReview; }
+
+	public void setCurrentReview(Review r) { currentReview = r; }
 	
 	public static int makeEntityID() {
 		return ++entityID;
