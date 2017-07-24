@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
+import Links.UserClassLink;
 import Links.UserDeleteLink;
+import Links.UserSuspendLink;
 import Model.Category;
 import Model.City;
 import javafx.collections.FXCollections;
@@ -30,11 +32,11 @@ public class UsersListController extends BasicController{
 	@FXML
 	private TableColumn<User,String> colDate;
 	@FXML
-	private TableColumn<User,String> colClass;
+	private TableColumn<User, UserClassLink> colClass;
 	@FXML
 	private TableColumn<User, UserDeleteLink> colDelete;
 	@FXML
-	private TableColumn<User,String> colSuspended;
+	private TableColumn<User, UserSuspendLink> colSuspended;
 
 	private List<User> tableList;
 
@@ -44,6 +46,8 @@ public class UsersListController extends BasicController{
 		colName.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
 		colDate.setCellValueFactory(new PropertyValueFactory<User, String>("dateJoined"));
 		colDelete.setCellValueFactory(new PropertyValueFactory<User, UserDeleteLink>("userDeleteHyperLink"));
+		colClass.setCellValueFactory(new PropertyValueFactory<User, UserClassLink>("userClassHyperLink"));
+        colSuspended.setCellValueFactory(new PropertyValueFactory<User, UserSuspendLink>("userSuspendHyperLink"));
 
 		tableList = new ArrayList<>();
 
@@ -62,6 +66,8 @@ public class UsersListController extends BasicController{
 				u.setIsSuspended(isSuspended);
 				u.setDateJoined(dateJoined);
 				u.setUserDeleteHyperLink(new UserDeleteLink(u));
+				u.setUserClassHyperLink(new UserClassLink(u));
+                u.setUserSuspendHyperLink(new UserSuspendLink(u));
 				tableList.add(u);
 			}
 		} catch (Exception e) {
