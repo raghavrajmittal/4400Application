@@ -239,6 +239,6 @@ INSERT INTO CATEGORY
 VALUES ("Museum"),("Religious"),("Parks/Public Space"),("Amusement Park"),("Shopping"),("Food"),("Nightlife"),("Adventure"),("Monument"),("Sports");
 
 INSERT INTO FALLS_UNDER
-VALUES (1, "Religious, Monument"), (2, "Parks/Public Space"), (3, "Sports"), (4, "Monument"), (5, "Religious, Monument"), (6, "Museum"), (7, "Monument"), (8, "Monument"), (9, "Monument"), (10, "Museum"), (11, "Amusement Park"), (12, "Museum"), (13, "Monument"), (14, "Parks/Public Space"), (15, "Food, Parks/Public Space");
+VALUES (1, "Religious"), (1, "Monument"), (2, "Parks/Public Space"), (3, "Sports"), (4, "Monument"), (5, "Religious"), (5, "Monument"), (6, "Museum"), (7, "Monument"), (8, "Monument"), (9, "Monument"), (10, "Museum"), (11, "Amusement Park"), (12, "Museum"), (13, "Monument"), (14, "Parks/Public Space"), (15, "Parks/Public Space"), (15, "Food");
 
 
