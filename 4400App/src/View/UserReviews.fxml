@@ -22,10 +22,10 @@
       </Label>
       <TableView fx:id="tblReviews" layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="575.0">
          <columns>
-            <TableColumn fx:id="colName" prefWidth="165.0" text="Name" />
-            <TableColumn fx:id="colRate" prefWidth="64.66668701171875" text="Rating" />
-            <TableColumn fx:id="colComment" prefWidth="254.33331298828125" text="Comments" />
-            <TableColumn fx:id="colEdit" minWidth="0.0" prefWidth="89.66668701171875" text="Edit" />
+            <TableColumn fx:id="colName"  text="Name" />
+            <TableColumn fx:id="colRate"  text="Rating" />
+            <TableColumn fx:id="colComment"  text="Comments" />
+            <TableColumn fx:id="colEdit"  text="Edit" />
          </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="236.0" layoutY="301.0" prefHeight="27.0" prefWidth="111.0" promptText="Sort By:" />

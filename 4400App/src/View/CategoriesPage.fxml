@@ -12,10 +12,10 @@
    <children>
       <TableView fx:id="tblCategories" layoutX="27.0" layoutY="77.0" prefHeight="200.0" prefWidth="547.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="214.6666259765625" text="Name" />
-          <TableColumn fx:id="colNum" prefWidth="147.3333740234375" text="Number of Attractions" />
-            <TableColumn fx:id="colEdit" prefWidth="96.0" text="Edit" />
-            <TableColumn fx:id="colDel" prefWidth="92.66668701171875" text="Delete" />
+          <TableColumn fx:id="colName"  text="Name" />
+          <TableColumn fx:id="colNum"  text="Number of Attractions" />
+            <TableColumn fx:id="colEdit"  text="Edit" />
+            <TableColumn fx:id="colDel"  text="Delete" />
         </columns>
       </TableView>
       <Label layoutX="151.0" text="Category List">

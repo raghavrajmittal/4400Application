@@ -17,12 +17,12 @@
       </Label>
       <TableView fx:id="tblAttractions" layoutX="14.0" layoutY="66.0" prefHeight="245.0" prefWidth="581.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="111.0" text="Name" />
-          <TableColumn fx:id="colCat" prefWidth="123.66668701171875" text="Category" />
-            <TableColumn fx:id="colLoc" prefWidth="105.3333740234375" text="Location (City)" />
-            <TableColumn fx:id="colRate" prefWidth="71.6666259765625" text="Avg Rating" />
-            <TableColumn fx:id="colNumOfRate" prefWidth="74.0" text="# of Ratings" />
-            <TableColumn fx:id="colInfo" prefWidth="95.33331298828125" text="More info" />
+          <TableColumn fx:id="colName"  text="Name" />
+          <TableColumn fx:id="colCat"  text="Category" />
+            <TableColumn fx:id="colLoc"  text="Location (City)" />
+            <TableColumn fx:id="colRate"  text="Avg Rating" />
+            <TableColumn fx:id="colNumOfRate"  text="# of Ratings" />
+            <TableColumn fx:id="colInfo"  text="More info" />
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="245.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleAddPressed" text="Add New Attraction" />

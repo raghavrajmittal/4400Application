@@ -22,9 +22,9 @@
       </Label>
       <TableView fx:id="tblReviews" layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="575.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="165.0" text="Username" />
-          <TableColumn fx:id="colRate" prefWidth="64.66668701171875" text="Rating" />
-            <TableColumn fx:id="colComment" prefWidth="345.33331298828125" text="Comments" />
+          <TableColumn fx:id="colName"  text="Username" />
+          <TableColumn fx:id="colRate"  text="Rating" />
+            <TableColumn fx:id="colComment"  text="Comments" />
         </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="215.0" layoutY="313.0" prefHeight="25.0" prefWidth="85.0" promptText="Sort" />
