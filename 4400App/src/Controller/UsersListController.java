@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
+import Links.UserDeleteLink;
 import Model.Category;
 import Model.City;
 import javafx.collections.FXCollections;
@@ -31,7 +32,7 @@ public class UsersListController extends BasicController{
 	@FXML
 	private TableColumn<User,String> colClass;
 	@FXML
-	private TableColumn<User,String> colDelete;
+	private TableColumn<User, UserDeleteLink> colDelete;
 	@FXML
 	private TableColumn<User,String> colSuspended;
 
@@ -42,6 +43,7 @@ public class UsersListController extends BasicController{
 
 		colName.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
 		colDate.setCellValueFactory(new PropertyValueFactory<User, String>("dateJoined"));
+		colDelete.setCellValueFactory(new PropertyValueFactory<User, UserDeleteLink>("userDeleteHyperLink"));
 
 		tableList = new ArrayList<>();
 
@@ -59,6 +61,7 @@ public class UsersListController extends BasicController{
 				User u = new User(email, null, isManager);
 				u.setIsSuspended(isSuspended);
 				u.setDateJoined(dateJoined);
+				u.setUserDeleteHyperLink(new UserDeleteLink(u));
 				tableList.add(u);
 			}
 		} catch (Exception e) {
