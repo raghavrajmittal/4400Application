@@ -11,6 +11,7 @@ import Database.DBModel;
 import Model.Attraction;
 import Model.City;
 import Model.Review;
+import Links.EditReviewLink;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,7 +33,7 @@ public class UserReviewsController extends BasicController{
 	@FXML
 	private TableColumn<Review,String> colComment;
 	@FXML
-	private TableColumn<Review,String> colEdit;
+	private TableColumn<Review,EditReviewLink> colEdit;
 	
 	//Instance of Database
 	DBModel mainModel = DBModel.getInstance();
@@ -45,6 +46,7 @@ public class UserReviewsController extends BasicController{
 		colName.setCellValueFactory(new PropertyValueFactory<Review, String>("name"));
 		colRate.setCellValueFactory(new PropertyValueFactory<Review, Integer>("rating"));
 		colComment.setCellValueFactory(new PropertyValueFactory<Review, String>("comment"));
+		colEdit.setCellValueFactory(new PropertyValueFactory<Review,EditReviewLink>("editReviewHyperLink"));
 
 		reviewList = new ArrayList<>();
 
@@ -67,6 +69,7 @@ public class UserReviewsController extends BasicController{
 				String comment = resultSet.getString("Comment");
 				int entityID = resultSet.getInt("EntityID");
 				Review r = new Review(name, rating, comment, entityID);
+				r.setEditReviewHyperLink(new EditReviewLink(r));
 				reviewList.add(r);
 			}
 		} catch (Exception e) {

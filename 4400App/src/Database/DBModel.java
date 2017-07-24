@@ -3,6 +3,8 @@ package Database;
 import Model.Attraction;
 import Model.City;
 import Model.User;
+import Model.Review;
+import Model.Category;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +25,7 @@ public class DBModel {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/4400DB?autoReconnect=true&useSSL=false",
-					"admin", "password");
+					"root", "Mountainview#55");
 		} catch (Exception e) {
 			this.con = null;
 			e.printStackTrace();
@@ -33,6 +35,8 @@ public class DBModel {
 	private User currentUser;
 	private City currentCity;
 	private Attraction currentAttraction;
+	private Review currentReview;
+	private Category currentCategory;
 	
 	//Subject to Change
 	private String currentQuery;
@@ -85,6 +89,14 @@ public class DBModel {
 	public void setCurrentAttraction(Attraction a) {
 		currentAttraction = a;
 	}
+
+	public final Review getReview() { return currentReview; }
+
+	public void setCurrentReview(Review r) { currentReview = r; }
+
+	public final Category getCategory() { return currentCategory; }
+
+	public void setCurrentCategory(Category c) { currentCategory = c; }
 	
 	public static int makeEntityID() {
 		return ++entityID;

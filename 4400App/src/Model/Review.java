@@ -1,11 +1,14 @@
 package Model;
 
+import Links.EditReviewLink;
+
 public class Review {
 
 	private String name;
 	private int rating;
 	private String comment;
 	private int entityID;
+	private EditReviewLink editReviewHyperLink;
 
 	public Review (String n, int id) {
 		name = n;
@@ -33,4 +36,8 @@ public class Review {
 	public int getEntityID() {
 		return entityID;
 	}
+
+	public EditReviewLink getEditReviewHyperLink() { return editReviewHyperLink; }
+
+	public void setEditReviewHyperLink(EditReviewLink e) { editReviewHyperLink = e; }
 }
