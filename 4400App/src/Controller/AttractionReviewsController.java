@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.DBModel;
 import Model.Attraction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,12 +28,16 @@ public class AttractionReviewsController extends BasicController {
 	private TableColumn<Attraction,String> colCom;
 	@FXML
 	private ComboBox<String> cmbSort;
-	
+
+	DBModel mainModel = DBModel.getInstance();
 	@FXML
 	public void initialize() {
 
 		//label name is set
-		lblAttractionName.setText(mainModel.getAttraction());
+		lblAttractionName.setText(mainModel.getAttraction().toString());
+
+
+
 
 		//Populate combobox and table
 		List<String> list = new ArrayList<>();

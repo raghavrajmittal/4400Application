@@ -1,11 +1,15 @@
 package Controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Locale.Category;
 
 import Database.DBModel;
+import Links.AttractionInfoLink;
 import Model.Attraction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class BasicCityPageController extends BasicController {
 	
@@ -33,26 +38,81 @@ public class BasicCityPageController extends BasicController {
 	@FXML
 	private TableColumn<Attraction,String> colLoc;
 	@FXML
-	private TableColumn<Attraction,Category> colCat;
+	private TableColumn<Attraction,String> colCat;
 	@FXML
 	private TableColumn<Attraction,Double> colAvgRate;
 	@FXML
 	private TableColumn<Attraction,Integer> colNumRate;
 	@FXML
-	private TableColumn<Attraction,String> colMoreInfo;
+	private TableColumn<Attraction, AttractionInfoLink> colMoreInfo;
 	
 	DBModel mainModel = DBModel.getInstance();
-	
+
+	private List<Attraction> tableList;
 	@FXML
 	public void initialize() {
 
+		lblCityName.setText(mainModel.getCity().toString());
+		lblAvgRate.setText("" + mainModel.getCity().getAvgRat());
 		//Populate table
-		
+		tableList = new ArrayList<>();
+		colName.setCellValueFactory(new PropertyValueFactory<Attraction, String>("name"));
+		colLoc.setCellValueFactory(new PropertyValueFactory<Attraction, String>("address"));
+		colCat.setCellValueFactory(new PropertyValueFactory<Attraction, String>("categoriesList"));
+		colAvgRate.setCellValueFactory(new PropertyValueFactory<Attraction, Double>("avgRat"));
+		colNumRate.setCellValueFactory(new PropertyValueFactory<Attraction, Integer>("numRat"));
+		colMoreInfo.setCellValueFactory(new PropertyValueFactory<Attraction, AttractionInfoLink>("infoHyperLink"));
+
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT res1.AttrID, Name, Address, Category, avgRat, numRat\n" +
+					"FROM(\n" +
+					"\n" +
+					"\t(SELECT A.AttrID, LocatedIn, Name, Address\n" +
+					"\tFROM ATTRACTION as A, REVIEWABLE_ENTITY as E\n" +
+					"\tWHERE LocatedIn = ? and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1\n" +
+					"inner join \n" +
+					"\t(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat\n" +
+					"\tFROM ATTRACTION AS A, REVIEW AS R\n" +
+					"\tWHERE A.AttrID = R.EntityID AND A.LocatedIn = ?\n" +
+					"\tGROUP BY A.AttrID) as res2\n" +
+					"on res1.AttrID = res2.AttrID \n" +
+					"\n" +
+					"inner join \n" +
+					"\t(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category\n" +
+					"\tFROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E\n" +
+					"\tWHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE\n" +
+					"\tGROUP BY A.AttrID) as res3\n" +
+					"on res1.AttrID = res3.AttrID);";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			stmnt.setInt(1, mainModel.getCity().getCityID());
+			stmnt.setInt(2, mainModel.getCity().getCityID());
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				int attrID = resultSet.getInt("AttrID");
+				String name = resultSet.getString("Name");
+				String address = resultSet.getString("Address");
+				String categories = resultSet.getString("Category");
+				int avgRat = resultSet.getInt("avgRat");
+				int numRat = resultSet.getInt("numRat");
+				Attraction a = new Attraction(name, mainModel.getCity(), address, null, null, attrID);
+				a.setCategoriesList(categories);
+				a.setAvgRat(avgRat);
+				a.setNumRat(numRat);
+				a.setInfoHyperLink(new AttractionInfoLink(a));
+				tableList.add(a);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		ObservableList<Attraction> oTableList = FXCollections.observableList(tableList);
+		tblAttractions.setItems(oTableList);
+
 		//Populate combobox
 		List<String> list = new ArrayList<>();
 		list.add("Name A-Z");
 		list.add("Name Z-A");
-		list.add("Category A-Z");
 		list.add("Avg Rating");
 		
 		ObservableList<String> cmbList = FXCollections.observableList(list);
@@ -62,10 +122,10 @@ public class BasicCityPageController extends BasicController {
 	
 	@FXML
 	public void handleBackPressed() {
-		if (mainModel.getUser().isManager()) {
-			showScreen("../View/ManagerWelcome.fxml", "Welcome " + mainModel.getUser().getEmail())
+		if (mainModel.getUser().getIsManager()) {
+			showScreen("../View/ManagerWelcome.fxml", "Welcome " + mainModel.getUser().getEmail());
 		} else {
-			showScreen("../View/Welcome.fxml", "Welcome " + mainModel.getUser().getEmail())
+			showScreen("../View/Welcome.fxml", "Welcome " + mainModel.getUser().getEmail());
 
 		}
 	}
@@ -82,15 +142,142 @@ public class BasicCityPageController extends BasicController {
 	
 	public void handleSortPressed() {
 		if (cmbSort.getValue() != null) {
+			tableList = new ArrayList<>();
+
 			if (cmbSort.getValue().equals("Name A-Z")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT res1.AttrID, Name, Address, Category, avgRat, numRat\n" +
+							"FROM(\n" +
+							"\n" +
+							"\t(SELECT A.AttrID, LocatedIn, Name, Address\n" +
+							"\tFROM ATTRACTION as A, REVIEWABLE_ENTITY as E\n" +
+							"\tWHERE LocatedIn = ? and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1\n" +
+							"inner join \n" +
+							"\t(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat\n" +
+							"\tFROM ATTRACTION AS A, REVIEW AS R\n" +
+							"\tWHERE A.AttrID = R.EntityID AND A.LocatedIn = ?\n" +
+							"\tGROUP BY A.AttrID) as res2\n" +
+							"on res1.AttrID = res2.AttrID \n" +
+							"\n" +
+							"inner join \n" +
+							"\t(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category\n" +
+							"\tFROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E\n" +
+							"\tWHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE\n" +
+							"\tGROUP BY A.AttrID) as res3\n" +
+							"on res1.AttrID = res3.AttrID) order by Name ASC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getCity().getCityID());
+					stmnt.setInt(2, mainModel.getCity().getCityID());
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int attrID = resultSet.getInt("AttrID");
+						String name = resultSet.getString("Name");
+						String address = resultSet.getString("Address");
+						String categories = resultSet.getString("Category");
+						int avgRat = resultSet.getInt("avgRat");
+						int numRat = resultSet.getInt("numRat");
+						Attraction a = new Attraction(name, mainModel.getCity(), address, null, null, attrID);
+						a.setCategoriesList(categories);
+						a.setAvgRat(avgRat);
+						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+						tableList.add(a);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Name Z-A")) {
-				
-			} else if (cmbSort.getValue().equals("Category A-Z")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT res1.AttrID, Name, Address, Category, avgRat, numRat\n" +
+							"FROM(\n" +
+							"\n" +
+							"\t(SELECT A.AttrID, LocatedIn, Name, Address\n" +
+							"\tFROM ATTRACTION as A, REVIEWABLE_ENTITY as E\n" +
+							"\tWHERE LocatedIn = ? and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1\n" +
+							"inner join \n" +
+							"\t(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat\n" +
+							"\tFROM ATTRACTION AS A, REVIEW AS R\n" +
+							"\tWHERE A.AttrID = R.EntityID AND A.LocatedIn = ?\n" +
+							"\tGROUP BY A.AttrID) as res2\n" +
+							"on res1.AttrID = res2.AttrID \n" +
+							"\n" +
+							"inner join \n" +
+							"\t(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category\n" +
+							"\tFROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E\n" +
+							"\tWHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE\n" +
+							"\tGROUP BY A.AttrID) as res3\n" +
+							"on res1.AttrID = res3.AttrID) order by Name DESC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getCity().getCityID());
+					stmnt.setInt(2, mainModel.getCity().getCityID());
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int attrID = resultSet.getInt("AttrID");
+						String name = resultSet.getString("Name");
+						String address = resultSet.getString("Address");
+						String categories = resultSet.getString("Category");
+						int avgRat = resultSet.getInt("avgRat");
+						int numRat = resultSet.getInt("numRat");
+						Attraction a = new Attraction(name, mainModel.getCity(), address, null, null, attrID);
+						a.setCategoriesList(categories);
+						a.setAvgRat(avgRat);
+						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+						tableList.add(a);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Avg Rating")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT res1.AttrID, Name, Address, Category, avgRat, numRat\n" +
+							"FROM(\n" +
+							"\n" +
+							"\t(SELECT A.AttrID, LocatedIn, Name, Address\n" +
+							"\tFROM ATTRACTION as A, REVIEWABLE_ENTITY as E\n" +
+							"\tWHERE LocatedIn = ? and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1\n" +
+							"inner join \n" +
+							"\t(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat\n" +
+							"\tFROM ATTRACTION AS A, REVIEW AS R\n" +
+							"\tWHERE A.AttrID = R.EntityID AND A.LocatedIn = ?\n" +
+							"\tGROUP BY A.AttrID) as res2\n" +
+							"on res1.AttrID = res2.AttrID \n" +
+							"\n" +
+							"inner join \n" +
+							"\t(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category\n" +
+							"\tFROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E\n" +
+							"\tWHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE\n" +
+							"\tGROUP BY A.AttrID) as res3\n" +
+							"on res1.AttrID = res3.AttrID) order by avgRat DESC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getCity().getCityID());
+					stmnt.setInt(2, mainModel.getCity().getCityID());
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int attrID = resultSet.getInt("AttrID");
+						String name = resultSet.getString("Name");
+						String address = resultSet.getString("Address");
+						String categories = resultSet.getString("Category");
+						int avgRat = resultSet.getInt("avgRat");
+						int numRat = resultSet.getInt("numRat");
+						Attraction a = new Attraction(name, mainModel.getCity(), address, null, null, attrID);
+						a.setCategoriesList(categories);
+						a.setAvgRat(avgRat);
+						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+						tableList.add(a);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+
+			ObservableList<Attraction> oTableList = FXCollections.observableList(tableList);
+			tblAttractions.setItems(oTableList);
+
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please choose a sort type");

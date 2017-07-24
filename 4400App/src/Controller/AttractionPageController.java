@@ -81,7 +81,7 @@ public class AttractionPageController extends BasicController{
 			if (mainModel.getUser().getIsManager()) {
 				showScreen("../View/ManagerWelcome.fxml", "Welcome " + mainModel.getUser().getEmail() );
 			} else {
-				showScreen("../View/Welcome.fxml", "Welcome" + + mainModel.getUser().getEmail());
+				showScreen("../View/Welcome.fxml", "Welcome" +  mainModel.getUser().getEmail());
 			}
 		} else{
 			alert.close();

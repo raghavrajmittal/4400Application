@@ -1,8 +1,14 @@
 package Controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import Database.DBModel;
+import Links.CityPageLink;
+import Model.City;
 import Model.Review;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +18,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CityReviewsController extends BasicController {
 
@@ -22,16 +29,44 @@ public class CityReviewsController extends BasicController {
 	@FXML
 	private TableColumn<Review,String> colName;
 	@FXML
-	private TableColumn<Review,Double> colRate;
+	private TableColumn<Review,Integer> colRate;
 	@FXML
 	private TableColumn<Review,String> colComment;
 	@FXML
 	private ComboBox<String> cmbSort;
-	
+
+	private List<Review> tableList;
+	DBModel mainModel = DBModel.getInstance();
 	@FXML
 	public void initialize() {
 		//Populate table
-		
+		tableList = new ArrayList<>();
+		colName.setCellValueFactory(new PropertyValueFactory<Review, String>("name"));
+		colRate.setCellValueFactory(new PropertyValueFactory<Review, Integer>("rating"));
+		colComment.setCellValueFactory(new PropertyValueFactory<Review, String>("comment"));
+
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT Email, Rating, Comment\n" +
+					"FROM REVIEW AS R\n" +
+					"WHERE R.EntityID = ?\n" +
+					"ORDER BY Rating desc;\n";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			stmnt.setInt(1, mainModel.getCity().getCityID() );
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String email = resultSet.getString("Email");
+				int rating = resultSet.getInt("Rating");
+				String comment = resultSet.getString("Comment");
+				Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+				tableList.add(r);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		ObservableList oTableList = FXCollections.observableList(tableList);
+		tblReviews.setItems(oTableList);
 		//Populate combo box
 		List<String> list = new ArrayList<>();
 		list.add("Name A-Z");
@@ -55,13 +90,74 @@ public class CityReviewsController extends BasicController {
 	@FXML
 	public void handleSortPressed() {
 		if (cmbSort.getValue() != null) {
+			tableList = new ArrayList<>();
+
 			if (cmbSort.getValue().equals("Name A-Z")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT Email, Rating, Comment\n" +
+							"FROM REVIEW AS R\n" +
+							"WHERE R.EntityID = ?\n" +
+							"ORDER BY Email ASC;\n";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getCity().getCityID() );
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						String email = resultSet.getString("Email");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+						tableList.add(r);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 			} else if (cmbSort.getValue().equals("Name Z-A")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT Email, Rating, Comment\n" +
+							"FROM REVIEW AS R\n" +
+							"WHERE R.EntityID = ?\n" +
+							"ORDER BY Email desc;\n";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getCity().getCityID() );
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						String email = resultSet.getString("Email");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+						tableList.add(r);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 			} else if (cmbSort.getValue().equals("Avg Rating")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT Email, Rating, Comment\n" +
+							"FROM REVIEW AS R\n" +
+							"WHERE R.EntityID = ?\n" +
+							"ORDER BY Rating desc;\n";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getCity().getCityID() );
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						String email = resultSet.getString("Email");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+						tableList.add(r);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 			}
+			ObservableList oTableList = FXCollections.observableList(tableList);
+			tblReviews.setItems(oTableList);
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please choose a sort type");
