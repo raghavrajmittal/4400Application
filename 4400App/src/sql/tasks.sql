@@ -279,6 +279,7 @@ UPDATE CATEGORY
 SET CName = "new_category_field"
 WHERE CName = "old_category_field";
 
+
 -- 10.0/ 10.1 user's list
 SELECT Email, DateJoined, IsSuspended, IsManager
 FROM USER

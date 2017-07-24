@@ -1,82 +1,82 @@
 
 
 INSERT INTO User
-VALUES ("maya@gmail.com", 1, now(), FALSE, TRUE);
+VALUES ("maya@gmail.com", 3344284, now(), FALSE, TRUE);
 
 INSERT INTO User
-VALUES ("raghav@gmail.com", 938491003, now(), FALSE, TRUE);
+VALUES ("raghav@gmail.com", -938491003, now(), FALSE, TRUE);
 
 INSERT INTO user
-VALUES ("pravan@gmail.com", 3, now(), FALSE, TRUE);
+VALUES ("pravan@gmail.com", -980214748, now(), FALSE, TRUE);
  
 INSERT INTO user
-VALUES ("alyssa@gmail.com", 4, now(), FALSE, TRUE);
+VALUES ("alyssa@gmail.com", -1414480493, now(), FALSE, TRUE);
  
 INSERT INTO user
-VALUES ("kendall@gmail.com", 5, now(), FALSE, FALSE);
+VALUES ("kendall@gmail.com", -825146607, now(), FALSE, FALSE);
  
 INSERT INTO user
-VALUES ("annalise@gmail.com",6 , now(), TRUE, FALSE);
+VALUES ("annalise@gmail.com",-662822097 , now(), TRUE, FALSE);
  
 INSERT INTO user
-VALUES ("bent@gmail.com", 7, now(), FALSE, FALSE);
+VALUES ("bent@gmail.com", 3020105, now(), FALSE, FALSE);
  
 INSERT INTO user
-VALUES ("adya@gmail.com", 8, now(), TRUE, FALSE);
+VALUES ("adya@gmail.com", 2989675, now(), TRUE, FALSE);
 
 
 INSERT INTO user
-VALUES ("mattl@gmail.com", 9, now(), FALSE, FALSE);
+VALUES ("mattl@gmail.com", 103668696, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("sarahg@gmail.com", 10, now(), FALSE, FALSE);
+VALUES ("sarahg@gmail.com", -909540676, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("joseph@gmail.com", 11, now(), FALSE, FALSE);
+VALUES ("joseph@gmail.com", -1154643477, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("walker@gmail.com", 12, now(), FALSE, TRUE);
+VALUES ("walker@gmail.com", -795193290, now(), FALSE, TRUE);
 INSERT INTO user
-VALUES ("anthony@gmail.com", 13, now(), FALSE, FALSE);
+VALUES ("anthony@gmail.com", -846912647, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("chloe@gmail.com", 14, now(), FALSE, FALSE);
+VALUES ("chloe@gmail.com", 94634173, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("eugenia@gmail.com", 15, now(), FALSE, FALSE);
+VALUES ("eugenia@gmail.com", -1403557448, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("chris@gmail.com", 16, now(), TRUE, FALSE);
+VALUES ("chris@gmail.com", 94639767, now(), TRUE, FALSE);
 
 INSERT INTO user
-VALUES ("thy@gmail.com", 17, now(), FALSE, FALSE);
+VALUES ("thy@gmail.com", 114821, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("xing@gmail.com", 18, now(), FALSE, FALSE);
+VALUES ("xing@gmail.com", 3679338, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("abbie@gmail.com", 19, now(), FALSE, FALSE);
+VALUES ("abbie@gmail.com", 92598589, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("elizabeth@gmail.com", 20, now(), FALSE, FALSE);
+VALUES ("elizabeth@gmail.com", -635354944, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("kyra@gmail.com", 21, now(), FALSE, FALSE);
+VALUES ("kyra@gmail.com", 3307549, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("ruchi@gmail.com", 22, now(), FALSE, FALSE);
+VALUES ("ruchi@gmail.com", 108865409, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("michael@gmail.com", 22, now(), FALSE, FALSE);
+VALUES ("michael@gmail.com", 3351542, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("savy@gmail.com", 23, now(), FALSE, FALSE);
+VALUES ("savy@gmail.com", 3522961, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("stephan@gmail.com", 24, now(), FALSE, FALSE);
+VALUES ("stephan@gmail.com", -1893562295, now(), FALSE, FALSE);
 
 INSERT INTO user
-VALUES ("charleston@gmail.com", 25, now(), FALSE, FALSE);
+VALUES ("charleston@gmail.com", 1562176463, now(), FALSE, FALSE);
 
 
 
@@ -239,6 +239,6 @@ INSERT INTO CATEGORY
 VALUES ("Museum"),("Religious"),("Parks/Public Space"),("Amusement Park"),("Shopping"),("Food"),("Nightlife"),("Adventure"),("Monument"),("Sports");
 
 INSERT INTO FALLS_UNDER
-VALUES (1, "Religious, Monument"), (2, "Parks/Public Space"), (3, "Sports"), (4, "Monument"), (5, "Religious, Monument"), (6, "Museum"), (7, "Monument"), (8, "Monument"), (9, "Monument"), (10, "Museum"), (11, "Amusement Park"), (12, "Museum"), (13, "Monument"), (14, "Parks/Public Space"), (15, "Food, Parks/Public Space");
+VALUES (1, "Religious"), (1, "Monument"), (2, "Parks/Public Space"), (3, "Sports"), (4, "Monument"), (5, "Religious"), (5, "Monument"), (6, "Museum"), (7, "Monument"), (8, "Monument"), (9, "Monument"), (10, "Museum"), (11, "Amusement Park"), (12, "Museum"), (13, "Monument"), (14, "Parks/Public Space"), (15, "Parks/Public Space"), (15, "Food");
 
 
