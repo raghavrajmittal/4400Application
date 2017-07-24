@@ -11,7 +11,13 @@ public class Attraction {
 	private int attrID;
 	private String name;
 	private boolean isPending;
+
+	//For the tables
 	private String categoriesList;
+	private int rating;
+	private String comment;
+	private String submittedBy;
+	private String cityString;
 
 	private int numRat = 0;
 	private double avgRat = 0;
@@ -62,11 +68,11 @@ public class Attraction {
 		return category;
 	}
 	
-	public String getHours() {
+	public String getHoursOfOp() {
 		return hoursOfOp;
 	}
 	
-	public String getContactInfo() {
+	public String getContact() {
 		return contact;
 	}
 	
@@ -107,4 +113,46 @@ public class Attraction {
 	public void setAvgRat(double n){
 		avgRat = n;
 	}
+
+	public void setCityString(String s) {
+		cityString = s;
+	}
+
+	public String getCityString() {
+		return cityString;
+	}
+
+	public void setRating(int n) {
+		rating = n;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setSubmittedBy(String s) {
+		submittedBy = s;
+	}
+
+	public String getSubmittedBy() {
+		return submittedBy;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String s) {
+		comment = s;
+	}
+
+	public void setHoursOfOp(String s) {
+		hoursOfOp = s;
+	}
+
+	public void setContact(String s) {
+		contact = s;
+	}
+
+
 }

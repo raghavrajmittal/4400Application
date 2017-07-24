@@ -17,7 +17,7 @@
       </Label>
       <TableView fx:id="tblAttractions" layoutX="-1.0" layoutY="44.0" prefHeight="255.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="50.333343505859375" text="Name" />
+          <TableColumn fx:id="colName" text="Name" />
           <TableColumn fx:id="colCity" prefWidth="37.0" text="City" />
             <TableColumn fx:id="colAddr" prefWidth="54.333343505859375" text="Address" />
             <TableColumn fx:id="colCat" prefWidth="57.666656494140625" text="Category" />

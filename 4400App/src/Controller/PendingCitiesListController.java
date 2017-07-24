@@ -1,5 +1,8 @@
 package Controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,9 +52,28 @@ public class PendingCitiesListController extends BasicController {
 		colComment.setCellValueFactory(new PropertyValueFactory<City, String>("comment"));
 
 		try {
-
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT E.EntityID as id, C.Name, C.Country, E.SubmittedBy, R.Rating, R.Comment\n" +
+					"FROM CITY AS C, REVIEW AS R, REVIEWABLE_ENTITY as E\n" +
+					"WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = TRUE\n" +
+					"ORDER by C.Name ASC;";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				int entityID = resultSet.getInt("id");
+				String name = resultSet.getString("Name");
+				String country = resultSet.getString("Country");
+				String submittedBy = resultSet.getString("SubmittedBy");
+				int rating = resultSet.getInt("Rating");
+				String comment = resultSet.getString("Comment");
+				City c = new City(name, entityID, country, null);
+				c.setSubmittedBy(submittedBy);
+				c.setRating(rating);
+				c.setComment(comment);
+				tableList.add(c);
+			}
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 		ObservableList<City> cityTable = FXCollections.observableList(tableList);
@@ -75,15 +97,130 @@ public class PendingCitiesListController extends BasicController {
 			tableList = new ArrayList<>();
 
 			if (cmbSort.getValue().equals("Name A-Z")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT E.EntityID as id, C.Name, C.Country, E.SubmittedBy, R.Rating, R.Comment\n" +
+							"FROM CITY AS C, REVIEW AS R, REVIEWABLE_ENTITY as E\n" +
+							"WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = TRUE\n" +
+							"ORDER by C.Name ASC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int entityID = resultSet.getInt("id");
+						String name = resultSet.getString("Name");
+						String country = resultSet.getString("Country");
+						String submittedBy = resultSet.getString("SubmittedBy");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						City c = new City(name, entityID, country, null);
+						c.setSubmittedBy(submittedBy);
+						c.setRating(rating);
+						c.setComment(comment);
+						tableList.add(c);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Name Z-A")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT E.EntityID as id, C.Name, C.Country, E.SubmittedBy, R.Rating, R.Comment\n" +
+							"FROM CITY AS C, REVIEW AS R, REVIEWABLE_ENTITY as E\n" +
+							"WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = TRUE\n" +
+							"ORDER by C.Name DESC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int entityID = resultSet.getInt("id");
+						String name = resultSet.getString("Name");
+						String country = resultSet.getString("Country");
+						String submittedBy = resultSet.getString("SubmittedBy");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						City c = new City(name, entityID, country, null);
+						c.setSubmittedBy(submittedBy);
+						c.setRating(rating);
+						c.setComment(comment);
+						tableList.add(c);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Rating")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT E.EntityID as id, C.Name, C.Country, E.SubmittedBy, R.Rating, R.Comment\n" +
+							"FROM CITY AS C, REVIEW AS R, REVIEWABLE_ENTITY as E\n" +
+							"WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = TRUE\n" +
+							"ORDER by R.Rating DESC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int entityID = resultSet.getInt("id");
+						String name = resultSet.getString("Name");
+						String country = resultSet.getString("Country");
+						String submittedBy = resultSet.getString("SubmittedBy");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						City c = new City(name, entityID, country, null);
+						c.setSubmittedBy(submittedBy);
+						c.setRating(rating);
+						c.setComment(comment);
+						tableList.add(c);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Country A-Z")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT E.EntityID as id, C.Name, C.Country, E.SubmittedBy, R.Rating, R.Comment\n" +
+							"FROM CITY AS C, REVIEW AS R, REVIEWABLE_ENTITY as E\n" +
+							"WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = TRUE\n" +
+							"ORDER by C.Country ASC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int entityID = resultSet.getInt("id");
+						String name = resultSet.getString("Name");
+						String country = resultSet.getString("Country");
+						String submittedBy = resultSet.getString("SubmittedBy");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						City c = new City(name, entityID, country, null);
+						c.setSubmittedBy(submittedBy);
+						c.setRating(rating);
+						c.setComment(comment);
+						tableList.add(c);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Country Z-A")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT E.EntityID as id, C.Name, C.Country, E.SubmittedBy, R.Rating, R.Comment\n" +
+							"FROM CITY AS C, REVIEW AS R, REVIEWABLE_ENTITY as E\n" +
+							"WHERE C.CityID = R.EntityID and C.CityID = E.EntityID and E.IsPending = TRUE\n" +
+							"ORDER by C.Country DESC;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						int entityID = resultSet.getInt("id");
+						String name = resultSet.getString("Name");
+						String country = resultSet.getString("Country");
+						String submittedBy = resultSet.getString("SubmittedBy");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						City c = new City(name, entityID, country, null);
+						c.setSubmittedBy(submittedBy);
+						c.setRating(rating);
+						c.setComment(comment);
+						tableList.add(c);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			ObservableList<City> cityTable = FXCollections.observableList(tableList);
 			tblPendingCities.setItems(cityTable);
