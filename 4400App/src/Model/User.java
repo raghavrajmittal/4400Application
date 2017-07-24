@@ -64,4 +64,12 @@ public class User {
 	public UserClassLink getUserClassHyperLink() { return userClassHyperLink; }
 
 	public void setUserClassHyperLink(UserClassLink cl) { userClassHyperLink = cl; }
+
+	public UserSuspendLink getUserSuspendHyperLink() { return userSuspendHyperLink; }
+
+	public void setUserSuspendHyperLink(UserSuspendLink sl) { userSuspendHyperLink = sl; }
+
+	public UserDeleteLink getUserDeleteHyperLink() { return userDeleteHyperLink; }
+
+	public void setUserDeleteHyperLink(UserDeleteLink dl) { userDeleteHyperLink = dl; }
 }
