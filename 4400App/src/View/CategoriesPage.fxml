@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategoriesPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategoriesPageController">
    <children>
       <TableView fx:id="tblCategories" layoutX="27.0" layoutY="77.0" prefHeight="200.0" prefWidth="547.0">
         <columns>
@@ -20,12 +20,12 @@
       </TableView>
       <Label layoutX="151.0" text="Category List">
          <font>
-            <Font size="52.0" />
+            <Font size="48.0" />
          </font>
       </Label>
       <Button layoutX="308.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="96.0" text="Sort" />
       <Button fx:id="btnBack" layoutX="288.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
-      <ComboBox fx:id="cmbSort" layoutX="211.0" layoutY="283.0" prefHeight="25.0" prefWidth="89.0" promptText="Sort By:" />
+      <ComboBox fx:id="cmbSort" layoutX="204.0" layoutY="283.0" prefHeight="27.0" prefWidth="96.0" promptText="Sort By:" />
       <Button fx:id="btnAdd" layoutX="250.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleAddPressed" text="Add New Category" />
    </children>
 </Pane>

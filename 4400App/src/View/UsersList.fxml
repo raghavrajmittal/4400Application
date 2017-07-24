@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UsersListController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UsersListController">
    <children>
       <Label layoutX="217.0" text="Users List">
          <font>
-            <Font size="40.0" />
+            <Font size="35.0" />
          </font>
       </Label>
       <TableView fx:id="tblUsers" layoutX="14.0" layoutY="58.0" prefHeight="200.0" prefWidth="574.0">
@@ -24,8 +24,8 @@
             <TableColumn prefWidth="83.66668701171875" text="Delete" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="260.0" layoutY="266.0" prefHeight="25.0" prefWidth="70.0" promptText="Sort By" />
-      <Button fx:id="btnSort" layoutX="335.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleSortPressed" text="Sort"/>
+      <ComboBox fx:id="cmbSort" layoutX="224.0" layoutY="266.0" prefHeight="27.0" prefWidth="106.0" promptText="Sort By" />
+      <Button fx:id="btnSort" layoutX="335.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleSortPressed" text="Sort" />
       <Button fx:id="btnAddNewUser" layoutX="272.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleAddPressed" text="Add New User" />
       <Button fx:id="btnBack" layoutX="298.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
    </children>

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AttractionReviewsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AttractionReviewsController">
    <children>
       <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="14.0" text="Attraction Name Here">
          <font>
@@ -27,7 +27,7 @@
           <TableColumn fx:id="colCom" minWidth="0.0" prefWidth="374.0" text="Comment" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="207.0" layoutY="281.0" prefHeight="25.0" prefWidth="88.0" promptText="Sort By:" />
+      <ComboBox fx:id="cmbSort" layoutX="197.0" layoutY="281.0" prefHeight="27.0" prefWidth="98.0" promptText="Sort By:" />
       <Button fx:id="btnReview" layoutX="235.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review this Attraction" />
       <Button fx:id="btnBack" layoutX="280.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
       <Button fx:id="btnSort" layoutX="301.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="88.0" text="Sort" />

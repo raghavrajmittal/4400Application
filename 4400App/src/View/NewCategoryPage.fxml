@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewCategoryPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewCategoryPageController">
    <children>
       <Label layoutX="143.0" layoutY="14.0" text="New Category">
          <font>
-            <Font size="50.0" />
+            <Font size="45.0" />
          </font>
       </Label>
       <Label layoutX="32.0" layoutY="156.0" text="Name *:">
          <font>
-            <Font size="40.0" />
+            <Font size="35.0" />
          </font>
       </Label>
       <TextField fx:id="txtCategory" layoutX="189.0" layoutY="164.0" prefHeight="42.0" prefWidth="397.0">
