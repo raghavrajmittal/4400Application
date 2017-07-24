@@ -7,6 +7,9 @@ public class City {
 	private String name;
 	private int cityID;
 	private boolean isPending;
+	private String submittedBy;
+	private String comment;
+	private int rating;
 
 	private int numAttr = 0;
 	private int numRat = 0;
@@ -65,6 +68,30 @@ public class City {
 
 	public void setAvgRat(double n){
 		avgRat = n;
+	}
+
+	public void setSubmittedBy(String s) {
+		submittedBy = s;
+	}
+
+	public String getSubmittedBy() {
+		return submittedBy;
+	}
+
+	public void setComment(String s) {
+		comment = s;
+	}
+
+	public void setRating(int x) {
+		rating = x;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public int getRating() {
+		return rating;
 	}
 
 
