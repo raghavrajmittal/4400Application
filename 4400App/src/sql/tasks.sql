@@ -252,13 +252,13 @@ WHERE Email = "email_field"; -- delete accountCITY
 
 
 -- Category Page
-SELECT res2.Category, res2.numAttr
+SELECT res1.CName, res2.numAttr
 FROM (
 
 (SELECT CName
 FROM CATEGORY) as res1
 
-inner join
+left join
 
 (SELECT F.Category, COUNT(F.AttrID) as numAttr
 FROM FALLS_UNDER AS F, REVIEWABLE_ENTITY AS E
@@ -267,7 +267,7 @@ GROUP BY F.Category) as res2
 
 on res1.CName = res2.Category)
 order by Category ASC;
--- checks for whether deletign the category will delete an attraction
+-- checks for whether deleting the category will delete an attraction
 
 INSERT INTO CATEGORY
 VALUES ("category_field");
