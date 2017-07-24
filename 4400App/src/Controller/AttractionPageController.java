@@ -1,8 +1,12 @@
 package Controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Optional;
 
 import Database.DBModel;
+import Model.Review;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -32,12 +36,59 @@ public class AttractionPageController extends BasicController{
 	public void initialize() {
 		lblAttractionName.setText(mainModel.getAttraction().getName());
 		//Populate all the labels with information
-		
-//		lblAddress.setText(mainModel.getAttraction().getAddress());
-//		lblDescription.setText(mainModel.getAttraction().getDescription());
-//		lblRating.setText("" + mainModel.getAttraction().getAvgRating());
-//		lblHours.setText(mainModel.getAttraction().getHours());
-//		lblContact.setText(mainModel.getAttraction().getContactInfo());
+
+
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			//This is for the description
+			String query = "SELECT Address, Description\n" +
+					"FROM ATTRACTION\n" +
+					"WHERE AttrID = ?;";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			stmnt.setInt(1, mainModel.getAttraction().getAttractionID() );
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String address = resultSet.getString("Address");
+				String description = resultSet.getString("Description");
+				mainModel.getAttraction().setDescription(description);
+				mainModel.getAttraction().setAddress(address);
+			}
+
+			//This is for the contact info
+			query = "SELECT GROUP_CONCAT(ContactMethod , \":\" ,MethodValue , \" \") as ContactInfo\n" +
+					"FROM CONTACT_INFO\n" +
+					"WHERE AttrID = ?;";
+			stmnt = con.prepareStatement(query);
+			stmnt.setInt(1, mainModel.getAttraction().getAttractionID());
+			resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String contactInfo = resultSet.getString("ContactInfo");
+				mainModel.getAttraction().setContact(contactInfo);
+			}
+
+			//THis is for the hours of op
+			query = "SELECT GROUP_CONCAT(DayOfTheWeek , \": \" , OpenTime , \"-\" , CloseTime , \" \") as HoursOfoperation\n" +
+					"FROM HOURS_OF_OPERATION\n" +
+					"WHERE AttrID = ?\n" +
+					"GROUP by AttrID;\n";
+			stmnt = con.prepareStatement(query);
+			stmnt.setInt(1, mainModel.getAttraction().getAttractionID());
+			resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String hours = resultSet.getString("HoursOfOperation");
+				mainModel.getAttraction().setHoursOfOp(hours);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		lblAddress.setText(mainModel.getAttraction().getAddress());
+		lblRating.setText("" + mainModel.getAttraction().getAvgRat());
+		lblCategory.setText(mainModel.getAttraction().getCategoriesList());
+
+		lblHours.setText(mainModel.getAttraction().getHoursOfOp());
+		lblContact.setText(mainModel.getAttraction().getContact());
+		lblDescription.setText(mainModel.getAttraction().getDescription());
+
 //		String categories = "";
 //		for (int i = 0; i < mainModel.getAttraction().getCategory().length; i++) {
 //			categories = mainModel.getAttraction()

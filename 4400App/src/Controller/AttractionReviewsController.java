@@ -1,10 +1,14 @@
 package Controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
 import Model.Attraction;
+import Model.Review;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,21 +17,24 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AttractionReviewsController extends BasicController {
 
 	@FXML
 	private Label lblAttractionName;
 	@FXML
-	private TableView<Attraction> tblReviews;
+	private TableView<Review> tblReviews;
 	@FXML
-	private TableColumn<Attraction,String> colName;
+	private TableColumn<Review,String> colName;
 	@FXML
-	private TableColumn<Attraction,Double> colRate;
+	private TableColumn<Review,Integer> colRate;
 	@FXML
-	private TableColumn<Attraction,String> colCom;
+	private TableColumn<Review,String> colCom;
 	@FXML
 	private ComboBox<String> cmbSort;
+
+	private List<Review> tableList;
 
 	DBModel mainModel = DBModel.getInstance();
 	@FXML
@@ -36,9 +43,32 @@ public class AttractionReviewsController extends BasicController {
 		//label name is set
 		lblAttractionName.setText(mainModel.getAttraction().toString());
 
+		tableList = new ArrayList<>();
+		colName.setCellValueFactory(new PropertyValueFactory<Review, String>("name"));
+		colRate.setCellValueFactory(new PropertyValueFactory<Review, Integer>("rating"));
+		colCom.setCellValueFactory(new PropertyValueFactory<Review, String>("comment"));
 
-
-
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT Email, Rating, Comment\n" +
+					"FROM REVIEW\n" +
+					"WHERE EntityID = ?\n" +
+					"ORDER BY Rating desc;\n";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			stmnt.setInt(1, mainModel.getAttraction().getAttractionID() );
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String email = resultSet.getString("Email");
+				int rating = resultSet.getInt("Rating");
+				String comment = resultSet.getString("Comment");
+				Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+				tableList.add(r);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		ObservableList<Review> oTableList = FXCollections.observableList(tableList);
+		tblReviews.setItems(oTableList);
 		//Populate combobox and table
 		List<String> list = new ArrayList<>();
 		list.add("A-Z");
@@ -64,13 +94,72 @@ public class AttractionReviewsController extends BasicController {
 	@FXML
 	public void handleSortPressed() {
 		if (cmbSort.getValue() != null) {
+			tableList = new ArrayList<>();
+
+
 			if (cmbSort.getValue().equals("A-Z")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT Email, Rating, Comment\n" +
+							"FROM REVIEW\n" +
+							"WHERE EntityID = ?\n" +
+							"ORDER BY Email ASC;\n";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getAttraction().getAttractionID() );
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						String email = resultSet.getString("Email");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+						tableList.add(r);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Z-A")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT Email, Rating, Comment\n" +
+							"FROM REVIEW\n" +
+							"WHERE EntityID = ?\n" +
+							"ORDER BY Email DESC;\n";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getAttraction().getAttractionID() );
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						String email = resultSet.getString("Email");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+						tableList.add(r);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else if (cmbSort.getValue().equals("Rating")) {
-				
+				try {
+					Connection con = DBModel.getInstance().getConnection();
+					String query = "SELECT Email, Rating, Comment\n" +
+							"FROM REVIEW\n" +
+							"WHERE EntityID = ?\n" +
+							"ORDER BY Rating desc;\n";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, mainModel.getAttraction().getAttractionID() );
+					ResultSet resultSet = stmnt.executeQuery();
+					while (resultSet.next()) {
+						String email = resultSet.getString("Email");
+						int rating = resultSet.getInt("Rating");
+						String comment = resultSet.getString("Comment");
+						Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+						tableList.add(r);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+			ObservableList<Review> oTableList = FXCollections.observableList(tableList);
+			tblReviews.setItems(oTableList);
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please choose a sort type");
