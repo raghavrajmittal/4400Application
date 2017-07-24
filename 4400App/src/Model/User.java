@@ -6,6 +6,8 @@ public class User {
 	private String password;
 	private boolean isManager = false;
 	private boolean isSuspended = false;
+	private String dateJoined;
+
 	public User(String e, String p) {
 		email = e;
 		password = p;
@@ -38,5 +40,17 @@ public class User {
 
 	public boolean getSuspended() {
 		return isSuspended;
+	}
+
+	public void setDateJoined(String s) {
+		dateJoined = s;
+	}
+
+	public void setIsSuspended(boolean b) {
+		isSuspended = b;
+	}
+
+	public String getDateJoined() {
+		return dateJoined;
 	}
 }

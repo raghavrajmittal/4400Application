@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class PendingCitiesListController extends BasicController {
 	
@@ -26,18 +27,36 @@ public class PendingCitiesListController extends BasicController {
 	@FXML
 	private TableColumn<City,String> colSubmittedBy;
 	@FXML
-	private TableColumn<City,Double> colRating;
+	private TableColumn<City,Integer> colRating;
 	@FXML
 	private TableColumn<City,String> colComment;
 	@FXML
 	private TableColumn<City,String> colApprove;
 	@FXML
 	private TableColumn<City,String> colDelete;
-	
+
+	private List<City> tableList;
 	DBModel mainModel = DBModel.getInstance();
 	
 	@FXML
 	public void initialize() {
+
+		tableList = new ArrayList<>();
+		colName.setCellValueFactory(new PropertyValueFactory<City, String>("name"));
+		colCountry.setCellValueFactory(new PropertyValueFactory<City, String>("country"));
+		colSubmittedBy.setCellValueFactory(new PropertyValueFactory<City, String>("submittedBy"));
+		colRating.setCellValueFactory(new PropertyValueFactory<City, Integer>("rating"));
+		colComment.setCellValueFactory(new PropertyValueFactory<City, String>("comment"));
+
+		try {
+
+		} catch (Exception e) {
+
+		}
+
+		ObservableList<City> cityTable = FXCollections.observableList(tableList);
+		tblPendingCities.setItems(cityTable);
+
 		List<String> list = new ArrayList<>();
 		//Populate Sort
 		list.add("Name A-Z");
@@ -53,6 +72,8 @@ public class PendingCitiesListController extends BasicController {
 	@FXML
 	public void handleSortPressed() {
 		if (cmbSort.getValue() != null) {
+			tableList = new ArrayList<>();
+
 			if (cmbSort.getValue().equals("Name A-Z")) {
 				
 			} else if (cmbSort.getValue().equals("Name Z-A")) {
@@ -64,6 +85,8 @@ public class PendingCitiesListController extends BasicController {
 			} else if (cmbSort.getValue().equals("Country Z-A")) {
 				
 			}
+			ObservableList<City> cityTable = FXCollections.observableList(tableList);
+			tblPendingCities.setItems(cityTable);
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please choose a sort choice");
