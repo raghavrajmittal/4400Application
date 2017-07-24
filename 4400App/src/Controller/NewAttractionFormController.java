@@ -175,20 +175,24 @@ public class NewAttractionFormController extends BasicController {
 				stmnt.setString(1, cat.getName());
 				stmnt.execute();
 
-				query = "INSERT INTO CONTACT_INFO\n" +
-						"VALUES (LAST_INSERT_ID(), ?, ?);";
-				stmnt = con.prepareStatement(query);
-				stmnt.setString(1, contact[0]);
-				stmnt.setString(2, contact[1]);
-				stmnt.execute();
+				if (!txtContact.getText().trim().equals("")) {
+					query = "INSERT INTO CONTACT_INFO\n" +
+							"VALUES (LAST_INSERT_ID(), ?, ?);";
+					stmnt = con.prepareStatement(query);
+					stmnt.setString(1, contact[0]);
+					stmnt.setString(2, contact[1]);
+					stmnt.execute();
+				}
 
-				query = "INSERT INTO HOURS_OF_OPERATION\n" +
-						"VALUES (LAST_INSERT_ID(), ?, ?,?);";
-				stmnt = con.prepareStatement(query);
-				stmnt.setString(1, hours[0]);
-				stmnt.setString(2, hours[1]);
-				stmnt.setString(3, hours[2]);
-				stmnt.execute();
+				if (!txtHours.getText().trim().equals("")) {
+					query = "INSERT INTO HOURS_OF_OPERATION\n" +
+							"VALUES (LAST_INSERT_ID(), ?, ?,?);";
+					stmnt = con.prepareStatement(query);
+					stmnt.setString(1, hours[0]);
+					stmnt.setString(2, hours[1]);
+					stmnt.setString(3, hours[2]);
+					stmnt.execute();
+				}
 
 			} catch (Exception e) {
 				e.printStackTrace();

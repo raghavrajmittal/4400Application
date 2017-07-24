@@ -43,6 +43,17 @@ public class UserClassLink extends Hyperlink {
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == demote) {
                         classUser.toggleManager();
+                        try {
+                            Connection con = DBModel.getInstance().getConnection();
+                            String query = "UPDATE USER\n" +
+                                    "SET IsManager = FALSE\n" +
+                                    "WHERE Email = ?;";
+                            PreparedStatement stmnt = con.prepareStatement(query);
+                            stmnt.setString(1, classUser.getEmail());
+                            stmnt.execute();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         Main.showScreen("../View/UsersList.fxml");
                     } else {
                         alert.close();
@@ -56,12 +67,12 @@ public class UserClassLink extends Hyperlink {
 
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == promote) {
+                        classUser.toggleManager();
                         try {
-                            classUser.toggleManager();
                             Connection con = DBModel.getInstance().getConnection();
                             String query = "UPDATE USER\n" +
                                     "SET IsManager = TRUE\n" +
-                                    "WHERE Email = \"classUser.getEmail()\";";
+                                    "WHERE Email = ?;";
                             PreparedStatement stmnt = con.prepareStatement(query);
                             stmnt.setString(1, classUser.getEmail());
                             stmnt.execute();

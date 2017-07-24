@@ -42,10 +42,12 @@ public class UserSuspendLink extends Hyperlink {
 
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == unsuspend) {
+                        suspendUser.setIsSuspended(false);
                         try {
                             Connection con = DBModel.getInstance().getConnection();
-                            String query = "SELECT FROM USER WHERE IsManager = false;";
-                            //TODO: query
+                            String query = "UPDATE USER\n" +
+                                    "SET IsSuspended = FALSE\n" +
+                                    "WHERE Email = ?";
                             PreparedStatement stmnt = con.prepareStatement(query);
                             stmnt.setString(1, suspendUser.getEmail());
                             stmnt.execute();
@@ -65,10 +67,12 @@ public class UserSuspendLink extends Hyperlink {
 
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == suspend) {
+                        suspendUser.setIsSuspended(true);
                         try {
                             Connection con = DBModel.getInstance().getConnection();
-                            String query = "SELECT FROM USER WHERE IsManager = true;";
-                            //TODO: query
+                            String query = "UPDATE USER\n" +
+                                    "SET IsSuspended = TRUE\n" +
+                                    "WHERE Email = ?";
                             PreparedStatement stmnt = con.prepareStatement(query);
                             stmnt.setString(1, suspendUser.getEmail());
                             stmnt.execute();

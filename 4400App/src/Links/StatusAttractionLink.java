@@ -36,7 +36,19 @@ public class StatusAttractionLink extends Hyperlink {
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == approve) {
-                    //TODO: query
+                    statusAttraction.setIsPending(false);
+                    try {
+                        Connection con = DBModel.getInstance().getConnection();
+                        String query = "UPDATE REVIEWABLE_ENTITY\n" +
+                                "SET IsPending = FALSE\n" +
+                                "WHERE EntityID = ?;";
+                        PreparedStatement stmnt = con.prepareStatement(query);
+                        stmnt.setInt(1, statusAttraction.getAttractionID());
+                        stmnt.execute();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Main.showScreen("../View/PendingAttractionList.fxml");
                 } else if (result.get() == delete) {
                     try {
                         Connection con = DBModel.getInstance().getConnection();

@@ -37,11 +37,13 @@ public class ApproveCityLink extends Hyperlink {
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == approve) {
                     try {
+                        approveCity.setIsPending(false);
                         Connection con = DBModel.getInstance().getConnection();
-                        String query = "DELETE FROM CITY WHERE Name = ?;";
-                        //TODO: query
+                        String query = "UPDATE REVIEWABLE_ENTITY\n" +
+                                "SET IsPending = FALSE\n" +
+                                "WHERE EntityID = ?;";
                         PreparedStatement stmnt = con.prepareStatement(query);
-                        stmnt.setString(1, approveCity.getName());
+                        stmnt.setInt(1, approveCity.getCityID());
                         stmnt.execute();
                     } catch (Exception e) {
                         e.printStackTrace();
