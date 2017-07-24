@@ -17,11 +17,11 @@
       </Label>
       <TableView fx:id="tblUsers" layoutX="14.0" layoutY="58.0" prefHeight="200.0" prefWidth="574.0">
         <columns>
-          <TableColumn prefWidth="196.33331298828125" text="Email" />
-          <TableColumn prefWidth="97.66668701171875" text="Date Joined" />
-            <TableColumn prefWidth="79.66665649414062" text="User Class" />
-            <TableColumn prefWidth="117.0" text="Suspended" />
-            <TableColumn prefWidth="83.66668701171875" text="Delete" />
+          <TableColumn fx:id="colName" prefWidth="196.33331298828125" text="Email" />
+          <TableColumn fx:id="colDate" prefWidth="97.66668701171875" text="Date Joined" />
+            <TableColumn fx:id="colClass" prefWidth="79.66665649414062" text="User Class" />
+            <TableColumn fx:id="colSuspended" prefWidth="117.0" text="Suspended" />
+            <TableColumn fx:id="colDelete" prefWidth="83.66668701171875" text="Delete" />
         </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="224.0" layoutY="266.0" prefHeight="27.0" prefWidth="106.0" promptText="Sort By" />

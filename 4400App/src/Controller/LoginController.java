@@ -52,7 +52,6 @@ public class LoginController extends BasicController{
 			pswd = pswdField.getText();
 			pswdHash = pswd.hashCode();
 			email = emailField.getText();
-			System.out.print(pswdHash);
 		}
 
 		if (flag) {
