@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BasicCityPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BasicCityPageController">
    <children>
       <Label fx:id="lblCityName" alignment="CENTER" layoutX="162.0" layoutY="-8.0" text="City Name Here">
          <font>
-            <Font size="40.0" />
+            <Font size="36.0" />
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="72.0" prefHeight="35.0" prefWidth="120.0" text="Attractions">
          <font>
-            <Font size="24.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <TableView fx:id="tblAttractions" layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="575.0">
@@ -35,9 +35,18 @@
       <Button fx:id="btnReview" layoutX="243.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review This City" />
       <Button fx:id="btnView" layoutX="241.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleViewPressed" text="View All Reviews" />
       <Button fx:id="btnBack" layoutX="273.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
-      <Label layoutX="193.0" layoutY="42.0" text="Average Rating:" />
-      <Label layoutX="293.0" layoutY="42.0" text="/ 5" />
-      <Label fx:id="lblAvgRate" layoutX="282.0" layoutY="42.0" text="5" />
+      <Label layoutX="193.0" layoutY="42.0" text="Average Rating:">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <Label layoutX="293.0" layoutY="42.0" text="/ 5">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <Label fx:id="lblAvgRate" layoutX="282.0" layoutY="42.0" text="5">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
       <Button fx:id="btnDelete" layoutX="495.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete" />
    </children>
 </Pane>

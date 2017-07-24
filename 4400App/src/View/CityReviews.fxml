@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CityReviewsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CityReviewsController">
    <children>
       <Label fx:id="lblCityName" alignment="CENTER" layoutX="14.0" layoutY="-1.0" text="City Name Here">
          <font>
-            <Font size="50.0" />
+            <Font size="43.0" />
          </font>
       </Label>
       <Label layoutX="363.0" layoutY="-1.0" text="'s Reviews">
          <font>
-            <Font size="50.0" />
+            <Font size="43.0" />
          </font>
       </Label>
       <TableView fx:id="tblReviews" layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="575.0">

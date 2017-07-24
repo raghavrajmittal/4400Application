@@ -7,21 +7,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeController">
    <children>
       <Label layoutX="201.0" text="Welcome">
          <font>
-            <Font size="42.0" />
+            <Font size="38.0" />
          </font>
       </Label>
       <Label fx:id="lblName" alignment="CENTER" layoutX="3.0" layoutY="48.0" prefHeight="62.0" prefWidth="600.0" text="Email Goes Here!">
          <font>
-            <Font size="42.0" />
+            <Font size="38.0" />
          </font>
       </Label>
       <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="110.0" prefWidth="417.0" promptText="Choose a city" />
       <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="135.0" prefWidth="417.0" promptText="Choose a category" />
-      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="417.0" promptText="Type in an attraction or leave blank find all" />
+      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="417.0" promptText="Type in an attraction or leave blank find all">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
       <Button fx:id="btnSearch" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSearchPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
       <Button fx:id="btnViewCities" layoutX="255.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
       <Button fx:id="btnViewAttractions" layoutX="240.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />

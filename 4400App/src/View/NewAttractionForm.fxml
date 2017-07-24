@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewAttractionFormController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewAttractionFormController">
    <children>
       <Label layoutX="139.0" text="New Attraction Form">
          <font>
-            <Font size="35.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <Label layoutX="68.0" layoutY="51.0" text="Name *:" />
@@ -28,14 +28,20 @@
       <TextField fx:id="txtName" layoutX="121.0" layoutY="49.0" prefHeight="25.0" prefWidth="459.0" />
       <TextField fx:id="txtAddress" layoutX="121.0" layoutY="100.0" prefHeight="25.0" prefWidth="459.0" />
       <TextField fx:id="txtDescription" layoutX="121.0" layoutY="129.0" prefHeight="25.0" prefWidth="459.0" />
-      <TextField fx:id="txtHours" layoutX="121.0" layoutY="158.0" prefHeight="25.0" prefWidth="459.0" promptText="ex: day,opening time, closing time" />
-      <TextField fx:id="txtContact" layoutX="121.0" layoutY="187.0" prefHeight="25.0" prefWidth="459.0" promptText="ex: email:xxx@yyy.com" />
+      <TextField fx:id="txtHours" layoutX="121.0" layoutY="158.0" prefHeight="25.0" prefWidth="459.0" promptText="ex: day,opening time, closing time">
+         <font>
+            <Font size="11.0" />
+         </font></TextField>
+      <TextField fx:id="txtContact" layoutX="121.0" layoutY="187.0" prefHeight="25.0" prefWidth="459.0" promptText="ex: email:xxx@yyy.com">
+         <font>
+            <Font size="11.0" />
+         </font></TextField>
       <TextArea fx:id="txtComment" layoutX="121.0" layoutY="279.0" prefHeight="76.0" prefWidth="459.0" />
       <ComboBox fx:id="cmbCity" layoutX="122.0" layoutY="74.0" prefHeight="25.0" prefWidth="459.0" promptText="Select a City" />
       <ComboBox fx:id="cmbCategory" layoutX="121.0" layoutY="215.0" prefHeight="25.0" prefWidth="459.0" promptText="Select a Category" />
       <Button fx:id="btnBack" layoutX="14.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
       <Button fx:id="btnSubmit" layoutX="244.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit for Review" />
-      <Slider fx:id="sldRating" blockIncrement="1.0" layoutX="122.0" layoutY="253.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="183.0"/>
+      <Slider fx:id="sldRating" blockIncrement="1.0" layoutX="122.0" layoutY="253.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="183.0" />
       <Label fx:id="lblRating" layoutX="313.0" layoutY="248.0" text="0">
          <font>
             <Font size="16.0" />
