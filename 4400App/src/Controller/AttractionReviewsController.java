@@ -30,6 +30,10 @@ public class AttractionReviewsController extends BasicController {
 	
 	@FXML
 	public void initialize() {
+
+		//label name is set
+		lblAttractionName.setText(mainModel.getAttraction());
+
 		//Populate combobox and table
 		List<String> list = new ArrayList<>();
 		list.add("A-Z");

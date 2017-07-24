@@ -45,6 +45,7 @@ public class BasicCityPageController extends BasicController {
 	
 	@FXML
 	public void initialize() {
+
 		//Populate table
 		
 		//Populate combobox

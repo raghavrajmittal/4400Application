@@ -30,7 +30,7 @@ public class AttractionPageController extends BasicController{
 	
 	@FXML
 	public void initialize() {
-		//lblAttractionName.setText(mainModel.getAttraction().getName());
+		lblAttractionName.setText(mainModel.getAttraction().getName());
 		//Populate all the labels with information
 		
 //		lblAddress.setText(mainModel.getAttraction().getAddress());

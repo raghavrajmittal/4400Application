@@ -29,6 +29,9 @@ public class NewAttractionReviewController extends BasicController{
 	
 	@FXML
 	public void initialize() {
+		//label name is set
+		lblAttractionName.setText(mainModel.getAttraction().getName());
+		lblUserName.setText(mainModel.getUser().getName());
 		sldRating.valueProperty().addListener((obs,oldVal,newVal)->
 				sldRating.setValue((newVal.intValue())));
 		lblRating.textProperty().bind(Bindings.format("%.0f", sldRating.valueProperty()));

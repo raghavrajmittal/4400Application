@@ -30,7 +30,11 @@ public class CityReviewsController extends BasicController {
 	
 	@FXML
 	public void initialize() {
+
+		//label name is set
+		lblCityName.setText(mainModel.getCity());
 		//Populate table
+
 		
 		//Populate combo box
 		List<String> list = new ArrayList<>();
