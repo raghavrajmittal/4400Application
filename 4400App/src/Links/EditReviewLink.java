@@ -21,6 +21,7 @@ public class EditReviewLink extends Hyperlink{
             public void handle(ActionEvent event) {
                 DBModel.getInstance().setCurrentReview(review);
                 Main.showScreen("../View/NewAttractionReview.fxml", "Edit " + DBModel.getInstance().getReview().getName() + " Review");
+                //TODO: pass parameter in between screens to new review controller - update, not new review
             }
         });
     }

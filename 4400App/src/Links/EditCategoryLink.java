@@ -21,6 +21,7 @@ public class EditCategoryLink extends Hyperlink{
             public void handle(ActionEvent event) {
                 DBModel.getInstance().setCurrentCategory(category);
                 Main.showScreen("../View/NewCategoryPage.fxml", "Edit " + DBModel.getInstance().getCategory().getName() + " Category");
+                //TODO: pass parameter in between screens to new category controller - update, not new category
             }
         });
     }

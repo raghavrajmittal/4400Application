@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
+import Links.DeleteCategoryLink;
 import Links.EditCategoryLink;
 import Model.Category;
 import Model.City;
@@ -33,7 +34,7 @@ public class CategoriesPageController extends BasicController {
 	@FXML
 	private TableColumn<Category, EditCategoryLink> colEdit;
 	@FXML
-	private TableColumn<Category, String> colDel;
+	private TableColumn<Category, DeleteCategoryLink> colDel;
 
 	private List<Category> tableList;
 
@@ -46,6 +47,7 @@ public class CategoriesPageController extends BasicController {
 		colName.setCellValueFactory(new PropertyValueFactory<Category, String>("name"));
 		colNum.setCellValueFactory(new PropertyValueFactory<Category, Integer>("numOfAttr"));
 		colEdit.setCellValueFactory(new PropertyValueFactory<Category, EditCategoryLink>("editCategoryHyperLink"));
+		colDel.setCellValueFactory(new PropertyValueFactory<Category, DeleteCategoryLink>("deleteCategoryHyperLink"));
 
 		try {
 			Connection con = DBModel.getInstance().getConnection();
@@ -71,6 +73,7 @@ public class CategoriesPageController extends BasicController {
 				Category c = new Category(category);
 				c.setNumOfAttr(numAttr);
 				c.setEditCategoryHyperLink(new EditCategoryLink(c));
+				c.setDeleteCategoryHyperLink(new DeleteCategoryLink(c));
 				tableList.add(c);
 			}
 		} catch (Exception e) {
