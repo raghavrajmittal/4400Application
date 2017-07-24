@@ -37,6 +37,12 @@ public class NewCityReviewController extends BasicController {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please enter a comment");
 			alert.showAndWait();
+		} else if(sldRating.getValue() == 0) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Rating has to be greater than 0");
+			alert.showAndWait();
+
+
 		} else {
 			//Push review into database
 			String comment = txtComment.getText();

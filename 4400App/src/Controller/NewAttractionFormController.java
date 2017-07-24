@@ -130,6 +130,11 @@ public class NewAttractionFormController extends BasicController {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please choose a value for both city and category");
 			alert.showAndWait();
+		} else if(sldRating.getValue() == 0) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Rating has to be greater than 0");
+			alert.showAndWait();
+
 		} else {
 			//This is where the add to the DB is made
 			String name = txtName.getText();
