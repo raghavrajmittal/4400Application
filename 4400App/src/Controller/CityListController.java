@@ -8,6 +8,7 @@ import java.util.List;
 
 import Database.DBModel;
 import Model.City;
+import Links.CityPageLink;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,7 +33,7 @@ public class CityListController extends BasicController{
 	@FXML
 	private TableColumn<City,Integer> colNumAttr;
 	@FXML
-	private TableColumn<City,String> colCityPage;
+	private TableColumn<City,CityPageLink> colCityPage;
 
 	DBModel mainModel = DBModel.getInstance();
 	@FXML
@@ -42,6 +43,7 @@ public class CityListController extends BasicController{
 		colRate.setCellValueFactory(new PropertyValueFactory<City, Double>("avgRat"));
 		colNumAttr.setCellValueFactory(new PropertyValueFactory<City, Integer>("numAttr"));
 		colNumRate.setCellValueFactory(new PropertyValueFactory<City, Integer>("numRat"));
+		colCityPage.setCellValueFactory(new PropertyValueFactory<City,CityPageLink>("cityHyperLink"));
 
 		List<City> cityList = new ArrayList<>();
 		try {
@@ -77,6 +79,7 @@ public class CityListController extends BasicController{
 				c.setAvgRat(avgRat);
 				c.setNumRat(totalRat);
 				c.setNumAttr(numAttr);
+				c.setCityHyperLink(new CityPageLink(c));
 				cityList.add(c);
 			}
 			ObservableList<City> tableCityList = FXCollections.observableList(cityList);

@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
 import java.sql.*;
 
 
@@ -62,6 +63,29 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+
+	public static final void showScreen(final String path) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource(path));
+
+			Parent root = loader.load();
+			Stage mainStage = Main.getStage();
+
+			mainStage.setScene(new Scene(root, 600, 400));
+			mainStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static final void showScreen(final String path,
+											   final String title) {
+		Main.showScreen(path);
+		Main.getStage().setTitle(title);
 	}
 	
 	

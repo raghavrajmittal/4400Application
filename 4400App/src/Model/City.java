@@ -1,5 +1,7 @@
 package Model;
 
+import Links.CityPageLink;
+
 public class City {
 	
 	private String country;
@@ -14,6 +16,7 @@ public class City {
 	private int numAttr = 0;
 	private int numRat = 0;
 	private double avgRat = 0;
+	private CityPageLink cityHyperLink;
 
 	public City(String n, int id) {
 		cityID = id;
@@ -94,5 +97,11 @@ public class City {
 		return rating;
 	}
 
+	public CityPageLink getCityHyperLink() {
+		return cityHyperLink;
+	}
 
+	public void setCityHyperLink(CityPageLink c) {
+		cityHyperLink = c;
+	}
 }

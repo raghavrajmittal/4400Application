@@ -10,6 +10,8 @@ import java.util.Locale.Category;
 import Database.DBModel;
 import Model.Attraction;
 import Model.City;
+import Links.AttractionInfoLink;
+import javafx.scene.control.Hyperlink;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,7 +36,7 @@ public class AttractionsListController extends BasicController{
 	@FXML
 	private TableColumn<Attraction,Integer> colNumOfRate;
 	@FXML
-	private TableColumn<Attraction,String> colInfo;
+	private TableColumn<Attraction,AttractionInfoLink> colInfo;
 	
 	@FXML
 	private ComboBox<String> cmbSort;
@@ -54,6 +56,7 @@ public class AttractionsListController extends BasicController{
 		colLoc.setCellValueFactory(new PropertyValueFactory<Attraction, City>("city"));
 		colRate.setCellValueFactory(new PropertyValueFactory<Attraction, Double>("avgRat"));
 		colNumOfRate.setCellValueFactory(new PropertyValueFactory<Attraction, Integer>("numRat"));
+		colInfo.setCellValueFactory(new PropertyValueFactory<Attraction,AttractionInfoLink>("infoHyperLink"));
 
 		try {
 			Connection con = DBModel.getInstance().getConnection();
@@ -91,7 +94,9 @@ public class AttractionsListController extends BasicController{
 				a.setCategoriesList(categories);
 				a.setAvgRat(avgRat);
 				a.setNumRat(numRat);
+				a.setInfoHyperLink(new AttractionInfoLink(a));
 				attrList.add(a);
+				//colInfo.setCellFactory(new AttractionInfoLink(a));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,5 +1,7 @@
 package Model;
 
+import Links.AttractionInfoLink;
+
 public class Attraction {
 	
 	private City city;
@@ -11,6 +13,7 @@ public class Attraction {
 	private int attrID;
 	private String name;
 	private boolean isPending;
+	private AttractionInfoLink infoHyperLink;
 
 	//For the tables
 	private String categoriesList;
@@ -154,5 +157,12 @@ public class Attraction {
 		contact = s;
 	}
 
+	public AttractionInfoLink getInfoHyperLink() {
+		return infoHyperLink;
+	}
+
+	public void setInfoHyperLink(AttractionInfoLink a) {
+		infoHyperLink = a;
+	}
 
 }
