@@ -1,5 +1,6 @@
 package Model;
 
+import Links.DeleteReviewLink;
 import Links.EditReviewLink;
 
 public class Review {
@@ -10,6 +11,9 @@ public class Review {
 	private int entityID;
 	private EditReviewLink editReviewHyperLink;
 	private boolean isCity;
+
+	private DeleteReviewLink deleteReviewLink;
+	private String submittedBy;
 
 	public Review (String n, int id) {
 		name = n;
@@ -45,4 +49,20 @@ public class Review {
 	public boolean getIsCity() {return isCity;}
 
 	public void setIsCity(boolean c) {isCity = c;}
+
+	public void setDeleteReviewLink(DeleteReviewLink d) {
+		deleteReviewLink = d;
+	}
+
+	public DeleteReviewLink getDeleteReviewLink() {
+		return deleteReviewLink;
+	}
+
+	public String getSubmittedBy() {
+		return submittedBy;
+	}
+
+	public void setSubmittedBy(String s) {
+		submittedBy = s;
+	}
 }

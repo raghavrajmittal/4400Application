@@ -54,12 +54,18 @@ public class NewCityFormController extends BasicController {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please Enter a value for all fields with a * next to it");
 			alert.showAndWait();
-		} else if(sldRating.getValue() == 0) {
+		} else if (sldRating.getValue() == 0) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Rating has to be greater than 0");
 			alert.showAndWait();
 
-		}else {
+		} else if (txtCountryField.getText().toLowerCase().equals("united states")) {
+			if (txtStateField.getText().trim().equals("")) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setContentText("There must be a state in the USA");
+				alert.showAndWait();
+			}
+		} else {
 			String name = txtNameField.getText();
 			String country = txtCountryField.getText();
 			String comment = txtComment.getText();

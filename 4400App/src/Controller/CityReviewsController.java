@@ -8,6 +8,7 @@ import java.util.List;
 
 import Database.DBModel;
 import Links.CityPageLink;
+import Links.DeleteReviewLink;
 import Model.City;
 import Model.Review;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import sun.security.x509.DeltaCRLIndicatorExtension;
 
 public class CityReviewsController extends BasicController {
 
@@ -34,6 +36,8 @@ public class CityReviewsController extends BasicController {
 	private TableColumn<Review,String> colComment;
 	@FXML
 	private ComboBox<String> cmbSort;
+	@FXML
+	private TableColumn<Review, DeleteReviewLink> colDelete;
 
 	private List<Review> tableList;
 	DBModel mainModel = DBModel.getInstance();
@@ -44,6 +48,10 @@ public class CityReviewsController extends BasicController {
 		colName.setCellValueFactory(new PropertyValueFactory<Review, String>("name"));
 		colRate.setCellValueFactory(new PropertyValueFactory<Review, Integer>("rating"));
 		colComment.setCellValueFactory(new PropertyValueFactory<Review, String>("comment"));
+
+		if (mainModel.getUser().getIsManager()) {
+			colDelete.setCellValueFactory(new PropertyValueFactory<Review, DeleteReviewLink>("deleteReviewLink"));
+		}
 
 		try {
 			Connection con = DBModel.getInstance().getConnection();
@@ -59,6 +67,10 @@ public class CityReviewsController extends BasicController {
 				int rating = resultSet.getInt("Rating");
 				String comment = resultSet.getString("Comment");
 				Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+				r.setSubmittedBy(email);
+				if (mainModel.getUser().getIsManager()) {
+					r.setDeleteReviewLink(new DeleteReviewLink(r));
+				}
 				tableList.add(r);
 			}
 		} catch (Exception e) {
@@ -107,6 +119,10 @@ public class CityReviewsController extends BasicController {
 						int rating = resultSet.getInt("Rating");
 						String comment = resultSet.getString("Comment");
 						Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+						r.setSubmittedBy(email);
+						if (mainModel.getUser().getIsManager()) {
+							r.setDeleteReviewLink(new DeleteReviewLink(r));
+						}
 						tableList.add(r);
 					}
 				} catch (Exception e) {
@@ -128,6 +144,10 @@ public class CityReviewsController extends BasicController {
 						int rating = resultSet.getInt("Rating");
 						String comment = resultSet.getString("Comment");
 						Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+						r.setSubmittedBy(email);
+						if (mainModel.getUser().getIsManager()) {
+							r.setDeleteReviewLink(new DeleteReviewLink(r));
+						}
 						tableList.add(r);
 					}
 				} catch (Exception e) {
@@ -149,6 +169,10 @@ public class CityReviewsController extends BasicController {
 						int rating = resultSet.getInt("Rating");
 						String comment = resultSet.getString("Comment");
 						Review r = new Review(email, rating,comment,mainModel.getCity().getCityID());
+						r.setSubmittedBy(email);
+						if (mainModel.getUser().getIsManager()) {
+							r.setDeleteReviewLink(new DeleteReviewLink(r));
+						}
 						tableList.add(r);
 					}
 				} catch (Exception e) {

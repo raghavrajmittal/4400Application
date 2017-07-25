@@ -24,7 +24,8 @@
         <columns>
           <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
           <TableColumn fx:id="colRate" prefWidth="125.0" text="Rating" />
-          <TableColumn fx:id="colCom" prefWidth="355.0" text="Comment" />
+          <TableColumn fx:id="colCom" prefWidth="200.0" text="Comment" />
+            <TableColumn fx:id="colDel"  prefWidth="75" text="Delete" />
         </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="197.0" layoutY="281.0" prefHeight="27.0" prefWidth="98.0" promptText="Sort By:" />
