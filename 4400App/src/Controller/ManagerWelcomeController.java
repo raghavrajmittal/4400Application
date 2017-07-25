@@ -10,6 +10,7 @@ import java.util.Optional;
 import Database.DBModel;
 import Model.Category;
 import Model.City;
+import Model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
+
+import javax.xml.transform.Result;
 
 public class ManagerWelcomeController extends BasicController {
 
@@ -159,15 +162,36 @@ public class ManagerWelcomeController extends BasicController {
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
 			try {
+				//If its last manager
+				boolean last = false;
 				Connection con = DBModel.getInstance().getConnection();
-				String query = "DELETE FROM USER WHERE Email = ?;";
+				String query = "SELECT COUNT(IsManager) as ManagerCount\n" +
+						"FROM USER\n" +
+						"where isManager = 1;";
 				PreparedStatement stmnt = con.prepareStatement(query);
-				stmnt.setString(1, mainModel.getUser().getEmail());
-				stmnt.execute();
+				ResultSet resultSet = stmnt.executeQuery();
+				while (resultSet.next()){
+					int count = resultSet.getInt("ManagerCount");
+					if (count <= 1){
+						last = true;
+					}
+				}
+
+				if (last) {
+					Alert manAlert = new Alert(Alert.AlertType.ERROR);
+					manAlert.setContentText("You are the last manager alive, you cant be deleted");
+					manAlert.showAndWait();
+				} else {
+					query = "DELETE FROM USER WHERE Email = ?;";
+					stmnt = con.prepareStatement(query);
+					stmnt.setString(1, mainModel.getUser().getEmail());
+					stmnt.execute();
+					showScreen("../view/Login.fxml", "Login");
+
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			showScreen("../view/Login.fxml", "Login");
 		} else{
 			alert.close();
 		}
@@ -183,8 +207,8 @@ public class ManagerWelcomeController extends BasicController {
 		} else {
 			//Make a query with the user name
 			user = txtUserSearch.getText();
-
-			showScreen("../View/UsersList.fxml", "User List");
+			mainModel.setFilteredUser(user);
+			showScreen("../View/UsersListFiltered.fxml", "Search Result");
 		}
 		
 		

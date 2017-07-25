@@ -46,6 +46,8 @@ public class DBModel {
 	private String filterCategory;
 	private boolean isFiltered;
 
+	private String filteredUser;
+
 	public Connection getConnection() {
 		return this.con;
 	}
@@ -128,5 +130,13 @@ public class DBModel {
 
 	public boolean getIsFiltered() {
 		return isFiltered;
+	}
+
+	public void setFilteredUser(String u) {
+		filteredUser = u;
+	}
+
+	public String getFilteredUser() {
+		return filteredUser;
 	}
 }

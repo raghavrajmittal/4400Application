@@ -33,7 +33,6 @@ public class Main extends Application {
 					getResource("../view/Login.fxml"));
 			
 			Parent root = loader.load();
-			
 			primaryStage.setScene(new Scene(root,
 					600,
 					400));

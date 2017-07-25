@@ -135,6 +135,8 @@ public class CategoriesPageController extends BasicController {
 						int numAttr = resultSet.getInt("Num");
 						Category c = new Category(category);
 						c.setNumOfAttr(numAttr);
+						c.setEditCategoryHyperLink(new EditCategoryLink(c));
+						c.setDeleteCategoryHyperLink(new DeleteCategoryLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {
@@ -164,6 +166,8 @@ public class CategoriesPageController extends BasicController {
 						int numAttr = resultSet.getInt("Num");
 						Category c = new Category(category);
 						c.setNumOfAttr(numAttr);
+						c.setEditCategoryHyperLink(new EditCategoryLink(c));
+						c.setDeleteCategoryHyperLink(new DeleteCategoryLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {
@@ -193,6 +197,8 @@ public class CategoriesPageController extends BasicController {
 						int numAttr = resultSet.getInt("Num");
 						Category c = new Category(category);
 						c.setNumOfAttr(numAttr);
+						c.setEditCategoryHyperLink(new EditCategoryLink(c));
+						c.setDeleteCategoryHyperLink(new DeleteCategoryLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {

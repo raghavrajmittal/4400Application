@@ -83,7 +83,7 @@ public class LoginController extends BasicController{
 						if (isManager) {
 							showScreen("../View/ManagerWelcome.fxml", "Welcome" + mainModel.getUser().getEmail());
 						} else {
-							showScreen("../View/Welcome.fxml", " Welcome" + mainModel.getUser().getEmail());
+							showScreen("../View/Welcome.fxml", "Welcome " + mainModel.getUser().getEmail());
 						}
 					}
 				} else {
