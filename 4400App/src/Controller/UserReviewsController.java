@@ -70,6 +70,22 @@ public class UserReviewsController extends BasicController{
 				int entityID = resultSet.getInt("EntityID");
 				Review r = new Review(name, rating, comment, entityID);
 				r.setEditReviewHyperLink(new EditReviewLink(r));
+
+
+				String reviewQuery = "SELECT AttrID FROM ATTRACTION WHERE AttrID = ?";
+				PreparedStatement ps = con.prepareStatement(reviewQuery);
+				ps.setInt(1, entityID);
+				ResultSet rs = ps.executeQuery();
+
+				//does not exist
+				if (null != rs) {
+					r.setIsCity(false);
+					mainModel.setCurrentAttraction(new Attraction(name, entityID));
+				} else {
+					r.setIsCity(true);
+					mainModel.setCurrentCity(new City(name, entityID));
+				}
+
 				reviewList.add(r);
 			}
 		} catch (Exception e) {

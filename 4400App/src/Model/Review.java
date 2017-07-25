@@ -9,6 +9,7 @@ public class Review {
 	private String comment;
 	private int entityID;
 	private EditReviewLink editReviewHyperLink;
+	private boolean isCity;
 
 	public Review (String n, int id) {
 		name = n;
@@ -40,4 +41,8 @@ public class Review {
 	public EditReviewLink getEditReviewHyperLink() { return editReviewHyperLink; }
 
 	public void setEditReviewHyperLink(EditReviewLink e) { editReviewHyperLink = e; }
+
+	public boolean getIsCity() {return isCity;}
+
+	public void setIsCity(boolean c) {isCity = c;}
 }
