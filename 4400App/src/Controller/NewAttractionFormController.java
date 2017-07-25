@@ -202,13 +202,17 @@ public class NewAttractionFormController extends BasicController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			alert.setTitle("Success");
-			alert.setContentText("Your Attraction has been submitted and is awaiting approval");
-			alert.showAndWait();
 			if (mainModel.getUser().getIsManager()) {
+				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+				alert.setTitle("Success");
+				alert.setContentText("You're a manager, so no need of any approval!");
+				alert.showAndWait();
 				showScreen("../View/ManagerWelcome.fxml", "Welcome");
 			} else {
+				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+				alert.setTitle("Success");
+				alert.setContentText("Your Attraction has been submitted and is awaiting approval");
+				alert.showAndWait();
 				showScreen("../View/Welcome.fxml", "Welcome");
 			}
 		}
