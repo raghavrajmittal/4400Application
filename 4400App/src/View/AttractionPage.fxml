@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -24,9 +25,13 @@
       <Label fx:id="lblHours" alignment="CENTER" layoutX="226.0" layoutY="181.0" prefHeight="28.0" prefWidth="362.0" style="-fx-border-style: solid;" />
       <Label fx:id="lblContact" alignment="CENTER" layoutX="226.0" layoutY="208.0" prefHeight="28.0" prefWidth="362.0" style="-fx-border-style: solid;" />
       <Label fx:id="lblCategory" alignment="CENTER" layoutX="226.0" layoutY="235.0" prefHeight="28.0" prefWidth="362.0" style="-fx-border-style: solid;" />
-      <Button fx:id="btnReview" layoutX="235.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review this Attraction" />
-      <Button fx:id="btnViewReviews" layoutX="248.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleViewReviewsPressed" text="View All Reviews" />
-      <Button fx:id="btnBack" layoutX="280.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnReview" layoutX="235.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleReviewPressed" text="Review this Attraction" />
+      <Button fx:id="btnViewReviews" layoutX="251.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleViewReviewsPressed" text="View All Reviews" />
+      <Button fx:id="btnBack" layoutX="43.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
       <Button fx:id="btnDelete" layoutX="537.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete" />
+      <Button fx:id="btnAddCategory" layoutX="336.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleAddCategoryPressed" text="Add Category" />
+      <ComboBox fx:id="cmbCategories" layoutX="161.0" layoutY="270.0" prefHeight="27.0" prefWidth="174.0" promptText="Choose Category" />
+      <Button fx:id="btnDeleteCategory" layoutX="336.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleDeleteCategoryPressed" text="Delete Category" />
+      <ComboBox fx:id="cmbDeleteCategories" layoutX="161.0" layoutY="297.0" prefHeight="27.0" prefWidth="174.0" promptText="Choose Category" />
    </children>
 </Pane>
