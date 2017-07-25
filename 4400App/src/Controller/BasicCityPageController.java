@@ -298,6 +298,17 @@ public class BasicCityPageController extends BasicController {
 		alert.getButtonTypes().setAll(cancel, delete);
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
+			try {
+				Connection con = DBModel.getInstance().getConnection();
+				//This is for the description
+				String query = "DELETE FROM REVIEWABLE_ENTITY WHERE EntityID=?";
+				PreparedStatement stmnt = con.prepareStatement(query);
+				stmnt.setInt(1, mainModel.getCity().getCityID() );
+				stmnt.execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			if (mainModel.getUser().getIsManager()) {
 				showScreen("../View/ManagerWelcome.fxml", "Welcome");
 			} else {
