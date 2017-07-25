@@ -122,6 +122,8 @@ public class PendingCitiesListController extends BasicController {
 						c.setSubmittedBy(submittedBy);
 						c.setRating(rating);
 						c.setComment(comment);
+						c.setDeleteCityHyperLink(new DeleteCityLink(c));
+						c.setApproveCityHyperLink(new ApproveCityLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {
@@ -147,6 +149,8 @@ public class PendingCitiesListController extends BasicController {
 						c.setSubmittedBy(submittedBy);
 						c.setRating(rating);
 						c.setComment(comment);
+						c.setDeleteCityHyperLink(new DeleteCityLink(c));
+						c.setApproveCityHyperLink(new ApproveCityLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {
@@ -172,6 +176,8 @@ public class PendingCitiesListController extends BasicController {
 						c.setSubmittedBy(submittedBy);
 						c.setRating(rating);
 						c.setComment(comment);
+						c.setDeleteCityHyperLink(new DeleteCityLink(c));
+						c.setApproveCityHyperLink(new ApproveCityLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {
@@ -197,6 +203,8 @@ public class PendingCitiesListController extends BasicController {
 						c.setSubmittedBy(submittedBy);
 						c.setRating(rating);
 						c.setComment(comment);
+						c.setDeleteCityHyperLink(new DeleteCityLink(c));
+						c.setApproveCityHyperLink(new ApproveCityLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {
@@ -222,6 +230,8 @@ public class PendingCitiesListController extends BasicController {
 						c.setSubmittedBy(submittedBy);
 						c.setRating(rating);
 						c.setComment(comment);
+						c.setDeleteCityHyperLink(new DeleteCityLink(c));
+						c.setApproveCityHyperLink(new ApproveCityLink(c));
 						tableList.add(c);
 					}
 				} catch (Exception e) {

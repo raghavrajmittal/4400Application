@@ -175,6 +175,8 @@ public class AttractionsListController extends BasicController{
 						a.setCategoriesList(categories);
 						a.setAvgRat(avgRat);
 						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+
 						attrList.add(a);
 					}
 				} catch (Exception e) {
@@ -217,6 +219,8 @@ public class AttractionsListController extends BasicController{
 						a.setCategoriesList(categories);
 						a.setAvgRat(avgRat);
 						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+
 						attrList.add(a);
 					}
 				} catch (Exception e) {
@@ -259,6 +263,8 @@ public class AttractionsListController extends BasicController{
 						a.setCategoriesList(categories);
 						a.setAvgRat(avgRat);
 						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+
 						attrList.add(a);
 					}
 				} catch (Exception e) {
@@ -301,6 +307,8 @@ public class AttractionsListController extends BasicController{
 						a.setCategoriesList(categories);
 						a.setAvgRat(avgRat);
 						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+
 						attrList.add(a);
 					}
 				} catch (Exception e) {
@@ -343,6 +351,8 @@ public class AttractionsListController extends BasicController{
 						a.setCategoriesList(categories);
 						a.setAvgRat(avgRat);
 						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+
 						attrList.add(a);
 					}
 				} catch (Exception e) {
@@ -385,6 +395,8 @@ public class AttractionsListController extends BasicController{
 						a.setCategoriesList(categories);
 						a.setAvgRat(avgRat);
 						a.setNumRat(numRat);
+						a.setInfoHyperLink(new AttractionInfoLink(a));
+
 						attrList.add(a);
 					}
 				} catch (Exception e) {

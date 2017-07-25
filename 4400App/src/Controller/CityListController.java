@@ -159,6 +159,8 @@ public class CityListController extends BasicController{
 						c.setAvgRat(avgRat);
 						c.setNumRat(totalRat);
 						c.setNumAttr(numAttr);
+						c.setCityHyperLink(new CityPageLink(c));
+
 						cityList.add(c);
 					}
 
@@ -199,6 +201,8 @@ public class CityListController extends BasicController{
 						c.setAvgRat(avgRat);
 						c.setNumRat(totalRat);
 						c.setNumAttr(numAttr);
+						c.setCityHyperLink(new CityPageLink(c));
+
 						cityList.add(c);
 					}
 
@@ -239,6 +243,8 @@ public class CityListController extends BasicController{
 						c.setAvgRat(avgRat);
 						c.setNumRat(totalRat);
 						c.setNumAttr(numAttr);
+						c.setCityHyperLink(new CityPageLink(c));
+
 						cityList.add(c);
 					}
 
@@ -279,6 +285,8 @@ public class CityListController extends BasicController{
 						c.setAvgRat(avgRat);
 						c.setNumRat(totalRat);
 						c.setNumAttr(numAttr);
+						c.setCityHyperLink(new CityPageLink(c));
+
 						cityList.add(c);
 					}
 
@@ -319,6 +327,8 @@ public class CityListController extends BasicController{
 						c.setAvgRat(avgRat);
 						c.setNumRat(totalRat);
 						c.setNumAttr(numAttr);
+						c.setCityHyperLink(new CityPageLink(c));
+
 						cityList.add(c);
 					}
 
