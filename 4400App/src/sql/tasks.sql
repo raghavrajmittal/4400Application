@@ -507,7 +507,16 @@ on res1.AttrID = res4.AttrID
 order by res1.LocatedIn asc;
 
 
+-- check how many attractions are dependent
+SELECT res1.AttrID as AttrID, cnt
+FROM
+	(SELECT AttrID
+	FROM FALLS_UNDER
+	where Category = "MONUMENT") as res1
 
--- checking if last manager
-SELECT COUNT(IsManager)
-FROM USER;
+inner join
+	(SELECT AttrID, Count(Category) as cnt
+    FROM FALLS_UNDER
+    GROUP BY AttrID) as res2
+
+on res1.AttrID = res2.AttrID; 
