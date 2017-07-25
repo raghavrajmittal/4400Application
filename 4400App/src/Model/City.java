@@ -22,6 +22,10 @@ public class City {
 	private DeleteCityLink deleteCityHyperLink;
 	private ApproveCityLink approveCityHyperLink;
 
+	public City(String n) {
+		name = n;
+	}
+
 	public City(String n, int id) {
 		cityID = id;
 		name = n;

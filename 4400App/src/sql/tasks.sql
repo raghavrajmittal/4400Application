@@ -138,6 +138,160 @@ inner join
 ON res1.AttrID = res4.AttrID
 
 order by numRat desc;
+-- city and category
+
+
+SELECT res1.AttrID, Name, Address, Category, avgRat, numRat
+FROM(
+
+	(SELECT A.AttrID, LocatedIn, Name, Address
+	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E
+	WHERE LocatedIn = "CityID_field" and A.AttrID = E.EntityID and E.IsPending = FALSE and A.Name = "name_field" ) as res1
+
+inner join 
+	(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat
+	FROM ATTRACTION AS A, REVIEW AS R
+	WHERE A.AttrID = R.EntityID AND A.LocatedIn = "CityID_field"
+	GROUP BY A.AttrID) as res2
+on res1.AttrID = res2.AttrID 
+
+inner join 
+	(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
+	FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY A.AttrID) as res3
+on res1.AttrID = res3.AttrID)
+
+inner join
+	(SELECT AttrID
+	FROM FALLS_UNDER
+	WHERE Category = "category_field") as res4
+ON res1.AttrID = res4.AttrID
+
+order by numRat desc;
+-- city , category , attraction name
+
+SELECT res1.AttrID, Name, Address, Category, avgRat, numRat
+FROM(
+
+	(SELECT A.AttrID, LocatedIn, Name, Address
+	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E
+	WHERE LocatedIn = "CityID_field" and A.AttrID = E.EntityID and E.IsPending = FALSE and A.Name = "name_field" ) as res1
+
+inner join 
+	(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat
+	FROM ATTRACTION AS A, REVIEW AS R
+	WHERE A.AttrID = R.EntityID AND A.LocatedIn = "CityID_field"
+	GROUP BY A.AttrID) as res2
+on res1.AttrID = res2.AttrID 
+
+inner join 
+	(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
+	FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY A.AttrID) as res3
+on res1.AttrID = res3.AttrID)
+
+order by numRat desc;
+-- city , attraction name
+
+SELECT res1.AttrID, Name, Address, Category, avgRat, numRat
+FROM(
+
+	(SELECT A.AttrID, LocatedIn, Name, Address
+	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E
+	WHERE LocatedIn = "CityID_field" and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1
+inner join 
+	(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat
+	FROM ATTRACTION AS A, REVIEW AS R
+	WHERE A.AttrID = R.EntityID AND A.LocatedIn = "CityID_field"
+	GROUP BY A.AttrID) as res2
+on res1.AttrID = res2.AttrID 
+
+inner join 
+	(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
+	FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY A.AttrID) as res3
+on res1.AttrID = res3.AttrID)
+
+order by numRat desc;
+-- city only
+
+
+SELECT res1.AttrID, Name, Address, LocatedIn, Category, avgRat, numRat
+FROM(
+
+	(SELECT A.AttrID, LocatedIn, Name, Address
+	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = E.EntityID and E.IsPending = FALSE and A.Name = "name_field" ) as res1
+
+inner join 
+	(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat
+	FROM ATTRACTION AS A, REVIEW AS R
+	WHERE A.AttrID = R.EntityID
+	GROUP BY A.AttrID) as res2
+on res1.AttrID = res2.AttrID 
+
+inner join 
+	(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
+	FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY A.AttrID) as res3
+on res1.AttrID = res3.AttrID)
+
+inner join
+	(SELECT AttrID
+	FROM FALLS_UNDER
+	WHERE Category = "category_field") as res4
+ON res1.AttrID = res4.AttrID
+
+inner join 
+	(SELECT C.CityID as CityID, C.Name as CityName
+    FROM CITY as C, ATTRACTION as A
+    WHERE A.LocatedIn = C.CityID) as res5
+on res1.LocatedIn = res5.CityID
+
+order by numRat desc;
+-- category , attraction name
+
+
+SELECT res1.AttrID, Name, Address, LocatedIn, Category, avgRat, numRat
+FROM(
+
+	(SELECT A.AttrID, LocatedIn, Name, Address
+	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = E.EntityID and E.IsPending = FALSE) as res1
+
+inner join 
+	(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat
+	FROM ATTRACTION AS A, REVIEW AS R
+	WHERE A.AttrID = R.EntityID
+	GROUP BY A.AttrID) as res2
+on res1.AttrID = res2.AttrID 
+
+inner join 
+	(SELECT A.AttrID, GROUP_CONCAT(F.Category) as Category
+	FROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E
+	WHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE
+	GROUP BY A.AttrID) as res3
+on res1.AttrID = res3.AttrID)
+
+inner join
+	(SELECT AttrID
+	FROM FALLS_UNDER
+	WHERE Category = "category_field") as res4
+ON res1.AttrID = res4.AttrID
+
+inner join 
+	(SELECT C.CityID as CityID, C.Name as CityName
+    FROM CITY as C, ATTRACTION as A
+    WHERE A.LocatedIn = C.CityID) as res5
+on res1.LocatedIn = res5.CityID
+
+order by numRat desc;
+-- category only
+
 
 
 
@@ -250,6 +404,9 @@ FROM CATEGORY ;-- drop down for category
 DELETE FROM USER
 WHERE Email = "email_field"; -- delete accountCITY
 
+SELECT Email, DateJoined, IsSuspended, isManager
+from USER
+where Email="field";
 
 -- Category Page
 SELECT res1.CName, res2.numAttr
