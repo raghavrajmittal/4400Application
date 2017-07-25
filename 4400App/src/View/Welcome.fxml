@@ -20,16 +20,16 @@
          </font>
       </Label>
       <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="110.0" prefWidth="417.0" promptText="Choose a city" />
-      <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="135.0" prefWidth="417.0" promptText="Choose a category" />
-      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="417.0" promptText="Type in an attraction or leave blank find all">
+      <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="140.0" prefWidth="417.0" promptText="Choose a category" />
+      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="170.0" prefHeight="25.0" prefWidth="417.0" promptText="Type in an attraction or leave blank find all">
          <font>
             <Font size="10.0" />
          </font></TextField>
-      <Button fx:id="btnSearch" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSearchPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
-      <Button fx:id="btnViewCities" layoutX="255.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
-      <Button fx:id="btnViewAttractions" layoutX="240.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />
-      <Button fx:id="btnMyReviews" layoutX="261.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleMyReviewsPressed" text="My Reviews" />
-      <Button fx:id="btnLogout" layoutX="274.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
-      <Button fx:id="btnDelete" layoutX="463.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete My Account" />
+      <Button fx:id="btnSearch" layoutX="213.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSearchPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
+      <Button fx:id="btnViewCities" layoutX="236.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
+      <Button fx:id="btnViewAttractions" layoutX="219.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />
+      <Button fx:id="btnMyReviews" layoutX="243.0" layoutY="305.0" mnemonicParsing="false" onAction="#handleMyReviewsPressed" text="My Reviews" />
+      <Button fx:id="btnLogout" layoutX="258.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleLogoutPressed" text="Logout" />
+      <Button fx:id="btnDelete" layoutX="451.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete My Account" />
    </children>
 </Pane>

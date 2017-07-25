@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PendingCitiesListController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PendingCitiesListController">
    <children>
-      <Label layoutX="139.0" text="Pending Cities List">
+      <Label layoutX="190.0" layoutY="14.0" text="Pending Cities List">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <TableView fx:id="tblPendingCities" layoutX="14.0" layoutY="58.0" prefHeight="241.0" prefWidth="573.0">
@@ -26,8 +26,8 @@
             <TableColumn fx:id="colDelete" prefWidth="73.33331298828125" text="Delete" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="212.0" layoutY="308.0" prefHeight="25.0" prefWidth="89.0" promptText="Sort" />
+      <ComboBox fx:id="cmbSort" layoutX="209.0" layoutY="308.0" prefHeight="25.0" prefWidth="89.0" promptText="Sort" />
       <Button fx:id="btnSort" layoutX="300.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="60.0" text="Sort" />
-      <Button fx:id="btnBack" layoutX="279.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnBack" layoutX="274.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
    </children>
 </Pane>

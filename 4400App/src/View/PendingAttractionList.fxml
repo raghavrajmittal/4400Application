@@ -31,7 +31,7 @@
         </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="217.0" layoutY="310.0" prefHeight="27.0" prefWidth="98.0" promptText="Sort By:" />
-      <Button fx:id="btnBack" layoutX="277.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnBack" layoutX="292.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
       <Button fx:id="btnSort" layoutX="315.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="60.0" text="Sort" />
    </children>
 </Pane>
