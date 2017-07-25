@@ -1,5 +1,6 @@
 package Model;
 
+import Links.ApproveCityLink;
 import Links.CityPageLink;
 import Links.DeleteCityLink;
 
@@ -19,6 +20,7 @@ public class City {
 	private double avgRat = 0;
 	private CityPageLink cityHyperLink;
 	private DeleteCityLink deleteCityHyperLink;
+	private ApproveCityLink approveCityHyperLink;
 
 	public City(String n, int id) {
 		cityID = id;
@@ -110,4 +112,8 @@ public class City {
 	public DeleteCityLink getDeleteCityHyperLink() { return deleteCityHyperLink; }
 
 	public void setDeleteCityHyperLink(DeleteCityLink cl) { deleteCityHyperLink = cl; }
+
+	public ApproveCityLink getApproveCityHyperLink() { return approveCityHyperLink; }
+
+	public void setApproveCityHyperLink(ApproveCityLink cl) { approveCityHyperLink = cl; }
 }

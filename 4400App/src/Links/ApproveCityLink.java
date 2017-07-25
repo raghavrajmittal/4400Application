@@ -17,30 +17,33 @@ import java.util.Optional;
 /**
  * Created by alyssatan on 7/24/17.
  */
-public class DeleteCityLink extends Hyperlink{
-    private City deleteCity;
+public class ApproveCityLink extends Hyperlink {
+    private City approveCity;
 
-    public DeleteCityLink(City delCity) {
-        deleteCity = delCity;
-        super.setText("Delete");
+    public ApproveCityLink(City city) {
+        approveCity = city;
+        super.setText("Approve");
         super.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Delete");
-                alert.setContentText("Deleting this city will delete all attractions associated with this city");
+                alert.setTitle("Approve");
+                alert.setContentText("Do you want to approve this city");
 
                 ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                ButtonType delete = new ButtonType("Delete");
-                alert.getButtonTypes().setAll(cancel, delete);
+                ButtonType approve = new ButtonType("Approve");
+                alert.getButtonTypes().setAll(cancel, approve);
 
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == delete) {
+                if (result.get() == approve) {
                     try {
+                        approveCity.setIsPending(false);
                         Connection con = DBModel.getInstance().getConnection();
-                        String query = "DELETE FROM CITY WHERE Name = ?;";
+                        String query = "UPDATE REVIEWABLE_ENTITY\n" +
+                                "SET IsPending = FALSE\n" +
+                                "WHERE EntityID = ?;";
                         PreparedStatement stmnt = con.prepareStatement(query);
-                        stmnt.setString(1, deleteCity.getName());
+                        stmnt.setInt(1, approveCity.getCityID());
                         stmnt.execute();
                     } catch (Exception e) {
                         e.printStackTrace();

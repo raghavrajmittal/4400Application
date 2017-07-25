@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
+import Links.StatusAttractionLink;
 import Model.Attraction;
 import Model.City;
 import javafx.collections.FXCollections;
@@ -45,7 +46,7 @@ public class PendingAttractionsListController extends BasicController{
 	@FXML
 	private TableColumn<Attraction,String> colComment;
 	@FXML
-	private TableColumn<Attraction,String> colStatus;
+	private TableColumn<Attraction, StatusAttractionLink> colStatus;
 
 	private List<Attraction> tableList;
 	DBModel mainModel = DBModel.getInstance();
@@ -63,6 +64,7 @@ public class PendingAttractionsListController extends BasicController{
 		colSubmittedBy.setCellValueFactory(new PropertyValueFactory<Attraction, String>("submittedBy"));
 		colRating.setCellValueFactory(new PropertyValueFactory<Attraction, Integer>("rating"));
 		colComment.setCellValueFactory(new PropertyValueFactory<Attraction, String>("comment"));
+		colStatus.setCellValueFactory(new PropertyValueFactory<Attraction, StatusAttractionLink>("statusHyperLink"));
 
 		try {
 			Connection con = DBModel.getInstance().getConnection();
@@ -128,6 +130,7 @@ public class PendingAttractionsListController extends BasicController{
 				a.setSubmittedBy(submittedBy);
 				a.setRating(rating);
 				a.setComment(comment);
+				a.setStatusHyperLink(new StatusAttractionLink(a));
 				tableList.add(a);
 			}
 		} catch (Exception e) {

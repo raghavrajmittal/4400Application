@@ -1,6 +1,7 @@
 package Model;
 
 import Links.AttractionInfoLink;
+import Links.StatusAttractionLink;
 
 public class Attraction {
 	
@@ -14,6 +15,7 @@ public class Attraction {
 	private String name;
 	private boolean isPending;
 	private AttractionInfoLink infoHyperLink;
+	private StatusAttractionLink statusHyperLink;
 
 	//For the tables
 	private String categoriesList;
@@ -168,5 +170,9 @@ public class Attraction {
 	public void setInfoHyperLink(AttractionInfoLink a) {
 		infoHyperLink = a;
 	}
+
+	public StatusAttractionLink getStatusHyperLink() {return statusHyperLink;}
+
+	public void setStatusHyperLink(StatusAttractionLink al) {statusHyperLink = al;}
 
 }

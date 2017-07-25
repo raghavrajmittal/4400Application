@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
+import Links.ApproveCityLink;
+import Links.DeleteCityLink;
 import Model.City;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,9 +36,9 @@ public class PendingCitiesListController extends BasicController {
 	@FXML
 	private TableColumn<City,String> colComment;
 	@FXML
-	private TableColumn<City,String> colApprove;
+	private TableColumn<City, ApproveCityLink> colApprove;
 	@FXML
-	private TableColumn<City,String> colDelete;
+	private TableColumn<City, DeleteCityLink> colDelete;
 
 	private List<City> tableList;
 	DBModel mainModel = DBModel.getInstance();
@@ -50,6 +52,8 @@ public class PendingCitiesListController extends BasicController {
 		colSubmittedBy.setCellValueFactory(new PropertyValueFactory<City, String>("submittedBy"));
 		colRating.setCellValueFactory(new PropertyValueFactory<City, Integer>("rating"));
 		colComment.setCellValueFactory(new PropertyValueFactory<City, String>("comment"));
+		colDelete.setCellValueFactory(new PropertyValueFactory<City, DeleteCityLink>("deleteCityHyperLink"));
+		colApprove.setCellValueFactory(new PropertyValueFactory<City, ApproveCityLink>("approveCityHyperLink"));
 
 		try {
 			Connection con = DBModel.getInstance().getConnection();
@@ -70,6 +74,8 @@ public class PendingCitiesListController extends BasicController {
 				c.setSubmittedBy(submittedBy);
 				c.setRating(rating);
 				c.setComment(comment);
+				c.setDeleteCityHyperLink(new DeleteCityLink(c));
+				c.setApproveCityHyperLink(new ApproveCityLink(c));
 				tableList.add(c);
 			}
 		} catch (Exception e) {
