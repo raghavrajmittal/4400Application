@@ -122,13 +122,15 @@ public class AttractionPageController extends BasicController{
 		Alert alert = new Alert(Alert.AlertType.WARNING);
 		alert.setTitle("WARNING!");
 		alert.setContentText("Are you sure you want to delete this Attraction?");
-		
+
 		ButtonType cancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
 		ButtonType delete = new ButtonType("Delete");
 
 		alert.getButtonTypes().setAll(cancel, delete);
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
+			
+
 			if (mainModel.getUser().getIsManager()) {
 				showScreen("../View/ManagerWelcome.fxml", "Welcome " + mainModel.getUser().getEmail() );
 			} else {

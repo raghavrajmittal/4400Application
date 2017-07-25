@@ -505,3 +505,9 @@ left join
 on res1.AttrID = res4.AttrID
 
 order by res1.LocatedIn asc;
+
+
+
+-- checking if last manager
+SELECT COUNT(IsManager)
+FROM USER;

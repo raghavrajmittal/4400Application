@@ -93,8 +93,10 @@ public class WelcomeController extends BasicController{
 	public void handleSearchPressed() {
 		City city;
 		String attr = "";
-		Category categories;
-		
+		String cat = "";
+
+
+
 		//Parse through txtCategory for each one and add to categories
 		if (cmbCity.getValue() == null
 				&& txtAttraction.getText().trim().equals("")
@@ -102,96 +104,31 @@ public class WelcomeController extends BasicController{
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please put a city, attraction, or category");
 			alert.showAndWait();
-			return;
-		}
-		
-		//We need to send the sql query to the results page
-		//If its category thats filled it needs to go to search results by category
-		if (cmbCity.getValue() != null) {
-			//First check if city is not empty
-			city = cmbCity.getValue();
-			
-			if (!txtAttraction.getText().trim().equals("")) {
-				//Then check if attraction is not empty
-				attr = txtAttraction.getText().trim();
-				
-				if (cmbCategory.getValue() != null) {
-					//Then check if category is not empty					
-					//Now we search for a city that has that attraction
-					//With those categories
-					
-					showScreen("../View/AttractionsList.fxml", "Search Results");
-				} else {
-					//If category is empty - Only get table elements
-					//That have City city and Attraction attr
-					
-					showScreen("../View/AttractionsList.fxml", "Search Results");
-					
-				}
-			}else {
-				
-				//If attraction is empty still check if category is not empty
-				if (cmbCategory.getValue() != null) {
-					//Then check if category is not empty
-					categories = cmbCategory.getValue();
-					//Now we search for an attraction
-					//With those categories regardless of city
-					
-					showScreen("../View/AttractionsList.fxml", "Search Results");
 
-					
-				} else {
-					//If category is empty - Only get table elements
-					//That has City city
-					
-					showScreen("../View/AttractionsList.fxml", "Search Results");
-
-					
-				}
-			}
-	
 		} else {
-			//If city is empty Then we check attraction
-			if (!txtAttraction.getText().trim().equals("")) {
-				//Then check if attraction is not empty
-				attr = txtAttraction.getText().trim();
-				
-				if (cmbCategory.getValue() != null) {
-					//Then check if category is not empty
-					categories = cmbCategory.getValue();
-					//Will have attraction and category sql thing
-					
-					showScreen("../View/AttractionsList.fxml", "Search Results");
 
-				} else {
-					//If category is empty - Only get table elements
-					//That has Attraction attr
-					
-					showScreen("../View/AttractionsList.fxml", "Search Results");
 
-					
-				}
-			}else {
-				//If attraction is empty still check if category is not empty
-				if (cmbCategory.getValue() != null) {
-					//Then check if category is not empty
-					categories = cmbCategory.getValue();
-					showScreen("../View/AttractionsList.fxml", "Search Results");
-
-				} else {
-					//If category is empty - Only get table elements
-					//That have City city and Attraction attr
-					//TBH this should not be empty
-					
-					showScreen("../View/AttractionsList.fxml", "Search Results");
-
-					
-				}
+			if (cmbCity.getValue() == null) {
+				city = new City("null City");
+			} else {
+				city = cmbCity.getValue();
 			}
-			
+			if (txtAttraction.getText().trim().equals("")) {
+				attr = "";
+			} else {
+				attr = txtAttraction.getText();
+			}
+			if (cmbCategory.getValue() != null) {
+				cat = cmbCategory.getValue().getName();
+			} else {
+				cat = "";
+			}
+
+			mainModel.setFilter(city, attr, cat, true);
+
+			showScreen("../View/AttractionsListFiltered.fxml", "Search Results");
+
 		}
-		
-		//showScreen("../View/AttractionsList.fxml", "Search Results");
 	}
 	/**
 	 * Show the list of all cities

@@ -38,10 +38,12 @@ public class DeleteCityLink extends Hyperlink{
                 if (result.get() == delete) {
                     try {
                         Connection con = DBModel.getInstance().getConnection();
-                        String query = "DELETE FROM CITY WHERE Name = ?;";
+                        String query = "DELETE FROM REVIEWABLE_ENTITY WHERE CityID = ?;";
                         PreparedStatement stmnt = con.prepareStatement(query);
-                        stmnt.setString(1, deleteCity.getName());
+                        stmnt.setInt(1, deleteCity.getCityID());
                         stmnt.execute();
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

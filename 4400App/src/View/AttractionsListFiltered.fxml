@@ -26,8 +26,6 @@
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="245.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleAddPressed" text="Add New Attraction" />
-      <ComboBox fx:id="cmbSort" layoutX="224.0" layoutY="317.0" prefHeight="25.0" prefWidth="106.0" promptText="Sort By:" />
       <Button fx:id="btnBack" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
-      <Button fx:id="btnSort" layoutX="340.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="57.0" text="Sort" />
    </children>
 </Pane>
