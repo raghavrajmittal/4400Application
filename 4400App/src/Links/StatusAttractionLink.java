@@ -28,7 +28,7 @@ public class StatusAttractionLink extends Hyperlink {
             public void handle(ActionEvent event) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Status");
-                alert.setContentText("Do you Approve/Delete to unsuspend this user");
+                alert.setContentText("Do you Approve/Delete this attraction");
                 ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
                 ButtonType approve = new ButtonType("Approve");
                 ButtonType delete = new ButtonType("Delete");
