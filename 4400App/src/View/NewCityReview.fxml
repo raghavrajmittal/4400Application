@@ -14,12 +14,12 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="397.0" layoutY="30.0" text="Review">
+      <Label layoutX="242.0" layoutY="60.0" text="Review">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lblCityName" alignment="CENTER" layoutX="207.0" layoutY="30.0" text="City Name Here">
+      <Label fx:id="lblCityName" alignment="CENTER" layoutX="215.0" layoutY="30.0" text="City Name Here">
          <font>
             <Font size="25.0" />
          </font>

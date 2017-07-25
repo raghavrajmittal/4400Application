@@ -10,12 +10,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CityReviewsController">
    <children>
-      <Label fx:id="lblCityName" alignment="CENTER" layoutX="122.0" layoutY="45.0" text="City Name Here">
+      <Label fx:id="lblCityName" alignment="CENTER" layoutX="209.0" layoutY="22.0" text="City Name Here">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="308.0" layoutY="45.0" text="'s Reviews">
+      <Label layoutX="262.0" layoutY="59.0" text="Reviews">
          <font>
             <Font size="25.0" />
          </font>

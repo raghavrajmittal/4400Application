@@ -8,28 +8,28 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserReviewsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserReviewsController">
    <children>
-      <Label fx:id="lblUserName" layoutX="14.0" layoutY="-1.0" text="Username Here">
+      <Label fx:id="lblUserName" layoutX="193.0" layoutY="21.0" text="Username Here">
          <font>
-            <Font size="50.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="363.0" layoutY="-1.0" text="'s Reviews">
+      <Label layoutX="236.0" layoutY="58.0" text="Reviews">
          <font>
-            <Font size="50.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <TableView fx:id="tblReviews" layoutX="14.0" layoutY="100.0" prefHeight="200.0" prefWidth="575.0">
          <columns>
-            <TableColumn fx:id="colName"  text="Name" />
-            <TableColumn fx:id="colRate"  text="Rating" />
-            <TableColumn fx:id="colComment"  text="Comments" />
-            <TableColumn fx:id="colEdit"  text="Edit" />
+            <TableColumn fx:id="colName" prefWidth="136.0" text="Name" />
+            <TableColumn fx:id="colRate" prefWidth="101.0" text="Rating" />
+            <TableColumn fx:id="colComment" prefWidth="243.0" text="Comments" />
+            <TableColumn fx:id="colEdit" prefWidth="93.0" text="Edit" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cmbSort" layoutX="236.0" layoutY="301.0" prefHeight="27.0" prefWidth="111.0" promptText="Sort By:" />
-      <Button fx:id="btnBack" layoutX="281.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
-      <Button fx:id="btnSort" layoutX="283.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleSortPressed" text="Sort" />
+      <ComboBox fx:id="cmbSort" layoutX="208.0" layoutY="308.0" prefHeight="27.0" prefWidth="111.0" promptText="Sort By:" />
+      <Button fx:id="btnBack" layoutX="285.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnSort" layoutX="322.0" layoutY="308.0" mnemonicParsing="false" onAction="#handleSortPressed" text="Sort" />
    </children>
 </Pane>
