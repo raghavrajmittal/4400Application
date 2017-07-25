@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewUserFormController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewUserFormController">
    <children>
-      <Label layoutX="59.0" layoutY="23.0" text="New User Registration">
+      <Label layoutX="196.0" layoutY="97.0" text="New User Registration">
          <font>
-            <Font size="45.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <TextField fx:id="emailField" layoutX="147.0" layoutY="161.0" prefHeight="25.0" prefWidth="411.0" />
@@ -21,13 +21,13 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="81.0" layoutY="205.0" text="Password:">
+      <Label layoutX="78.0" layoutY="205.0" text="Password:">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
      
-      <Button fx:id="btnRegister" layoutX="261.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleCreatePressed" text="Create User" />
-      <Button fx:id="btnBack" layoutX="280.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnRegister" layoutX="282.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleCreatePressed" text="Create User" />
+      <Button fx:id="btnBack" layoutX="303.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
    </children>
 </Pane>

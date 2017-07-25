@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CityListController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CityListController">
    <children>
-      <Label layoutX="199.0" layoutY="14.0" text="Cities List">
+      <Label layoutX="230.0" layoutY="31.0" text="Cities List">
          <font>
-            <Font size="42.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <TableView fx:id="tblCities" layoutX="7.0" layoutY="85.0" prefHeight="219.0" prefWidth="587.0">
         <columns>
-          <TableColumn fx:id="colName"  text="City Name" />
-          <TableColumn fx:id="colRate"  text="Avg Rating" />
-          <TableColumn fx:id="colNumRate"  text="# of Ratings" />
-          <TableColumn fx:id="colNumAttr"  text="# of Attractions" />
-          <TableColumn fx:id="colCityPage"  text="City Page" />
+          <TableColumn fx:id="colName" prefWidth="147.0" text="City Name" />
+          <TableColumn fx:id="colRate" prefWidth="104.0" text="Avg Rating" />
+          <TableColumn fx:id="colNumRate" prefWidth="104.0" text="# of Ratings" />
+          <TableColumn fx:id="colNumAttr" prefWidth="124.0" text="# of Attractions" />
+          <TableColumn fx:id="colCityPage" prefWidth="107.0" text="City Page" />
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="259.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleAddPressed" text="AddNewCity" />

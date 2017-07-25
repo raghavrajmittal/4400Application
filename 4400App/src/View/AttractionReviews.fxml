@@ -8,23 +8,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AttractionReviewsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AttractionReviewsController">
    <children>
-      <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="14.0" text="Attraction Name Here">
+      <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="81.0" layoutY="15.0" text="Attraction Name Here">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="401.0" text="'s Reviews">
+      <Label layoutX="338.0" layoutY="15.0" text="'s Reviews">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <TableView fx:id="tblReviews" layoutY="58.0" prefHeight="200.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="colName"  text="Name" />
-          <TableColumn fx:id="colRate"  text="Rating" />
-          <TableColumn fx:id="colCom"  text="Comment" />
+          <TableColumn fx:id="colName" prefWidth="119.0" text="Name" />
+          <TableColumn fx:id="colRate" prefWidth="125.0" text="Rating" />
+          <TableColumn fx:id="colCom" prefWidth="355.0" text="Comment" />
         </columns>
       </TableView>
       <ComboBox fx:id="cmbSort" layoutX="197.0" layoutY="281.0" prefHeight="27.0" prefWidth="98.0" promptText="Sort By:" />

@@ -7,24 +7,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagerWelcomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagerWelcomeController">
    <children>
-      <Label layoutX="134.0" text="Welcome Manager">
+      <Label layoutX="118.0" layoutY="6.0" text="Welcome Manager">
          <font>
             <Font size="42.0" />
          </font>
       </Label>
       <Label fx:id="lblName" alignment="CENTER" layoutX="149.0" layoutY="48.0" prefHeight="62.0" prefWidth="328.0" text="Email Goes Here!">
          <font>
-            <Font size="39.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="110.0" prefWidth="367.0" promptText="Cities" />
-      <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="135.0" prefWidth="367.0" promptText="Categories" />
-      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="160.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in an attraction or leave blank find all" />
-      <Button fx:id="btnSearch" layoutX="446.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleSearchAttractionsPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
-      <TextField fx:id="txtUserSearch" layoutX="80.0" layoutY="185.0" prefHeight="25.0" prefWidth="367.0" promptText="Type in a username" />      
-      <Button fx:id="btnUserSearch" layoutX="447.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleSearchUsersPressed" prefHeight="25.0" prefWidth="150.0" text="Search Users" />
+      <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="108.0" prefHeight="27.0" prefWidth="367.0" promptText="Cities" />
+      <ComboBox fx:id="cmbCategory" layoutX="79.0" layoutY="135.0" prefHeight="18.0" prefWidth="367.0" promptText="Categories" />
+      <TextField fx:id="txtAttraction" layoutX="79.0" layoutY="162.0" prefHeight="17.0" prefWidth="367.0" promptText="Type in an attraction or leave blank find all" />
+      <Button fx:id="btnSearch" layoutX="447.0" layoutY="162.0" mnemonicParsing="false" onAction="#handleSearchAttractionsPressed" prefHeight="25.0" prefWidth="150.0" text="Search Attractions" />
+      <TextField fx:id="txtUserSearch" layoutX="79.0" layoutY="189.0" prefHeight="16.0" prefWidth="367.0" promptText="Type in a username" />      
+      <Button fx:id="btnUserSearch" layoutX="447.0" layoutY="189.0" mnemonicParsing="false" onAction="#handleSearchUsersPressed" prefHeight="25.0" prefWidth="150.0" text="Search Users" />
       <Button fx:id="btnViewCities" layoutX="29.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleViewCitiesPressed" text="View All Cities" />
       <Button fx:id="btnViewAttractions" layoutX="14.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleViewAttractionsPressed" text="View All Attractions" />
       <Button fx:id="btnMyReviews" layoutX="34.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleMyReviewsPressed" text="My Reviews" />

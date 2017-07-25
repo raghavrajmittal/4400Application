@@ -7,42 +7,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewCityReviewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewCityReviewController">
    <children>
-      <Label layoutX="44.0" text="Your">
+      <Label layoutX="144.0" layoutY="30.0" text="Your">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="430.0" text="Review">
+      <Label layoutX="397.0" layoutY="30.0" text="Review">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lblCityName" alignment="CENTER" layoutX="140.0" text="City Name Here">
+      <Label fx:id="lblCityName" alignment="CENTER" layoutX="207.0" layoutY="30.0" text="City Name Here">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="91.0" layoutY="100.0" text="Rating *:">
+      <Label layoutX="41.0" layoutY="114.0" text="Rating *:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="156.0" text="Comment*:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Slider fx:id="sldRating" blockIncrement="1.0" layoutX="136.0" layoutY="121.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="183.0" />
+      <Label fx:id="lblRating" layoutX="326.0" layoutY="109.0" text="0">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="156.0" text="Comment*:">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Slider fx:id="sldRating" blockIncrement="1.0" layoutX="197.0" layoutY="112.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="183.0" />
-      <Label fx:id="lblRating" layoutX="387.0" layoutY="100.0" text="0">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="txtComment" layoutX="200.0" layoutY="156.0" prefHeight="140.0" prefWidth="367.0" />
+      <TextArea fx:id="txtComment" layoutX="136.0" layoutY="156.0" prefHeight="140.0" prefWidth="367.0" />
       <Button fx:id="btnSubmit" layoutX="253.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit Review" />
-      <Button fx:id="btnBack" layoutX="279.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnBack" layoutX="284.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
       <Button fx:id="btnDelete" layoutX="256.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete Review" />
    </children>
 </Pane>

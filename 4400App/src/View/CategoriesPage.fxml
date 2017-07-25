@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategoriesPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategoriesPageController">
    <children>
       <TableView fx:id="tblCategories" layoutX="27.0" layoutY="77.0" prefHeight="200.0" prefWidth="547.0">
         <columns>
-          <TableColumn fx:id="colName"  text="Name" />
-          <TableColumn fx:id="colNum"  text="Number of Attractions" />
-            <TableColumn fx:id="colEdit"  text="Edit" />
-            <TableColumn fx:id="colDel"  text="Delete" />
+          <TableColumn fx:id="colName" prefWidth="171.0" text="Name" />
+          <TableColumn fx:id="colNum" prefWidth="188.0" text="Number of Attractions" />
+            <TableColumn fx:id="colEdit" prefWidth="96.0" text="Edit" />
+            <TableColumn fx:id="colDel" prefWidth="91.0" text="Delete" />
         </columns>
       </TableView>
-      <Label layoutX="151.0" text="Category List">
+      <Label layoutX="221.0" layoutY="31.0" text="Category List">
          <font>
-            <Font size="48.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <Button layoutX="308.0" layoutY="283.0" mnemonicParsing="false" onAction="#handleSortPressed" prefHeight="25.0" prefWidth="96.0" text="Sort" />
