@@ -7,47 +7,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewAttractionReviewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewAttractionReviewController">
    <children>
-      <Label fx:id="lblUserName" alignment="CENTER" layoutX="150.0" layoutY="14.0" text="Username Here">
+      <Label fx:id="lblUserName" alignment="CENTER" layoutX="211.0" layoutY="14.0" text="Username Here">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="423.0" layoutY="14.0" text="'s">
+      <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="125.0" layoutY="72.0" text="Attraction Name Here">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="25.0" layoutY="72.0" text="Attraction Name Here">
+      <Label layoutX="388.0" layoutY="72.0" text="Review">
          <font>
-            <Font size="40.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="423.0" layoutY="72.0" text="Review">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Label>
-      <Label layoutX="83.0" layoutY="161.0" text="Rating *:">
+      <Label layoutX="78.0" layoutY="136.0" text="Rating *:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Slider fx:id="sldRating" blockIncrement="1.0" layoutX="169.0" layoutY="169.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="330.0" />
-      <Label fx:id="lblRating" layoutX="501.0" layoutY="161.0" text="0">
+      <Slider fx:id="sldRating" blockIncrement="1.0" layoutX="171.0" layoutY="141.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="330.0" />
+      <Label fx:id="lblRating" layoutX="503.0" layoutY="133.0" text="0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="52.0" layoutY="202.0" text="Comment *:">
+      <Label layoutX="47.0" layoutY="176.0" text="Comment *:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtComment" layoutX="169.0" layoutY="208.0" prefHeight="88.0" prefWidth="422.0" />
-      <Button fx:id="btnSubmit" layoutX="253.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit Review" />
-      <Button fx:id="btnBack" layoutX="279.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
-      <Button fx:id="btnDelete" layoutX="254.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete Review" />
+      <TextArea fx:id="txtComment" layoutX="164.0" layoutY="182.0" prefHeight="88.0" prefWidth="422.0" />
+      <Button fx:id="btnSubmit" layoutX="286.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit Review" />
+      <Button fx:id="btnBack" layoutX="315.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />
+      <Button fx:id="btnDelete" layoutX="287.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleDeletePressed" text="Delete Review" />
    </children>
 </Pane>

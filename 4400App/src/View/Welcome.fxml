@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WelcomeController">
    <children>
-      <Label layoutX="201.0" text="Welcome">
+      <Label layoutX="220.0" layoutY="14.0" text="Welcome">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
       <Label fx:id="lblName" alignment="CENTER" layoutX="3.0" layoutY="48.0" prefHeight="62.0" prefWidth="600.0" text="Email Goes Here!">
          <font>
-            <Font size="38.0" />
+            <Font size="26.0" />
          </font>
       </Label>
       <ComboBox fx:id="cmbCity" layoutX="79.0" layoutY="110.0" prefWidth="417.0" promptText="Choose a city" />

@@ -122,7 +122,7 @@ public class RegisterController extends BasicController{
 
 	private boolean checkUsername(String username) {
 		String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,4})$";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(username);
 		return matcher.matches();
@@ -130,7 +130,7 @@ public class RegisterController extends BasicController{
 
 	private boolean checkPassword(String pass) {
 		boolean flag = true;
-		String nonAlpha =pass.replaceAll("[*a-zA-Z]", "");
+		String nonAlpha = pass.replaceAll("[*a-zA-Z]", "");
 
 		if (pass.length() < 8) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);

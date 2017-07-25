@@ -8,27 +8,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewCityFormController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewCityFormController">
    <children>
-      <Label layoutX="170.0" text="New City Form">
+      <Label layoutX="238.0" layoutY="26.0" text="New City Form">
          <font>
-            <Font size="35.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <TextField fx:id="txtNameField" layoutX="170.0" layoutY="77.0" prefHeight="25.0" prefWidth="329.0" />
       <TextField fx:id="txtCountryField" layoutX="170.0" layoutY="119.0" prefHeight="25.0" prefWidth="329.0" />
       <TextField fx:id="txtStateField" layoutX="170.0" layoutY="161.0" prefHeight="25.0" prefWidth="329.0" />
       <Label layoutX="120.0" layoutY="81.0" text="Name*:" />
-      <Label layoutX="109.0" layoutY="123.0" text="Country*:" />
-      <Label layoutX="50.0" layoutY="165.0" text="State (if Applicable) :" />
-      <Label layoutX="119.0" layoutY="203.0" text="Rating*:" />
+      <Label layoutX="106.0" layoutY="123.0" text="Country*:" />
+      <Label layoutX="36.0" layoutY="166.0" text="State (if Applicable) :" />
+      <Label layoutX="115.0" layoutY="203.0" text="Rating*:" />
       <Slider fx:id="sldRating" layoutX="170.0" layoutY="205.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefWidth="140.0" />
       <Label fx:id="lblRating" layoutX="314.0" layoutY="199.0" text="0">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="104.0" layoutY="237.0" text="Comment*:" />
+      <Label layoutX="94.0" layoutY="237.0" text="Comment*:" />
       <TextArea fx:id="txtComment" layoutX="171.0" layoutY="237.0" prefHeight="79.0" prefWidth="329.0" />
       <Button fx:id="btnSubmit" layoutX="254.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit for Review" />
       <Button fx:id="btnBack" layoutX="290.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleBackPressed" text="Back" />

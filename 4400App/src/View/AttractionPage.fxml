@@ -5,19 +5,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AttractionPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AttractionPageController">
    <children>
-      <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="150.0" layoutY="-6.0" text="Attraction Name here">
+      <Label fx:id="lblAttractionName" alignment="CENTER" layoutX="185.0" layoutY="36.0" text="Attraction Name here">
          <font>
-            <Font size="36.0" />
+            <Font size="25.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="31.0" layoutY="100.0" prefHeight="26.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Address:" />
-      <Label alignment="CENTER" layoutX="31.0" layoutY="127.0" prefHeight="26.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Description:" />
-      <Label alignment="CENTER" layoutX="31.0" layoutY="154.0" prefHeight="26.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Average Rating" />
-      <Label alignment="CENTER" layoutX="31.0" layoutY="181.0" prefHeight="26.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Hours of Operation:" />
-      <Label alignment="CENTER" layoutX="31.0" layoutY="208.0" prefHeight="26.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Contact Info:" />
-      <Label alignment="CENTER" layoutX="31.0" layoutY="235.0" prefHeight="26.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Category:" />
+      <Label alignment="CENTER" layoutX="31.0" layoutY="100.0" prefHeight="28.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Address:" />
+      <Label alignment="CENTER" layoutX="31.0" layoutY="127.0" prefHeight="28.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Description:" />
+      <Label alignment="CENTER" layoutX="31.0" layoutY="154.0" prefHeight="28.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Average Rating" />
+      <Label alignment="CENTER" layoutX="31.0" layoutY="181.0" prefHeight="28.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Hours of Operation:" />
+      <Label alignment="CENTER" layoutX="31.0" layoutY="208.0" prefHeight="28.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Contact Info:" />
+      <Label alignment="CENTER" layoutX="31.0" layoutY="235.0" prefHeight="28.0" prefWidth="196.0" style="-fx-border-style: solid;" text="Category:" />
       <Label fx:id="lblAddress" alignment="CENTER" layoutX="226.0" layoutY="100.0" prefHeight="28.0" prefWidth="362.0" style="-fx-border-style: solid;" />
       <Label fx:id="lblDescription" alignment="CENTER" layoutX="226.0" layoutY="127.0" prefHeight="28.0" prefWidth="362.0" style="-fx-border-style: solid;" />
       <Label fx:id="lblRating" alignment="CENTER" layoutX="226.0" layoutY="154.0" prefHeight="28.0" prefWidth="362.0" style="-fx-border-style: solid;" />
