@@ -41,6 +41,11 @@ public class DBModel {
 	//Subject to Change
 	private String currentQuery;
 
+	private City filterCity;
+	private String filterAttrName;
+	private String filterCategory;
+	private boolean isFiltered;
+
 	public Connection getConnection() {
 		return this.con;
 	}
@@ -100,5 +105,28 @@ public class DBModel {
 	
 	public static int makeEntityID() {
 		return ++entityID;
+	}
+
+	public void setFilter(City city, String name, String category, boolean b) {
+		filterCity = city;
+		filterAttrName = name;
+		filterCategory = category;
+		isFiltered = b;
+	}
+
+	public City getFilterCity() {
+		return filterCity;
+	}
+
+	public String getFilterAttrName() {
+		return filterAttrName;
+	}
+
+	public String getFilterCategory() {
+		return filterCategory;
+	}
+
+	public boolean getIsFiltered() {
+		return isFiltered;
 	}
 }

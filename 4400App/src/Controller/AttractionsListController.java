@@ -45,7 +45,7 @@ public class AttractionsListController extends BasicController{
 
 	
 	DBModel mainModel = DBModel.getInstance();
-	
+
 	@FXML
 	public void initialize() {
 		//Populate table
@@ -399,4 +399,5 @@ public class AttractionsListController extends BasicController{
 			alert.showAndWait();
 		}
 	}
+
 }
