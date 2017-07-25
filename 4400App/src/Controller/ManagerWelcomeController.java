@@ -275,6 +275,7 @@ public class ManagerWelcomeController extends BasicController {
 	}
 	@FXML
 	public void handleAddCategoryPressed() {
+		mainModel.setCurrentCategory(null);
 		showScreen("../View/NewCategoryPage.fxml", "New Category");
 	}
 	

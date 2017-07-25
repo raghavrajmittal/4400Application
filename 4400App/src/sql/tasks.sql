@@ -115,7 +115,7 @@ SELECT res1.AttrID, Name, Address, Category, avgRat, numRat
 FROM(
 
 	(SELECT A.AttrID, LocatedIn, Name, Address
-	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E
+	FROM ATTRACTION as A, REVIEWABLE_ENTITY as E+
 	WHERE LocatedIn = "CityID_field" and A.AttrID = E.EntityID and E.IsPending = FALSE) as res1
 inner join 
 	(SELECT A.AttrID, AVG(Rating) as avgRat, COUNT(Rating) as numRat
