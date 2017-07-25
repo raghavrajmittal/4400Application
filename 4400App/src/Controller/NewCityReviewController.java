@@ -1,7 +1,13 @@
 package Controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Optional;
 
+import Database.DBModel;
+import Links.AttractionInfoLink;
+import Model.Attraction;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -21,14 +27,39 @@ public class NewCityReviewController extends BasicController {
 	private Slider sldRating;
 	@FXML
 	private TextArea txtComment;
-	
-	
+
+	private boolean exists = false;
+
+	DBModel mainModel = DBModel.getInstance();
+
 	@FXML
 	public void initialize() {
+		lblCityName.setText(mainModel.getCity().toString());
 		//Link slider and label
 		sldRating.valueProperty().addListener((obs,oldVal,newVal)->
 				sldRating.setValue((newVal.intValue())));
 		lblRating.textProperty().bind(Bindings.format("%.0f", sldRating.valueProperty()));
+
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT Comment, Rating\n" +
+					"FROM REVIEW\n" +
+					"WHERE Email = ?  AND EntityID = ?;";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			stmnt.setString(1, mainModel.getUser().getEmail());
+			stmnt.setInt(2, mainModel.getCity().getCityID());
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String comment = resultSet.getString("Comment");
+				int rating = resultSet.getInt("rating");
+				exists = true;
+				txtComment.setText(comment);
+				sldRating.setValue(rating);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	@FXML
@@ -37,21 +68,57 @@ public class NewCityReviewController extends BasicController {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please enter a comment");
 			alert.showAndWait();
+		} else if(sldRating.getValue() == 0) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Rating has to be greater than 0");
+			alert.showAndWait();
+
+
 		} else {
 			//Push review into database
 			String comment = txtComment.getText();
+			int rating = (int) sldRating.getValue();
+			try {
+				Connection con = DBModel.getInstance().getConnection();
+				String query;
+				if (exists) {
+					query = "UPDATE REVIEW\n" +
+							"SET Rating = ?, Comment=?, DateSubmitted = now()\n" +
+							"WHERE Email = ? AND EntityID = ?;";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setInt(1, rating);
+					stmnt.setString(2, comment);
+					stmnt.setString(3, mainModel.getUser().getEmail());
+					stmnt.setInt(4, mainModel.getCity().getCityID());
+					stmnt.execute();
+				} else {
+					query = "\n" +
+							"INSERT INTO REVIEW\n" +
+							"VALUES (?, ?, now(), ?, ?);";
+					PreparedStatement stmnt = con.prepareStatement(query);
+					stmnt.setString(1, mainModel.getUser().getEmail());
+					stmnt.setInt(2, mainModel.getCity().getCityID());
+					stmnt.setString(3, comment);
+					stmnt.setInt(4, rating);
+					stmnt.execute();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			//
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setContentText("Your review has been processed");
 			alert.setTitle("Success");
 			alert.showAndWait();
 			
-			showScreen("../View/BasicCityPage.fxml", "Basic City Page");
+			showScreen("../View/BasicCityPage.fxml", mainModel.getCity().toString() + " Page");
 		}
 	}
 	
 	@FXML
 	public void handleBackPressed() {
-		showScreen("../View/BasicCityPage.fxml", "Baisc City Page");
+		showScreen("../View/BasicCityPage.fxml", mainModel.getCity().toString() + " Page");
 	}
 	
 	@FXML
@@ -67,7 +134,18 @@ public class NewCityReviewController extends BasicController {
 		alert.getButtonTypes().setAll(cancel, delete);
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == delete) {
-			showScreen("../view/BasicCityPage.fxml", "Basic City Page");
+			try {
+				Connection con = DBModel.getInstance().getConnection();
+				String query = "DELETE FROM REVIEW\n" +
+						"WHERE Email = ? AND EntityID = ?;";
+				PreparedStatement stmnt = con.prepareStatement(query);
+				stmnt.setString(1, mainModel.getUser().getEmail());
+				stmnt.setInt(2, mainModel.getCity().getCityID());
+				stmnt.execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			showScreen("../view/BasicCityPage.fxml", mainModel.getCity().toString() + " Page");
 		} else{
 			alert.close();
 		}

@@ -64,10 +64,14 @@ public class Attraction {
 	public String getAddress() {
 		return address;
 	}
-	
+
+	public void setAddress(String s) { address = s; }
+
 	public String getDescription() {
 		return description;
 	}
+
+	public void setDescription(String s) { description = s; }
 	
 	public Category[] getCategory() {
 		return category;

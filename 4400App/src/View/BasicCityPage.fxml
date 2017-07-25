@@ -39,7 +39,7 @@
          <font>
             <Font size="11.0" />
          </font></Label>
-      <Label layoutX="293.0" layoutY="42.0" text="/ 5">
+      <Label layoutX="300.0" layoutY="42.0" text="/ 5">
          <font>
             <Font size="11.0" />
          </font></Label>

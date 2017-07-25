@@ -54,7 +54,12 @@ public class NewCityFormController extends BasicController {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setContentText("Please Enter a value for all fields with a * next to it");
 			alert.showAndWait();
-		} else {
+		} else if(sldRating.getValue() == 0) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Rating has to be greater than 0");
+			alert.showAndWait();
+
+		}else {
 			String name = txtNameField.getText();
 			String country = txtCountryField.getText();
 			String comment = txtComment.getText();

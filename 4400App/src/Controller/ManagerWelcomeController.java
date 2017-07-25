@@ -199,7 +199,7 @@ public class ManagerWelcomeController extends BasicController {
 	
 	@FXML
 	public void handleMyReviewsPressed() {
-		showScreen("../View/UserReviews.fxml","Your Reviews");
+		showScreen("../View/UserReviews.fxml","Your Reviews" + mainModel.getUser().getEmail());
 	}
 	
 	@FXML
