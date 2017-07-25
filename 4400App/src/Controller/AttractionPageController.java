@@ -14,10 +14,7 @@ import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class AttractionPageController extends BasicController{
@@ -40,12 +37,20 @@ public class AttractionPageController extends BasicController{
 	private ComboBox<Category> cmbCategories;
 	@FXML
 	private ComboBox<Category> cmbDeleteCategories;
+	@FXML
+	private Button btnDelete;
+
 
 	DBModel mainModel = DBModel.getInstance();
 	
 	@FXML
 	public void initialize() {
 		lblAttractionName.setText(mainModel.getAttraction().getName());
+
+		if (!mainModel.getUser().getIsManager()) {
+			btnDelete.setDisable(true);
+			btnDelete.setVisible(false);
+		}
 		//Populate all the labels with information
 		List<Category> catList = new ArrayList<>();
 		//Populate catList with our categories

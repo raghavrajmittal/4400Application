@@ -64,7 +64,7 @@ public class CityListController extends BasicController{
 					"\tWHERE A.AttrID = E.EntityID and E.IsPending = FALSE\n" +
 					"\tGROUP BY A.LocatedIn) as res2\n" +
 					"    \n" +
-					"    on res1.CityID = res2.LocatedIn) ;";
+					"    on res1.CityID = res2.LocatedIn) order by Name ASC ;";
 			PreparedStatement stmnt = con.prepareStatement(query);
 			ResultSet resultSet = stmnt.executeQuery();
 			while (resultSet.next()) {

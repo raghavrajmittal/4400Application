@@ -160,7 +160,20 @@ public class WelcomeController extends BasicController{
 	 */
 	@FXML
 	public final void handleLogoutPressed() {
-		showScreen("../view/Login.fxml", "Login");
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setContentText("Are you sure you would like to log out?");
+
+		ButtonType cancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+		ButtonType okay = new ButtonType("Okay");
+
+		alert.getButtonTypes().setAll(cancel, okay);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == okay) {
+			showScreen("../view/Login.fxml", "Login");
+		} else {
+			alert.close();
+		}
+
 	}
 	
 	/**

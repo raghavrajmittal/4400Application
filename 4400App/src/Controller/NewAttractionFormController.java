@@ -109,11 +109,7 @@ public class NewAttractionFormController extends BasicController {
 	
 	@FXML
 	public void handleBackPressed() {
-		if (mainModel.getUser().getIsManager()) {
-			showScreen("../View/ManagerWelcome.fxml", "Welcome");
-		} else {
-			showScreen("../View/Welcome.fxml", "Welcome");
-		}
+		showScreen("../View/AttractionsList.fxml", "Attractions List");
 	}
 	
 	@FXML

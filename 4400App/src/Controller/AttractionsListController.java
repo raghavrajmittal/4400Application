@@ -76,7 +76,7 @@ public class AttractionsListController extends BasicController{
 					"inner join\n" +
 					"\t(SELECT Name, Country, CityID\n" +
 					"    FROM CITY) as res3\n" +
-					"on res1.LocatedIn = res3.CityID;";
+					"on res1.LocatedIn = res3.CityID order by CityName ASC;";
 			PreparedStatement stmnt = con.prepareStatement(query);
 			ResultSet resultSet = stmnt.executeQuery();
 			String emailVal = null;

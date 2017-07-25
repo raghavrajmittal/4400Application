@@ -10,11 +10,7 @@ import Links.AttractionInfoLink;
 import Model.Attraction;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class NewCityReviewController extends BasicController {
@@ -27,6 +23,10 @@ public class NewCityReviewController extends BasicController {
 	private Slider sldRating;
 	@FXML
 	private TextArea txtComment;
+	@FXML
+	private Button btnSubmit;
+	@FXML
+	private Button btnDelete;
 
 	private boolean exists = false;
 
@@ -58,6 +58,13 @@ public class NewCityReviewController extends BasicController {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+		if (exists) {
+			btnSubmit.setText("Edit Review");
+		} else {
+			btnDelete.setVisible(false);
+			btnDelete.setDisable(true);
 		}
 
 	}

@@ -14,12 +14,7 @@ import Model.Attraction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -45,6 +40,8 @@ public class BasicCityPageController extends BasicController {
 	private TableColumn<Attraction,Integer> colNumRate;
 	@FXML
 	private TableColumn<Attraction, AttractionInfoLink> colMoreInfo;
+	@FXML
+	private Button btnDelete;
 	
 	DBModel mainModel = DBModel.getInstance();
 
@@ -54,6 +51,12 @@ public class BasicCityPageController extends BasicController {
 
 		lblCityName.setText(mainModel.getCity().toString());
 		lblAvgRate.setText("" + mainModel.getCity().getAvgRat());
+
+		if (!mainModel.getUser().getIsManager()) {
+			btnDelete.setDisable(true);
+			btnDelete.setVisible(false);
+		}
+
 		//Populate table
 		tableList = new ArrayList<>();
 		colName.setCellValueFactory(new PropertyValueFactory<Attraction, String>("name"));
@@ -83,7 +86,7 @@ public class BasicCityPageController extends BasicController {
 					"\tFROM ATTRACTION AS A, FALLS_UNDER AS F, REVIEWABLE_ENTITY as E\n" +
 					"\tWHERE A.AttrID = F.AttrID and A.AttrID = E.EntityID and E.IsPending = FALSE\n" +
 					"\tGROUP BY A.AttrID) as res3\n" +
-					"on res1.AttrID = res3.AttrID);";
+					"on res1.AttrID = res3.AttrID) order by avgRat DESC;";
 			PreparedStatement stmnt = con.prepareStatement(query);
 			stmnt.setInt(1, mainModel.getCity().getCityID());
 			stmnt.setInt(2, mainModel.getCity().getCityID());

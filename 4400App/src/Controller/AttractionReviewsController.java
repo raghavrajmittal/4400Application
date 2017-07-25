@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.DBModel;
+import Links.DeleteReviewLink;
 import Model.Attraction;
 import Model.Review;
 import javafx.collections.FXCollections;
@@ -31,6 +32,10 @@ public class AttractionReviewsController extends BasicController {
 	private TableColumn<Review,Integer> colRate;
 	@FXML
 	private TableColumn<Review,String> colCom;
+
+	@FXML
+	private TableColumn<Review, DeleteReviewLink> colDel;
+
 	@FXML
 	private ComboBox<String> cmbSort;
 
@@ -47,6 +52,9 @@ public class AttractionReviewsController extends BasicController {
 		colName.setCellValueFactory(new PropertyValueFactory<Review, String>("name"));
 		colRate.setCellValueFactory(new PropertyValueFactory<Review, Integer>("rating"));
 		colCom.setCellValueFactory(new PropertyValueFactory<Review, String>("comment"));
+		if (mainModel.getUser().getIsManager()) {
+			colDel.setCellValueFactory(new PropertyValueFactory<Review, DeleteReviewLink>("deleteReviewLink"));
+		}
 
 		try {
 			Connection con = DBModel.getInstance().getConnection();
@@ -62,6 +70,10 @@ public class AttractionReviewsController extends BasicController {
 				int rating = resultSet.getInt("Rating");
 				String comment = resultSet.getString("Comment");
 				Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+				r.setSubmittedBy(email);
+				if (mainModel.getUser().getIsManager()) {
+					r.setDeleteReviewLink(new DeleteReviewLink(r));
+				}
 				tableList.add(r);
 			}
 		} catch (Exception e) {
@@ -112,6 +124,10 @@ public class AttractionReviewsController extends BasicController {
 						int rating = resultSet.getInt("Rating");
 						String comment = resultSet.getString("Comment");
 						Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+						r.setSubmittedBy(email);
+						if (mainModel.getUser().getIsManager()) {
+							r.setDeleteReviewLink(new DeleteReviewLink(r));
+						}
 						tableList.add(r);
 					}
 				} catch (Exception e) {
@@ -132,6 +148,10 @@ public class AttractionReviewsController extends BasicController {
 						int rating = resultSet.getInt("Rating");
 						String comment = resultSet.getString("Comment");
 						Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+						r.setSubmittedBy(email);
+						if (mainModel.getUser().getIsManager()) {
+							r.setDeleteReviewLink(new DeleteReviewLink(r));
+						}
 						tableList.add(r);
 					}
 				} catch (Exception e) {
@@ -152,6 +172,10 @@ public class AttractionReviewsController extends BasicController {
 						int rating = resultSet.getInt("Rating");
 						String comment = resultSet.getString("Comment");
 						Review r = new Review(email, rating, comment, mainModel.getAttraction().getAttractionID());
+						r.setSubmittedBy(email);
+						if (mainModel.getUser().getIsManager()) {
+							r.setDeleteReviewLink(new DeleteReviewLink(r));
+						}
 						tableList.add(r);
 					}
 				} catch (Exception e) {

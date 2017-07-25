@@ -15,9 +15,9 @@
       <Button fx:id="btnRegister" layoutX="234.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleRegisterPressed" text="New User? Click Here!" textFill="#1c3494" underline="true" />
       <Label layoutX="72.0" layoutY="149.0" text="UserName:" />
       <Label layoutX="77.0" layoutY="192.0" text="Password:" />
-      <Label layoutX="189.0" layoutY="47.0" text="Rate A City!">
+      <Label layoutX="20.0" layoutY="47.0" text="Everyones Favorite City Rating Thing!">
          <font>
-            <Font size="44.0" />
+            <Font size="30.0" />
          </font>
       </Label>
    </children>

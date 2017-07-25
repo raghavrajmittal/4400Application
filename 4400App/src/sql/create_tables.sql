@@ -4,9 +4,7 @@ CREATE SCHEMA 4400DB;
 
 USE 4400DB;
 
-CREATE USER if not exists 'admin'@'localhost' IDENTIFIED BY 'password';
 
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
 
 CREATE TABLE if not exists USER
 (
