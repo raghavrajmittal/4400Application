@@ -3,13 +3,20 @@ package Controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import Database.DBModel;
+import Model.Category;
 import Model.Review;
+import application.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ButtonBar.ButtonData;
 
@@ -29,14 +36,55 @@ public class AttractionPageController extends BasicController{
 	private Label lblContact;
 	@FXML
 	private Label lblCategory;
-	
+	@FXML
+	private ComboBox<Category> cmbCategories;
+	@FXML
+	private ComboBox<Category> cmbDeleteCategories;
+
 	DBModel mainModel = DBModel.getInstance();
 	
 	@FXML
 	public void initialize() {
 		lblAttractionName.setText(mainModel.getAttraction().getName());
 		//Populate all the labels with information
+		List<Category> catList = new ArrayList<>();
+		//Populate catList with our categories
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT * FROM CATEGORY order by Cname ASC";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String name = resultSet.getString("CName");
+				Category c = new Category(name);
+				catList.add(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+		ObservableList<Category> cmbCats = FXCollections.observableList(catList);
+		cmbCategories.setItems(cmbCats);
+
+		List<Category> catDelList = new ArrayList<>();
+		//Populate catList with our categories
+		try {
+			Connection con = DBModel.getInstance().getConnection();
+			String query = "SELECT Category FROM FALLS_UNDER where AttrID = ?";
+			PreparedStatement stmnt = con.prepareStatement(query);
+			stmnt.setInt(1, mainModel.getAttraction().getAttractionID());
+			ResultSet resultSet = stmnt.executeQuery();
+			while (resultSet.next()) {
+				String name = resultSet.getString("Category");
+				Category c = new Category(name);
+				catDelList.add(c);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		ObservableList<Category> cmbDelCats = FXCollections.observableList(catDelList);
+		cmbDeleteCategories.setItems(cmbDelCats);
 
 		try {
 			Connection con = DBModel.getInstance().getConnection();
@@ -148,6 +196,54 @@ public class AttractionPageController extends BasicController{
 			}
 		} else{
 			alert.close();
+		}
+	}
+
+	@FXML
+	public void handleAddCategoryPressed() {
+		if (cmbCategories.getValue() == null) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Please choose a category");
+			alert.showAndWait();
+		} else {
+			Category c = cmbCategories.getValue();
+
+			try {
+				Connection con = mainModel.getConnection();
+				String query = "INSERT INTO FALLS_UNDER VALUES (?,?)";
+				System.out.println(mainModel.getAttraction().getName());
+				PreparedStatement stmnt = con.prepareStatement(query);
+				stmnt.setInt(1, mainModel.getAttraction().getAttractionID());
+				stmnt.setString(2, c.getName());
+				stmnt.execute();
+				showScreen("../View/AttractionsList.fxml", " Attractions");
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@FXML
+	public void handleDeleteCategoryPressed() {
+		if (cmbDeleteCategories.getValue() == null) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Please choose a category");
+			alert.showAndWait();
+		} else {
+			Category c = cmbDeleteCategories.getValue();
+
+			try {
+				Connection con = mainModel.getConnection();
+				String query = "Delete from FALLS_UNDER WHERE AttrID = ? AND Category = ?";
+				PreparedStatement stmnt = con.prepareStatement(query);
+
+				stmnt.setInt(1, mainModel.getAttraction().getAttractionID());
+				stmnt.setString(2, c.getName());
+				stmnt.execute();
+				showScreen("../View/AttractionsList.fxml", " Attractions");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
